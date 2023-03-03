@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:goat_app/common/config/theme.dart';
-
+import 'package:provider/provider.dart';
+import 'package:goat_app/SignUp.dart';
 void main() {
-  runApp(const MyApp());
+  runApp(GOAT());
 }
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+class GOAT extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("G.O.A.T"),
-        ),
-      ),
-    );
+    return Provider(
+        create: (BuildContext context) {  },
+        child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData.dark().copyWith(
+            primaryColor: Color(0xFF0A0E21),
+            scaffoldBackgroundColor: Color(0xFF0A0E21),
+          ),
+          home: SignUp(),
+        ));
   }
 }
