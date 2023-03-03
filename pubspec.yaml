@@ -60,14 +60,9 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/images/CR7.png
+    - assets/images/
+    - assets/icons/
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
-  assets:
-     - assets/images/messi.png
-     - assets/images/messi2.png
-     - assets/icons/google.png
-     - assets/icons/facebook-app-symbol (1).png
