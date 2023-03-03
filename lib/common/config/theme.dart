@@ -10,7 +10,7 @@ const primaryColor = Color(0xFF6750A4);
 const secondaryColor = Color(0xFF46D99D);
 const tertiaryColor = Color(0xFFFFCCD0);
 
-const unselectedColor = Color(0xFFCAC4D0);
+const unselectedColor = Color(0xFFEEE8F4);
 
 // Text
 const normalTextColor = Color(0x000000);
@@ -21,6 +21,7 @@ const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
   surface: surfaceColor,
   onSurface: primaryColor,
+  outline: fadedTextColor,
   surfaceVariant: surfaceColor,
   onSurfaceVariant: normalTextColor,
   background: backgroundColor,
@@ -54,5 +55,17 @@ ThemeData mainTheme = ThemeData(
     showSelectedLabels: false,
     showUnselectedLabels: false,
   ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+      style: ButtonStyle(
+    backgroundColor: MaterialStatePropertyAll(unselectedColor),
+    shape: MaterialStatePropertyAll(
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
+  )),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+          shape: MaterialStatePropertyAll(
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
+          padding: MaterialStatePropertyAll(
+              EdgeInsets.symmetric(horizontal: 45, vertical: 12)))),
   colorScheme: lightColorScheme,
 );
