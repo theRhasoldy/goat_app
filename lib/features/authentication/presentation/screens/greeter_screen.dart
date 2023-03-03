@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
+import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 
 import '../widgets/greeter_appbar.dart';
 import '../widgets/seperator.dart';
@@ -22,11 +23,15 @@ class _GreeterState extends State<Greeter> {
           appBar: GreeterAppBar("WELCOME TO THE GOATS", context),
           body: Column(
             children: [
+              Container(
+                color: lightColorScheme.secondary,
+                height: 30,
+              ),
               Image.asset(
                 'assets/images/greeter.png',
               ),
               Padding(
-                padding: const EdgeInsets.all(80),
+                padding: const EdgeInsets.only(top: 80, left: 80, right: 80),
                 child: Column(children: [
                   Column(
                     children: [
@@ -38,17 +43,18 @@ class _GreeterState extends State<Greeter> {
                             child: Text("SIGN UP"),
                           ),
                           ElevatedButton(
-                            onPressed: () => {},
+                            onPressed: () => {
+                              // Navigate to Sign in Page
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => const SignIn()))
+                            },
                             child: Text('SIGN IN'),
                           )
                         ],
                       ),
                     ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: Sep(),
-                  ),
+                  Sep(),
                   Column(
                     children: [
                       OutlinedButton(
@@ -61,6 +67,7 @@ class _GreeterState extends State<Greeter> {
                               Text("CONTINUE WITH GOOGLE")
                             ],
                           )),
+                      SizedBox(height: 20),
                       OutlinedButton(
                           onPressed: () => {},
                           child: Row(
