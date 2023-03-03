@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goat_app/SignIn.dart';
 import 'package:provider/provider.dart';
 import 'package:goat_app/SignUp.dart';
 void main() {
@@ -15,7 +16,7 @@ class GOAT extends StatelessWidget {
             primaryColor: Color(0xFF0A0E21),
             scaffoldBackgroundColor: Color(0xFF0A0E21),
           ),
-          home: SignUp(),
+          home: SignIn(),
         ));
   }
 }
