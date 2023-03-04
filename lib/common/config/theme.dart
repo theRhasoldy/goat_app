@@ -60,6 +60,7 @@ ThemeData mainTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: unselectedColor,
+    floatingLabelStyle: TextStyle(color: lightColorScheme.secondary),
     border: OutlineInputBorder(
       borderSide: BorderSide.none,
       borderRadius: BorderRadius.circular(100),

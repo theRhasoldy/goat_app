@@ -42,20 +42,29 @@ class _SignInState extends State<SignIn> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const FieldHeader(label: "EMAIL"),
+                      Text(
+                        "Credentials",
+                        style: TextStyle(
+                          color: lightColorScheme.secondary,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 18,
+                        ),
+                      ),
                       const Padding(
                         padding: EdgeInsets.symmetric(vertical: 12.0),
                         child: TextField(
                           decoration: InputDecoration(
-                            hintText: 'johndoe@email.com',
+                            labelText: 'Email',
                           ),
                         ),
                       ),
-                      const FieldHeader(label: "PASSWORD"),
                       const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 12.0),
+                        padding: EdgeInsets.only(bottom: 24),
                         child: TextField(
                           obscureText: true,
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                          ),
                         ),
                       ),
                       ElevatedButton(
@@ -76,25 +85,6 @@ class _SignInState extends State<SignIn> {
                 )
               ],
             )),
-      ),
-    );
-  }
-}
-
-class FieldHeader extends StatelessWidget {
-  final String label;
-  const FieldHeader({
-    required this.label,
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      label,
-      style: TextStyle(
-        color: lightColorScheme.secondary,
-        fontWeight: FontWeight.bold,
       ),
     );
   }
