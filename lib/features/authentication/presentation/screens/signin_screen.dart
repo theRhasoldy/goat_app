@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
+import 'package:goat_app/common/utils/media_queries.dart';
+import 'package:goat_app/features/authentication/presentation/screens/greeter_screen.dart';
+import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
 
@@ -19,53 +22,80 @@ class _SignInState extends State<SignIn> {
       home: SafeArea(
         child: Scaffold(
             appBar: GreeterAppBar("JOIN THE GOATS", context),
-            body: Column(
+            body: ListView(
               children: [
                 Container(
-                  color: lightColorScheme.secondary,
-                  height: 20,
-                ),
-                Image.asset(
-                  'assets/images/signin-cover.png',
+                  decoration: BoxDecoration(
+                    color: lightColorScheme.secondary,
+                    borderRadius:
+                        BorderRadius.vertical(bottom: Radius.circular(20)),
+                  ),
+                  height: getHeight(context) / 2,
+                  child: Image.asset(
+                    'assets/images/signin-cover.png',
+                  ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 80),
+                  padding: EdgeInsets.symmetric(
+                    vertical: getHeight(context) / 48,
+                    horizontal: getWidth(context) / 8,
+                  ),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("EMAIL"),
-                            TextField(
-                              decoration: InputDecoration(
-                                hintText: 'johndoe@email.com',
-                              ),
-                            ),
-                            Text("PASSWORD"),
-                            TextField(
-                              obscureText: true,
-                            ),
-                          ]),
+                      FieldHeader(label: "EMAIL"),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'johndoe@email.com',
+                          ),
+                        ),
+                      ),
+                      FieldHeader(label: "PASSWORD"),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: TextField(
+                          obscureText: true,
+                        ),
+                      ),
                       ElevatedButton(
-                        style: ButtonStyle(
-                            shape: MaterialStateProperty.all<
-                                RoundedRectangleBorder>(RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                        ))),
+                        style: ButtonStyle(),
                         onPressed: () {},
                         child: const Text('SIGN IN'),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Sep(),
-                      ),
+                      Sep(),
                       OutlinedButton(
-                          onPressed: () => {}, child: Text("SIGN UP"))
+                          onPressed: () => {
+                                // Navigate to Sign in Page
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const SignUp()))
+                              },
+                          child: Text("SIGN UP"))
                     ],
                   ),
                 )
               ],
             )),
+      ),
+    );
+  }
+}
+
+class FieldHeader extends StatelessWidget {
+  final String label;
+  const FieldHeader({
+    required this.label,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      label,
+      style: TextStyle(
+        color: lightColorScheme.secondary,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
