@@ -39,48 +39,50 @@ class _SignInState extends State<SignIn> {
                     vertical: getHeight(context) / 16,
                     horizontal: getWidth(context) / 8,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Credentials",
-                        style: TextStyle(
-                          color: lightColorScheme.secondary,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                        ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 12.0),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            labelText: 'Email',
+                  child: Form(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Credentials",
+                          style: TextStyle(
+                            color: lightColorScheme.secondary,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
                           ),
                         ),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(bottom: 24),
-                        child: TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            labelText: 'Password',
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 12.0),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'Email',
+                            ),
                           ),
                         ),
-                      ),
-                      ElevatedButton(
-                        style: const ButtonStyle(),
-                        onPressed: () {},
-                        child: const Text('SIGN IN'),
-                      ),
-                      const Sep(),
-                      OutlinedButton(
-                          onPressed: () => {
-                                // Navigate to Sign in Page
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => const SignUp()))
-                              },
-                          child: const Text("SIGN UP"))
-                    ],
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 24),
+                          child: TextFormField(
+                            obscureText: true,
+                            decoration: InputDecoration(
+                              labelText: 'Password',
+                            ),
+                          ),
+                        ),
+                        ElevatedButton(
+                          style: const ButtonStyle(),
+                          onPressed: () {},
+                          child: const Text('SIGN IN'),
+                        ),
+                        const Sep(),
+                        OutlinedButton(
+                            onPressed: () => {
+                                  // Navigate to Sign in Page
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => const SignUp()))
+                                },
+                            child: const Text("SIGN UP"))
+                      ],
+                    ),
                   ),
                 )
               ],
