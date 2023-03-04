@@ -1,11 +1,12 @@
-class User {
-  String? fullname;
-  String? username;
-  String? email;
-  String? uid;
+class CustomUser {
+  String fullname;
+  String username;
+  String email;
+  String uid;
   List? teams;
-  User({
+  CustomUser({
     required this.fullname,
+    required this.username,
     required this.email,
     required this.uid,
     this.teams,
