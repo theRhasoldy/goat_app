@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
@@ -6,7 +7,6 @@ import 'package:goat_app/features/authentication/presentation/screens/signup_scr
 import '../widgets/greeter_appbar.dart';
 import '../widgets/seperator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 
 class Greeter extends StatefulWidget {
   const Greeter({Key? key}) : super(key: key);
@@ -30,7 +30,7 @@ class _GreeterState extends State<Greeter> {
                 decoration: BoxDecoration(
                   color: lightColorScheme.secondary,
                   borderRadius:
-                  const BorderRadius.vertical(bottom: Radius.circular(20)),
+                      const BorderRadius.vertical(bottom: Radius.circular(20)),
                 ),
                 height: getHeight(context) / 2.5,
                 child: Image.asset(
@@ -106,9 +106,7 @@ class _GreeterState extends State<Greeter> {
                   Column(
                     children: [
                       OutlinedButton.icon(
-                        onPressed: () {
-                          // do something when the button is pressed
-                        },
+                        onPressed: () {},
                         icon: Icon(FontAwesomeIcons.google, size: 23),
                         label: Text('CONTINUE WITH GOOGLE    '),
                       ),

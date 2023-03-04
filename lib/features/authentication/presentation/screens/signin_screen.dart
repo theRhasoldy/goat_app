@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
@@ -80,14 +81,14 @@ class _SignInState extends State<SignIn> {
                           children: [
                             IconButton(
                               onPressed: () => {},
-                              icon: Icon(Icons.facebook),
+                              icon: Icon(FontAwesomeIcons.facebookF, size: 30),
                               iconSize: 32,
                               color: lightColorScheme.primary,
                             ),
                             SizedBox(width: getWidth(context) / 12),
                             IconButton(
                               onPressed: () => {},
-                              icon: Icon(Icons.g_translate),
+                              icon: Icon(FontAwesomeIcons.google, size: 30),
                               iconSize: 32,
                               color: lightColorScheme.primary,
                             )
