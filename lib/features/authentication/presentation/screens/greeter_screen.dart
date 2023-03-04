@@ -3,9 +3,10 @@ import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
-
 import '../widgets/greeter_appbar.dart';
 import '../widgets/seperator.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 
 class Greeter extends StatefulWidget {
   const Greeter({Key? key}) : super(key: key);
@@ -26,15 +27,16 @@ class _GreeterState extends State<Greeter> {
           body: ListView(
             children: [
               Container(
-                  decoration: BoxDecoration(
-                    color: lightColorScheme.secondary,
-                    borderRadius: const BorderRadius.vertical(
-                        bottom: Radius.circular(20)),
-                  ),
-                  height: getHeight(context) / 2.5,
-                  child: Image.asset(
-                    'assets/images/greeter-cover.png',
-                  )),
+                decoration: BoxDecoration(
+                  color: lightColorScheme.secondary,
+                  borderRadius:
+                  const BorderRadius.vertical(bottom: Radius.circular(20)),
+                ),
+                height: getHeight(context) / 2.5,
+                child: Image.asset(
+                  'assets/images/greeter-cover.png',
+                ),
+              ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   vertical: getHeight(context) / 12,
@@ -47,10 +49,26 @@ class _GreeterState extends State<Greeter> {
                       SizedBox(
                         width: getWidth(context) / 3,
                         child: ElevatedButton(
-                          onPressed: () => {
-                            // Navigate to Sign in Page
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => SignUp()))
+                          onPressed: () {
+                            // Navigate to Sign up Page with animation
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                transitionDuration: Duration(milliseconds: 300),
+                                pageBuilder: (context, animation, _) {
+                                  return SignUp();
+                                },
+                                transitionsBuilder:
+                                    (context, animation, _, child) {
+                                  return SlideTransition(
+                                    position: Tween(
+                                      begin: Offset(1.0, 0.0),
+                                      end: Offset(0.0, 0.0),
+                                    ).animate(animation),
+                                    child: child,
+                                  );
+                                },
+                              ),
+                            );
                           },
                           child: const Text("SIGN UP"),
                         ),
@@ -58,10 +76,26 @@ class _GreeterState extends State<Greeter> {
                       SizedBox(
                         width: getWidth(context) / 3,
                         child: ElevatedButton(
-                          onPressed: () => {
-                            // Navigate to Sign in Page
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const SignIn()))
+                          onPressed: () {
+                            // Navigate to Sign in Page with animation
+                            Navigator.of(context).push(
+                              PageRouteBuilder(
+                                transitionDuration: Duration(milliseconds: 300),
+                                pageBuilder: (context, animation, _) {
+                                  return const SignIn();
+                                },
+                                transitionsBuilder:
+                                    (context, animation, _, child) {
+                                  return SlideTransition(
+                                    position: Tween(
+                                      begin: Offset(-1.0, 0.0),
+                                      end: Offset(0.0, 0.0),
+                                    ).animate(animation),
+                                    child: child,
+                                  );
+                                },
+                              ),
+                            );
                           },
                           child: const Text('SIGN IN'),
                         ),
@@ -71,27 +105,21 @@ class _GreeterState extends State<Greeter> {
                   const Sep(),
                   Column(
                     children: [
-                      OutlinedButton(
-                          onPressed: () => {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(Icons.gite),
-                              SizedBox(width: 10),
-                              Text("CONTINUE WITH GOOGLE")
-                            ],
-                          )),
+                      OutlinedButton.icon(
+                        onPressed: () {
+                          // do something when the button is pressed
+                        },
+                        icon: Icon(FontAwesomeIcons.google, size: 23),
+                        label: Text('CONTINUE WITH GOOGLE    '),
+                      ),
                       const SizedBox(height: 12),
-                      OutlinedButton(
-                          onPressed: () => {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(Icons.facebook),
-                              SizedBox(width: 10),
-                              Text("CONTINUE WITH FACEBOOK")
-                            ],
-                          )),
+                      OutlinedButton.icon(
+                        onPressed: () {
+                          // do something when the button is pressed
+                        },
+                        icon: Icon(FontAwesomeIcons.facebookF, size: 23),
+                        label: Text('CONTINUE WITH FACEBOOK'),
+                      ),
                     ],
                   )
                 ]),

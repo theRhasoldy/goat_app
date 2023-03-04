@@ -42,7 +42,8 @@ dependencies:
   cloud_firestore: ^4.4.3
   firebase_auth: ^4.2.9
   flutter_svg: ^2.0.2
-
+  material_design_icons_flutter: ^6.0.7096
+  font_awesome_flutter: ^9.1.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
