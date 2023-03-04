@@ -22,6 +22,7 @@ class _SignInState extends State<SignIn> {
         child: Scaffold(
             appBar: GreeterAppBar("JOIN THE GOATS", context),
             body: ListView(
+              physics: const NeverScrollableScrollPhysics(),
               children: [
                 Container(
                   decoration: BoxDecoration(
@@ -36,7 +37,7 @@ class _SignInState extends State<SignIn> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(
-                    vertical: getHeight(context) / 16,
+                    vertical: double.minPositive,
                     horizontal: getWidth(context) / 8,
                   ),
                   child: Form(
@@ -52,7 +53,7 @@ class _SignInState extends State<SignIn> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(vertical: 12.0),
+                          padding: EdgeInsets.symmetric(vertical: 6),
                           child: TextFormField(
                             decoration: InputDecoration(
                               labelText: 'Email',
@@ -60,7 +61,7 @@ class _SignInState extends State<SignIn> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: 24),
+                          padding: EdgeInsets.only(bottom: 6),
                           child: TextFormField(
                             obscureText: true,
                             decoration: InputDecoration(
@@ -95,10 +96,10 @@ class _SignInState extends State<SignIn> {
                         const Sep(),
                         OutlinedButton(
                             onPressed: () => {
-                                  // Navigate to Sign in Page
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => SignUp()))
-                                },
+                              // Navigate to Sign in Page
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => SignUp()))
+                            },
                             child: const Text("SIGN UP"))
                       ],
                     ),
