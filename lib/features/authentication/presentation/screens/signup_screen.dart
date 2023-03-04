@@ -20,13 +20,10 @@ class SignUp extends StatelessWidget {
           child: Scaffold(
         appBar: GreeterAppBar("BE THE GOAT", context),
         body: Container(
-            height: double.infinity,
             color: lightColorScheme.secondary,
             child: Stack(children: [
               Image.asset(
-                "assets/images/signin-cover.png",
-                height: double.infinity,
-                alignment: Alignment.bottomCenter,
+                "assets/images/signup-cover.png",
               ),
               Padding(
                 padding: EdgeInsets.symmetric(

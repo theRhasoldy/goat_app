@@ -33,7 +33,7 @@ class _GreeterState extends State<Greeter> {
                   ),
                   height: getHeight(context) / 2.5,
                   child: Image.asset(
-                    'assets/images/MESSI.png',
+                    'assets/images/greeter-cover.png',
                   )),
               Padding(
                 padding: EdgeInsets.symmetric(

@@ -31,7 +31,7 @@ class _SignInState extends State<SignIn> {
                   ),
                   height: getHeight(context) / 2.5,
                   child: Image.asset(
-                    'assets/images/HENRY.png',
+                    'assets/images/signin-cover.png',
                   ),
                 ),
                 Padding(
