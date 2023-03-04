@@ -73,12 +73,31 @@ class _SignInState extends State<SignIn> {
                           onPressed: () {},
                           child: const Text('SIGN IN'),
                         ),
+                        SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            IconButton(
+                              onPressed: () => {},
+                              icon: Icon(Icons.facebook),
+                              iconSize: 32,
+                              color: lightColorScheme.primary,
+                            ),
+                            SizedBox(width: getWidth(context) / 12),
+                            IconButton(
+                              onPressed: () => {},
+                              icon: Icon(Icons.g_translate),
+                              iconSize: 32,
+                              color: lightColorScheme.primary,
+                            )
+                          ],
+                        ),
                         const Sep(),
                         OutlinedButton(
                             onPressed: () => {
                                   // Navigate to Sign in Page
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => const SignUp()))
+                                      builder: (context) => SignUp()))
                                 },
                             child: const Text("SIGN UP"))
                       ],

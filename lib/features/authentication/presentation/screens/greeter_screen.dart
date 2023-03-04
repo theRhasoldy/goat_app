@@ -50,7 +50,7 @@ class _GreeterState extends State<Greeter> {
                           onPressed: () => {
                             // Navigate to Sign in Page
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => const SignUp()))
+                                builder: (context) => SignUp()))
                           },
                           child: const Text("SIGN UP"),
                         ),

@@ -13,7 +13,7 @@ const tertiaryColor = Color(0xFFFFCCD0);
 const unselectedColor = Color(0xFFEEE8F4);
 
 // Text
-const normalTextColor = Color(0x000000);
+const normalTextColor = Color(0x00000000);
 const fadedTextColor = Color(0xFF787579);
 const onSurfaceTextColor = Color(0xFFFFFFFF);
 
@@ -71,14 +71,14 @@ ThemeData mainTheme = ThemeData(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
       style: ButtonStyle(
-    minimumSize: MaterialStatePropertyAll(Size.fromHeight(54)),
-    backgroundColor: MaterialStatePropertyAll(unselectedColor),
+    minimumSize: const MaterialStatePropertyAll(Size.fromHeight(54)),
+    backgroundColor: const MaterialStatePropertyAll(unselectedColor),
     shape: MaterialStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
   )),
   elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-    minimumSize: MaterialStatePropertyAll(Size(double.infinity, 54)),
+    minimumSize: const MaterialStatePropertyAll(Size(double.infinity, 54)),
     shape: MaterialStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(200))),
   )),

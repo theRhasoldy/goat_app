@@ -4,22 +4,16 @@ import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
+import 'package:goat_app/models/user.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({super.key});
+class SignUp extends StatelessWidget {
+  SignUp({super.key});
 
-  @override
-  State<SignUp> createState() => _SignUpState();
-}
-
-class _SignUpState extends State<SignUp> {
-  TextEditingController fullNameController = new TextEditingController();
-  TextEditingController usernameController = new TextEditingController();
-  TextEditingController emailController = new TextEditingController();
-  TextEditingController passController = new TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    String fullname = "";
     return MaterialApp(
       theme: mainTheme,
       home: SafeArea(
@@ -39,6 +33,7 @@ class _SignUpState extends State<SignUp> {
                     horizontal: getWidth(context) / 8,
                     vertical: getHeight(context) / 16),
                 child: Form(
+                  key: _formKey,
                   child: ListView(reverse: true, children: [
                     OutlinedButton(
                         onPressed: () => {
@@ -47,51 +42,57 @@ class _SignUpState extends State<SignUp> {
                                   builder: (context) => const SignIn()))
                             },
                         child: const Text("SIGN IN")),
-                    Sep(),
+                    const Sep(),
                     Padding(
-                      padding: EdgeInsets.only(top: 24.0),
+                      padding: const EdgeInsets.only(top: 24.0),
                       child: ElevatedButton(
                         style: const ButtonStyle(),
-                        onPressed: () {},
+                        onPressed: () {
+                          final newUser = User(
+                              fullname: fullname,
+                              email: "hello@gmail.com",
+                              uid: "20193793");
+                        },
                         child: const Text('CREATE ACCOUNT'),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 12.0),
+                      padding: const EdgeInsets.only(top: 12.0),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Confirm Password',
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 12.0),
+                      padding: const EdgeInsets.only(top: 12.0),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Password',
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 12.0),
+                      padding: const EdgeInsets.only(top: 12.0),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Email',
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 12.0),
+                      padding: const EdgeInsets.only(top: 12.0),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: 'Username',
                         ),
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.only(top: 12.0),
+                      padding: const EdgeInsets.only(top: 12.0),
                       child: TextFormField(
-                        decoration: InputDecoration(
+                        onChanged: (value) => fullname = value,
+                        decoration: const InputDecoration(
                           labelText: 'Full Name',
                         ),
                       ),
