@@ -39,6 +39,8 @@ const lightColorScheme = ColorScheme(
 
 ThemeData mainTheme = ThemeData(
   scaffoldBackgroundColor: lightColorScheme.background,
+  textTheme:
+      TextTheme(titleLarge: TextStyle(color: lightColorScheme.secondary)),
   appBarTheme: AppBarTheme(
       backgroundColor: lightColorScheme.background,
       elevation: 0,
@@ -55,17 +57,26 @@ ThemeData mainTheme = ThemeData(
     showSelectedLabels: false,
     showUnselectedLabels: false,
   ),
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true,
+    fillColor: unselectedColor,
+    border: OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.circular(100),
+    ),
+  ),
   outlinedButtonTheme: OutlinedButtonThemeData(
       style: ButtonStyle(
+    minimumSize: MaterialStatePropertyAll(Size.fromHeight(54)),
     backgroundColor: MaterialStatePropertyAll(unselectedColor),
     shape: MaterialStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
   )),
   elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-          shape: MaterialStatePropertyAll(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
-          padding: MaterialStatePropertyAll(
-              EdgeInsets.symmetric(horizontal: 45, vertical: 12)))),
+    minimumSize: MaterialStatePropertyAll(Size(double.infinity, 54)),
+    shape: MaterialStatePropertyAll(
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(200))),
+  )),
   colorScheme: lightColorScheme,
 );

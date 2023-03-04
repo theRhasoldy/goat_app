@@ -8,27 +8,30 @@ class Sep extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: <Widget>[
-      Row(children: <Widget>[
-        Expanded(
-          child: new Container(
-              margin: const EdgeInsets.only(right: 20.0),
-              child: Divider(
-                color: lightColorScheme.outline,
-              )),
-        ),
-        Text(
-          "OR",
-          style: TextStyle(color: lightColorScheme.primary),
-        ),
-        Expanded(
-          child: new Container(
-              margin: const EdgeInsets.only(left: 20.0),
-              child: Divider(
-                color: lightColorScheme.outline,
-              )),
-        ),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(children: <Widget>[
+        Row(children: <Widget>[
+          Expanded(
+            child: new Container(
+                margin: const EdgeInsets.only(right: 20.0),
+                child: Divider(
+                  color: lightColorScheme.outline,
+                )),
+          ),
+          Text(
+            "OR",
+            style: TextStyle(color: lightColorScheme.primary),
+          ),
+          Expanded(
+            child: new Container(
+                margin: const EdgeInsets.only(left: 20.0),
+                child: Divider(
+                  color: lightColorScheme.outline,
+                )),
+          ),
+        ]),
       ]),
-    ]);
+    );
   }
 }

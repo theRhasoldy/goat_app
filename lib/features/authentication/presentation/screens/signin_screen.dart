@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
+import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
+import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -16,82 +18,54 @@ class _SignInState extends State<SignIn> {
       debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
+            appBar: GreeterAppBar("JOIN THE GOATS", context),
             body: Column(
-          children: <Widget>[
-            Center(
-              child: Image.asset(
-                'assets/images/signin-cover.png',
-              ),
-            ),
-            Column(
               children: [
-                Text("EMAIL"),
                 Container(
-                    width: 300,
-                    height: 70,
-                    child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.blueGrey,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                        hintText: 'user@mail.com',
-                      ),
-                      style: TextStyle(fontSize: 15),
-                      minLines: 1,
-                      maxLines: 1,
-                    )),
-                Text("PASSWORD"),
-                Container(
-                    width: 300,
-                    child: TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.blueGrey,
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                        hintText: 'Password',
-                      ),
-                      style: TextStyle(fontSize: 15),
-                      minLines: 1,
-                      maxLines: 1,
-                    )),
-                Container(
-                  width: 300,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18.0),
-                    ))),
-                    onPressed: () {},
-                    child: const Text('SIGN IN'),
-                  ),
+                  color: lightColorScheme.secondary,
+                  height: 20,
                 ),
-                Container(
-                  width: 150,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.greenAccent),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
+                Image.asset(
+                  'assets/images/signin-cover.png',
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 80),
+                  child: Column(
+                    children: [
+                      Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("EMAIL"),
+                            TextField(
+                              decoration: InputDecoration(
+                                hintText: 'johndoe@email.com',
+                              ),
+                            ),
+                            Text("PASSWORD"),
+                            TextField(
+                              obscureText: true,
+                            ),
+                          ]),
+                      ElevatedButton(
+                        style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                         ))),
-                    onPressed: () {},
-                    child: const Text('SIGN UP'),
+                        onPressed: () {},
+                        child: const Text('SIGN IN'),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Sep(),
+                      ),
+                      OutlinedButton(
+                          onPressed: () => {}, child: Text("SIGN UP"))
+                    ],
                   ),
-                ),
+                )
               ],
-            )
-          ],
-        )),
+            )),
       ),
     );
   }

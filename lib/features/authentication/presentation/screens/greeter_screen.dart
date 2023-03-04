@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
+import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 
 import '../widgets/greeter_appbar.dart';
@@ -21,34 +22,43 @@ class _GreeterState extends State<Greeter> {
       home: SafeArea(
         child: Scaffold(
           appBar: GreeterAppBar("WELCOME TO THE GOATS", context),
-          body: Column(
+          body: ListView(
             children: [
               Container(
                 color: lightColorScheme.secondary,
-                height: 30,
+                height: getHeight(context) / 32,
               ),
               Image.asset(
                 'assets/images/greeter.png',
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 80, left: 80, right: 80),
+                padding: EdgeInsets.only(
+                    top: getHeight(context) / 12,
+                    left: getWidth(context) / 8,
+                    right: getWidth(context) / 8),
                 child: Column(children: [
                   Column(
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          ElevatedButton(
-                            onPressed: () => {},
-                            child: Text("SIGN UP"),
+                          Container(
+                            width: getWidth(context) / 3,
+                            child: ElevatedButton(
+                              onPressed: () => {},
+                              child: Text("SIGN UP"),
+                            ),
                           ),
-                          ElevatedButton(
-                            onPressed: () => {
-                              // Navigate to Sign in Page
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => const SignIn()))
-                            },
-                            child: Text('SIGN IN'),
+                          Container(
+                            width: getWidth(context) / 3,
+                            child: ElevatedButton(
+                              onPressed: () => {
+                                // Navigate to Sign in Page
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => const SignIn()))
+                              },
+                              child: Text('SIGN IN'),
+                            ),
                           )
                         ],
                       ),
