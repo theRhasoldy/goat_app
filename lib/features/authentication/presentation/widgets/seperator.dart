@@ -13,7 +13,7 @@ class Sep extends StatelessWidget {
       child: Column(children: <Widget>[
         Row(children: <Widget>[
           Expanded(
-            child: new Container(
+            child: Container(
                 margin: const EdgeInsets.only(right: 20.0),
                 child: Divider(
                   color: lightColorScheme.outline,
@@ -24,7 +24,7 @@ class Sep extends StatelessWidget {
             style: TextStyle(color: lightColorScheme.primary),
           ),
           Expanded(
-            child: new Container(
+            child: Container(
                 margin: const EdgeInsets.only(left: 20.0),
                 child: Divider(
                   color: lightColorScheme.outline,

@@ -28,10 +28,10 @@ class _GreeterState extends State<Greeter> {
               Container(
                   decoration: BoxDecoration(
                     color: lightColorScheme.secondary,
-                    borderRadius:
-                        BorderRadius.vertical(bottom: Radius.circular(20)),
+                    borderRadius: const BorderRadius.vertical(
+                        bottom: Radius.circular(20)),
                   ),
-                  height: getHeight(context) / 2,
+                  height: getHeight(context) / 2.5,
                   child: Image.asset(
                     'assets/images/greeter.png',
                   )),
@@ -44,7 +44,7 @@ class _GreeterState extends State<Greeter> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
+                      SizedBox(
                         width: getWidth(context) / 3,
                         child: ElevatedButton(
                           onPressed: () => {
@@ -52,10 +52,10 @@ class _GreeterState extends State<Greeter> {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => const SignUp()))
                           },
-                          child: Text("SIGN UP"),
+                          child: const Text("SIGN UP"),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         width: getWidth(context) / 3,
                         child: ElevatedButton(
                           onPressed: () => {
@@ -63,30 +63,30 @@ class _GreeterState extends State<Greeter> {
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => const SignIn()))
                           },
-                          child: Text('SIGN IN'),
+                          child: const Text('SIGN IN'),
                         ),
                       )
                     ],
                   ),
-                  Sep(),
+                  const Sep(),
                   Column(
                     children: [
                       OutlinedButton(
                           onPressed: () => {},
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               Icon(Icons.gite),
                               SizedBox(width: 10),
                               Text("CONTINUE WITH GOOGLE")
                             ],
                           )),
-                      SizedBox(height: 12),
+                      const SizedBox(height: 12),
                       OutlinedButton(
                           onPressed: () => {},
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
+                            children: const [
                               Icon(Icons.facebook),
                               SizedBox(width: 10),
                               Text("CONTINUE WITH FACEBOOK")

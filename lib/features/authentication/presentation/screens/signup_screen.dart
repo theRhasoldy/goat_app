@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 
