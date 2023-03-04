@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
+import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
 
 import '../widgets/greeter_appbar.dart';
 import '../widgets/seperator.dart';
@@ -25,43 +26,46 @@ class _GreeterState extends State<Greeter> {
           body: ListView(
             children: [
               Container(
-                color: lightColorScheme.secondary,
-                height: getHeight(context) / 32,
-              ),
-              Image.asset(
-                'assets/images/greeter.png',
-              ),
+                  decoration: BoxDecoration(
+                    color: lightColorScheme.secondary,
+                    borderRadius:
+                        BorderRadius.vertical(bottom: Radius.circular(20)),
+                  ),
+                  height: getHeight(context) / 2,
+                  child: Image.asset(
+                    'assets/images/greeter.png',
+                  )),
               Padding(
-                padding: EdgeInsets.only(
-                    top: getHeight(context) / 12,
-                    left: getWidth(context) / 8,
-                    right: getWidth(context) / 8),
+                padding: EdgeInsets.symmetric(
+                  vertical: getHeight(context) / 12,
+                  horizontal: getWidth(context) / 8,
+                ),
                 child: Column(children: [
-                  Column(
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Container(
-                            width: getWidth(context) / 3,
-                            child: ElevatedButton(
-                              onPressed: () => {},
-                              child: Text("SIGN UP"),
-                            ),
-                          ),
-                          Container(
-                            width: getWidth(context) / 3,
-                            child: ElevatedButton(
-                              onPressed: () => {
-                                // Navigate to Sign in Page
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => const SignIn()))
-                              },
-                              child: Text('SIGN IN'),
-                            ),
-                          )
-                        ],
+                      Container(
+                        width: getWidth(context) / 3,
+                        child: ElevatedButton(
+                          onPressed: () => {
+                            // Navigate to Sign in Page
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const SignUp()))
+                          },
+                          child: Text("SIGN UP"),
+                        ),
                       ),
+                      Container(
+                        width: getWidth(context) / 3,
+                        child: ElevatedButton(
+                          onPressed: () => {
+                            // Navigate to Sign in Page
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => const SignIn()))
+                          },
+                          child: Text('SIGN IN'),
+                        ),
+                      )
                     ],
                   ),
                   Sep(),
@@ -77,7 +81,7 @@ class _GreeterState extends State<Greeter> {
                               Text("CONTINUE WITH GOOGLE")
                             ],
                           )),
-                      SizedBox(height: 20),
+                      SizedBox(height: 12),
                       OutlinedButton(
                           onPressed: () => {},
                           child: Row(
