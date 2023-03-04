@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "939312490837",
+    "project_id": "goatapp-b4e08",
+    "storage_bucket": "goatapp-b4e08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939312490837:android:3e028b53a5abd86e9b27dc",
+        "android_client_info": {
+          "package_name": "com.example.goat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939312490837-rt31reg6g3iu0g9ueoqrbe9gt8gqifdb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQHowjyZQ8V-_pEoz7CrA050nRbcfHCqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939312490837-rt31reg6g3iu0g9ueoqrbe9gt8gqifdb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

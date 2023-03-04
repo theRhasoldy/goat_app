@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
+import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
@@ -10,10 +11,12 @@ class SignUp extends StatelessWidget {
   SignUp({super.key});
 
   final _formKey = GlobalKey<FormState>();
+  final _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
     String fullname = "";
+    String email = "";
     return MaterialApp(
       theme: mainTheme,
       home: SafeArea(
@@ -45,10 +48,12 @@ class SignUp extends StatelessWidget {
                       child: ElevatedButton(
                         style: const ButtonStyle(),
                         onPressed: () {
-                          final newUser = User(
+                          final newUser = CustomUser(
+                              username: "hello",
                               fullname: fullname,
-                              email: "hello@gmail.com",
+                              email: email,
                               uid: "20193793");
+                          _auth.registerWithEmail(newUser.email, "123456789");
                         },
                         child: const Text('CREATE ACCOUNT'),
                       ),
@@ -72,6 +77,7 @@ class SignUp extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: 12.0),
                       child: TextFormField(
+                        onChanged: (value) => email = value,
                         decoration: const InputDecoration(
                           labelText: 'Email',
                         ),
