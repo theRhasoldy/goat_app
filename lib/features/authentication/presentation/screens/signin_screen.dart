@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goat_app/common/config/theme.dart';
@@ -72,10 +73,13 @@ class _SignInState extends State<SignIn> {
                         ),
                         ElevatedButton(
                           style: const ButtonStyle(),
-                          onPressed: () {},
+                          onPressed: () async { },
                           child: const Text('SIGN IN'),
                         ),
-                        SizedBox(height: 16),
+                        TextButton(onPressed: () {
+
+                        }, child: Text("Forgot Password?"),
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [

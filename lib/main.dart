@@ -5,7 +5,6 @@ import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/authentication/presentation/screens/greeter_screen.dart';
 import 'package:goat_app/firebase_options.dart';
 import 'package:goat_app/models/user.dart';
-
 import 'features/authentication/presentation/screens/signin_screen.dart';
 
 Future<void> main() async {

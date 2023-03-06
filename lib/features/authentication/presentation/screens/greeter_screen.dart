@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import '../widgets/greeter_appbar.dart';
 import '../widgets/seperator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,6 +15,36 @@ class Greeter extends StatefulWidget {
 
   @override
   State<Greeter> createState() => _GreeterState();
+}
+
+Future<UserCredential> signInWithGoogle() async {
+  // Trigger the authentication flow
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
+
+  // Create a new credential
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth?.accessToken,
+    idToken: googleAuth?.idToken,
+  );
+
+  // Once signed in, return the UserCredential
+  return await FirebaseAuth.instance.signInWithCredential(credential);
+}
+
+Future<UserCredential> signInWithFacebook() async {
+  // Trigger the sign-in flow
+  final LoginResult loginResult = await FacebookAuth.instance.login();
+
+  // Create a credential from the access token
+  final OAuthCredential facebookAuthCredential =
+      FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+  // Once signed in, return the UserCredential
+  return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
 }
 
 class _GreeterState extends State<Greeter> {
@@ -106,14 +138,22 @@ class _GreeterState extends State<Greeter> {
                   Column(
                     children: [
                       OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () async {
+                          try {
+                            UserCredential userCredential =
+                                await signInWithGoogle();
+                            print(userCredential.user);
+                          } catch (e) {
+                            print('Error signing in with Google: $e');
+                          }
+                        },
                         icon: Icon(FontAwesomeIcons.google, size: 23),
                         label: Text('CONTINUE WITH GOOGLE    '),
                       ),
                       const SizedBox(height: 12),
                       OutlinedButton.icon(
-                        onPressed: () {
-                          // do something when the button is pressed
+                        onPressed: () async {
+                         await signInWithFacebook();
                         },
                         icon: Icon(FontAwesomeIcons.facebookF, size: 23),
                         label: Text('CONTINUE WITH FACEBOOK'),
