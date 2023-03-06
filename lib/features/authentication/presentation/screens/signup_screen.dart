@@ -51,8 +51,8 @@ class SignUp extends StatelessWidget {
                         onPressed: () async {
                           try {
                             UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                                email: "anabdaan@yahoo.com",
-                                password: "bdaan123456!");
+                                email: "yoo@yahoo.com",
+                                password: "zerbew55!");
                                 print(userCredential);
                           } on FirebaseAuthException catch (e) {
                             if (e.code == 'weak-password') {
@@ -71,6 +71,7 @@ class SignUp extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 12.0),
                       child: TextFormField(
                         decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.check_circle),
                           labelText: 'Confirm Password',
                         ),
                       ),
@@ -79,6 +80,7 @@ class SignUp extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 12.0),
                       child: TextFormField(
                         decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.key),
                           labelText: 'Password',
                         ),
                       ),
@@ -88,6 +90,7 @@ class SignUp extends StatelessWidget {
                       child: TextFormField(
                         onChanged: (value) => email = value,
                         decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.mail_outline),
                           labelText: 'Email',
                         ),
                       ),
@@ -96,6 +99,7 @@ class SignUp extends StatelessWidget {
                       padding: const EdgeInsets.only(top: 12.0),
                       child: TextFormField(
                         decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.person),
                           labelText: 'Username',
                         ),
                       ),
@@ -105,6 +109,7 @@ class SignUp extends StatelessWidget {
                       child: TextFormField(
                         onChanged: (value) => fullname = value,
                         decoration: const InputDecoration(
+                          prefixIcon: Icon(Icons.account_circle),
                           labelText: 'Full Name',
                         ),
                       ),

@@ -58,6 +58,7 @@ class _SignInState extends State<SignIn> {
                           padding: EdgeInsets.symmetric(vertical: 6),
                           child: TextFormField(
                             decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.mail_outline),
                               labelText: 'Email',
                             ),
                           ),
@@ -67,18 +68,19 @@ class _SignInState extends State<SignIn> {
                           child: TextFormField(
                             obscureText: true,
                             decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.key_outlined),
                               labelText: 'Password',
                             ),
                           ),
                         ),
                         ElevatedButton(
                           style: const ButtonStyle(),
-                          onPressed: () async { },
+                          onPressed: () async {},
                           child: const Text('SIGN IN'),
                         ),
-                        TextButton(onPressed: () {
-
-                        }, child: Text("Forgot Password?"),
+                        TextButton(
+                          onPressed: () {},
+                          child: Text("Forgot Password?"),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -101,10 +103,10 @@ class _SignInState extends State<SignIn> {
                         const Sep(),
                         OutlinedButton(
                             onPressed: () => {
-                              // Navigate to Sign in Page
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => SignUp()))
-                            },
+                                  // Navigate to Sign in Page
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => SignUp()))
+                                },
                             child: const Text("SIGN UP"))
                       ],
                     ),
