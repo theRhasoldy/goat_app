@@ -5,6 +5,7 @@ import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/authentication/presentation/screens/greeter_screen.dart';
 import 'package:goat_app/firebase_options.dart';
 import 'package:goat_app/models/user.dart';
+import 'package:goat_app/routing/wrapper.dart';
 import 'features/authentication/presentation/screens/signin_screen.dart';
 
 Future<void> main() async {
@@ -12,7 +13,7 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(App());
+  runApp(ProviderScope(child: App()));
 }
 
 class App extends StatelessWidget {
@@ -20,7 +21,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Greeter(),
+      home: Wrapper(),
       theme: mainTheme,
     );
   }
