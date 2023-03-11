@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
+import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -10,44 +11,11 @@ import '../widgets/greeter_appbar.dart';
 import '../widgets/seperator.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Greeter extends StatefulWidget {
-  const Greeter({Key? key}) : super(key: key);
+class Greeter extends StatelessWidget {
+  Greeter({super.key});
 
-  @override
-  State<Greeter> createState() => _GreeterState();
-}
+  final _auth = AuthService();
 
-Future<UserCredential> signInWithGoogle() async {
-  // Trigger the authentication flow
-  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-  // Obtain the auth details from the request
-  final GoogleSignInAuthentication? googleAuth =
-      await googleUser?.authentication;
-
-  // Create a new credential
-  final credential = GoogleAuthProvider.credential(
-    accessToken: googleAuth?.accessToken,
-    idToken: googleAuth?.idToken,
-  );
-
-  // Once signed in, return the UserCredential
-  return await FirebaseAuth.instance.signInWithCredential(credential);
-}
-
-Future<UserCredential> signInWithFacebook() async {
-  // Trigger the sign-in flow
-  final LoginResult loginResult = await FacebookAuth.instance.login();
-
-  // Create a credential from the access token
-  final OAuthCredential facebookAuthCredential =
-      FacebookAuthProvider.credential(loginResult.accessToken!.token);
-
-  // Once signed in, return the UserCredential
-  return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-}
-
-class _GreeterState extends State<Greeter> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -141,7 +109,7 @@ class _GreeterState extends State<Greeter> {
                         onPressed: () async {
                           try {
                             UserCredential userCredential =
-                                await signInWithGoogle();
+                                await _auth.signInWithGoogle();
                             print(userCredential.user);
                           } catch (e) {
                             print('Error signing in with Google: $e');
@@ -153,7 +121,7 @@ class _GreeterState extends State<Greeter> {
                       const SizedBox(height: 12),
                       OutlinedButton.icon(
                         onPressed: () async {
-                         await signInWithFacebook();
+                          await _auth.signInWithFacebook();
                         },
                         icon: Icon(FontAwesomeIcons.facebookF, size: 23),
                         label: Text('CONTINUE WITH FACEBOOK'),
