@@ -24,6 +24,19 @@ class AuthService {
     }
   }
 
+  //Sign in with email
+  Future signInWithEmail(String email, String password) async {
+    try {
+      UserCredential credential = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      User? user = credential.user;
+      print("Signed in");
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
   Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();

@@ -71,31 +71,7 @@ class _SignUpState extends State<SignUp> {
                               child: ElevatedButton(
                                 style: const ButtonStyle(),
                                 onPressed: () async {
-                                  if (_formKey.currentState!.validate()) {
-                                    print(_email);
-                                    print(_password);
-                                    print(_confirm);
-                                    try {
-                                      UserCredential userCredential =
-                                          await FirebaseAuth.instance
-                                              .createUserWithEmailAndPassword(
-                                        email: _email,
-                                        password: _password,
-                                      );
-                                      print(userCredential);
-                                    } on FirebaseAuthException catch (e) {
-                                      if (e.code == 'weak-password') {
-                                        print(
-                                            'The password provided is too weak.');
-                                      } else if (e.code ==
-                                          'email-already-in-use') {
-                                        print(
-                                            'The account already exists for that email.');
-                                      }
-                                    } catch (e) {
-                                      print(e);
-                                    }
-                                  }
+                                  _auth.registerWithEmail(_email, _password);
                                 },
                                 child: const Text('CREATE ACCOUNT'),
                               ),

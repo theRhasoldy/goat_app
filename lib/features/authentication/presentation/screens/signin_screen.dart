@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
+import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
@@ -15,6 +16,11 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
+  final _auth = AuthService();
+
+  String _email = "";
+  String _password = "";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -57,6 +63,7 @@ class _SignInState extends State<SignIn> {
                         Padding(
                           padding: EdgeInsets.symmetric(vertical: 6),
                           child: TextFormField(
+                            onChanged: (value) => _email = value,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.mail_outline),
                               labelText: 'Email',
@@ -66,6 +73,7 @@ class _SignInState extends State<SignIn> {
                         Padding(
                           padding: EdgeInsets.only(bottom: 6),
                           child: TextFormField(
+                            onChanged: (value) => _password = value,
                             obscureText: true,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Icons.key_outlined),
@@ -75,7 +83,9 @@ class _SignInState extends State<SignIn> {
                         ),
                         ElevatedButton(
                           style: const ButtonStyle(),
-                          onPressed: () async {},
+                          onPressed: () async {
+                            _auth.signInWithEmail(_email, _password);
+                          },
                           child: const Text('SIGN IN'),
                         ),
                         TextButton(
