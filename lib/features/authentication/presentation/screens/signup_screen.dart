@@ -7,6 +7,7 @@ import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
+import 'package:goat_app/models/user.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -17,19 +18,14 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
-  final _auth = AuthService();
-
-  TextEditingController fullnameController = TextEditingController();
-  TextEditingController usernameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passController = TextEditingController();
-  TextEditingController confirmController = TextEditingController();
 
   String _fullname = "";
   String _username = "";
   String _email = "";
   String _password = "";
   String _confirm = "";
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -72,7 +68,16 @@ class _SignUpState extends State<SignUp> {
                               child: ElevatedButton(
                                 style: const ButtonStyle(),
                                 onPressed: () async {
-                                  _auth.registerWithEmail(_email, _password);
+                                  AuthService _authService = new AuthService(
+                                    auth: _auth,
+                                    user: new CustomUser(
+                                      fullname: _fullname,
+                                      username: _username,
+                                      email: _email,
+                                      password: _password,
+                                    ),
+                                  );
+                                  _authService.registerWithEmail();
                                 },
                                 child: const Text('CREATE ACCOUNT'),
                               ),

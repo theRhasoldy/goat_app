@@ -1,17 +1,22 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:goat_app/models/user.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class AuthService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  FirebaseAuth auth;
+  CustomUser user;
+
+  AuthService({required this.auth, required this.user});
 
   //Create user object based on Firebase User
-  Future registerWithEmail(String email, String password) async {
+  Future registerWithEmail() async {
     try {
       final credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
+        email: user.email,
+        password: user.password,
       );
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -25,11 +30,11 @@ class AuthService {
   }
 
   //Sign in with email
-  Future signInWithEmail(String email, String password) async {
+  Future signInWithEmail() async {
     try {
-      UserCredential credential = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
-      User? user = credential.user;
+      UserCredential credential = await auth.signInWithEmailAndPassword(
+          email: user.email, password: user.password);
+      User? cred = credential.user;
       print("Signed in");
     } catch (e) {
       print(e.toString());

@@ -14,7 +14,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class Greeter extends StatelessWidget {
   Greeter({super.key});
 
-  final _auth = AuthService();
+  // final _auth = AuthService();
 
   @override
   Widget build(BuildContext context) {
@@ -107,13 +107,13 @@ class Greeter extends StatelessWidget {
                     children: [
                       OutlinedButton.icon(
                         onPressed: () async {
-                          try {
+/*                           try {
                             UserCredential userCredential =
                                 await _auth.signInWithGoogle();
                             print(userCredential.user);
                           } catch (e) {
                             print('Error signing in with Google: $e');
-                          }
+                          } */
                         },
                         icon: Icon(FontAwesomeIcons.google, size: 23),
                         label: Text('CONTINUE WITH GOOGLE    '),
@@ -121,7 +121,7 @@ class Greeter extends StatelessWidget {
                       const SizedBox(height: 12),
                       OutlinedButton.icon(
                         onPressed: () async {
-                          await _auth.signInWithFacebook();
+                          // await _auth.signInWithFacebook();
                         },
                         icon: Icon(FontAwesomeIcons.facebookF, size: 23),
                         label: Text('CONTINUE WITH FACEBOOK'),
