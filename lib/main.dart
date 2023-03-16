@@ -7,7 +7,7 @@ import 'package:goat_app/firebase_options.dart';
 import 'package:goat_app/models/user.dart';
 import 'package:goat_app/routing/wrapper.dart';
 import 'features/authentication/presentation/screens/signin_screen.dart';
-
+import 'package:goat_app/features/feed/presentation/home_screen.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -21,7 +21,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Wrapper(),
+      home: Home(),
       theme: mainTheme,
     );
   }
