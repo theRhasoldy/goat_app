@@ -50,6 +50,7 @@ dependencies:
   http: ^0.13.0
   shared_preferences: ^2.0.3
   flutter_facebook_auth: '^3.5.0'
+  dio: ^5.0.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
