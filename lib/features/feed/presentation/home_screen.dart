@@ -6,15 +6,23 @@ import 'package:goat_app/API/api_manger.dart';
 import 'package:goat_app/API/pagebody.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 
-
 class Home extends StatefulWidget {
-  const Home({super.key});
+   Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
+
+
 }
 
 class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    super.initState();
+    final api=APIService();
+    api.fetchData();
+  }
+
   @override
   Widget build(BuildContext context) {
     print(FirebaseAuth.instance.currentUser);
@@ -31,28 +39,12 @@ class _HomeState extends State<Home> {
                   null;
                 }
                 Navigator.of(context)
-                    .push(
-                    MaterialPageRoute(builder: (context) => const SignIn()));
+                    .push(MaterialPageRoute(builder: (context) => const SignIn()));
               },
               icon: Icon(Icons.logout_outlined),
             )
           ]),
-        // body: FutureBuilder(
-        //   future: APIService
-        //       .fetchData(), //Here we will call our getData() method,
-        //   // builder: (context, snapshot) {
-        //   //   //the future builder is very intersting to use when you work with api
-        //   //   if (snapshot.hasData) {
-        //   //    // return PageBody(snapshot.data!);
-        //   //   } else {
-        //   //     return Center(
-        //   //       child: CircularProgressIndicator(),
-        //   //     );
-        //     }
-        //   }, // here we will buil the app layout
-        // ),
-
-
+          body: Text('a7a')
       ),
     );
   }

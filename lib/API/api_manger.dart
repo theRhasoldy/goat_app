@@ -5,7 +5,7 @@ class APIService {
   static final url = 'https://v3.football.api-sports.io/fixtures?live=all';
   static final apiKey = 'cad2a28d9c7384611d1aaaf4643623a2'; // replace with your API key
 
-  static Future<void> fetchData() async {
+   Future<void> fetchData() async {
     try {
       final response = await dio.get(
         url,
