@@ -1,11 +1,14 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 
 class APIService {
   static final dio = Dio();
   static final url = 'https://v3.football.api-sports.io/fixtures?live=all';
-  static final apiKey = 'cad2a28d9c7384611d1aaaf4643623a2'; // replace with your API key
+  static final apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
+  // replace with your API key
 
-   Future<void> fetchData() async {
+  Future<String?> fetchData() async {
     try {
       final response = await dio.get(
         url,
@@ -14,9 +17,10 @@ class APIService {
         ),
       );
       final data = response.data;
-      print('Data: $data');
+      return data.toString();
+      //print(parsedata);
     } catch (e) {
-      print('Error: $e');
+      e.toString();
     }
   }
 }

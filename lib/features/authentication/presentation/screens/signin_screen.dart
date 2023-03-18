@@ -92,6 +92,8 @@ class _SignInState extends State<SignIn> {
                                 user: CustomUser(
                                     email: _email, password: _password));
                             _authService.signInWithEmail();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Home()));
                           },
                           child: const Text('SIGN IN'),
                         ),
@@ -124,7 +126,7 @@ class _SignInState extends State<SignIn> {
                             onPressed: () => {
                                   // Navigate to Sign in Page
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => const Home()))
+                                      builder: (context) => Home()))
                                 },
                             child: const Text("SIGN UP"))
                       ],
