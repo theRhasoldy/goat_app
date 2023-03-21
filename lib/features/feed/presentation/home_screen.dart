@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
               icon: Icon(Icons.logout_outlined),
             )
           ]),
-          body: Text('a7a')),
+          body: Text('Test')),
     );
   }
 }
