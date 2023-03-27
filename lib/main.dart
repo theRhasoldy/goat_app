@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:goat_app/API/api_manger.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/authentication/presentation/screens/greeter_screen.dart';
 import 'package:goat_app/firebase_options.dart';
@@ -21,7 +22,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: MyWidget(),
       theme: mainTheme,
     );
   }

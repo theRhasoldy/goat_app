@@ -15,13 +15,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
   Future<String?> getData() async {
-    final api = APIService();
-    final reply = api.fetchData().then((value) {
+    //final api = APIService();
+   // final reply = api.fetchData().then((value) {
       setState(() {
-        print(value);
+       // print(value);
       });
-    });
+   // });
   }
 
   @override
