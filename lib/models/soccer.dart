@@ -1,4 +1,3 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 part 'soccer.freezed.dart';
@@ -20,8 +19,7 @@ class Team with _$Team {
     required int last,
     required int age,
   }) = _Team;
-  factory Team.fromJson(Map<String, Object?> json)
-  => _$TeamFromJson(json);
+  factory Team.fromJson(Map<String, Object?> json) => _$TeamFromJson(json);
 }
 
 
