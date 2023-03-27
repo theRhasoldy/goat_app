@@ -1,23 +1,19 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
 part 'soccer.freezed.dart';
-
 part 'soccer.g.dart';
 
 @freezed
 class Team with _$Team {
   const factory Team({
-    required int leagueID,
-    required String name,
-    required String country,
-    required String code,
-    required int season,
-    required int teamID,
-    required String type,
-    required String current,
-    required String search,
-    required int last,
-    required int age,
+
+   @JsonKey(name: 'id') required int leagueID,
+    @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'code') String? code,
+    @JsonKey(name: 'country') String? country,
+    @JsonKey(name: 'founded') int? founded,
+    @JsonKey(name: 'national') bool? national,
+    @JsonKey(name: 'logo') String? logo,
   }) = _Team;
   factory Team.fromJson(Map<String, Object?> json) => _$TeamFromJson(json);
 }
