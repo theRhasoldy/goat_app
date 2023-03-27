@@ -8,21 +8,21 @@ import 'package:goat_app/features/authentication/presentation/screens/signin_scr
 import 'package:goat_app/models/soccer.dart';
 
 class Home extends StatefulWidget {
-  Home({super.key});
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-
   Future<String?> getData() async {
-    //final api = APIService();
-   // final reply = api.fetchData().then((value) {
+    final api = APIService(id: "33", type: "teams");
+    final reply = api.fetchData().then((value) {
       setState(() {
-       // print(value);
+        print(value);
       });
-   // });
+    });
+    return null;
   }
 
   @override
@@ -35,12 +35,13 @@ class _HomeState extends State<Home> {
     // print(FirebaseAuth.instance.currentUser);
     return MaterialApp(
       home: Scaffold(
-          appBar: AppBar(title: Text("Hello"), centerTitle: false, actions: [
+          appBar:
+              AppBar(title: const Text("Hello"), centerTitle: false, actions: [
             IconButton(
               onPressed: () async {
-                final _auth = FirebaseAuth.instance;
+                final auth = FirebaseAuth.instance;
                 try {
-                  await _auth.signOut();
+                  await auth.signOut();
                 } catch (e) {
                   print(e.toString());
                   null;
@@ -48,10 +49,10 @@ class _HomeState extends State<Home> {
                 Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => const SignIn()));
               },
-              icon: Icon(Icons.logout_outlined),
+              icon: const Icon(Icons.logout_outlined),
             )
           ]),
-          body: Text('Test')),
+          body: const Text('Test')),
     );
   }
 }

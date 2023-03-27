@@ -6,8 +6,7 @@ part 'soccer.g.dart';
 @freezed
 class Team with _$Team {
   const factory Team({
-
-   @JsonKey(name: 'id') required int leagueID,
+    @JsonKey(name: 'id') required int id,
     @JsonKey(name: 'name') String? name,
     @JsonKey(name: 'code') String? code,
     @JsonKey(name: 'country') String? country,
@@ -17,15 +16,6 @@ class Team with _$Team {
   }) = _Team;
   factory Team.fromJson(Map<String, Object?> json) => _$TeamFromJson(json);
 }
-
-
-
-
-
-
-
-
-
 
 // class Team {
 //   Team({

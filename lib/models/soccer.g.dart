@@ -7,29 +7,21 @@ part of 'soccer.dart';
 // **************************************************************************
 
 _$_Team _$$_TeamFromJson(Map<String, dynamic> json) => _$_Team(
-      leagueID: json['leagueID'] as int,
-      name: json['name'] as String,
-      country: json['country'] as String,
-      code: json['code'] as String,
-      season: json['season'] as int,
-      teamID: json['teamID'] as int,
-      type: json['type'] as String,
-      current: json['current'] as String,
-      search: json['search'] as String,
-      last: json['last'] as int,
-      age: json['age'] as int,
+      id: json['id'] as int,
+      name: json['name'] as String?,
+      code: json['code'] as String?,
+      country: json['country'] as String?,
+      founded: json['founded'] as int?,
+      national: json['national'] as bool?,
+      logo: json['logo'] as String?,
     );
 
 Map<String, dynamic> _$$_TeamToJson(_$_Team instance) => <String, dynamic>{
-      'leagueID': instance.leagueID,
+      'id': instance.id,
       'name': instance.name,
-      'country': instance.country,
       'code': instance.code,
-      'season': instance.season,
-      'teamID': instance.teamID,
-      'type': instance.type,
-      'current': instance.current,
-      'search': instance.search,
-      'last': instance.last,
-      'age': instance.age,
+      'country': instance.country,
+      'founded': instance.founded,
+      'national': instance.national,
+      'logo': instance.logo,
     };

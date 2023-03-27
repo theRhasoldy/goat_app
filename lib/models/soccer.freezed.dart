@@ -20,17 +20,20 @@ Team _$TeamFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Team {
-  int get leagueID => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get country => throw _privateConstructorUsedError;
-  String get code => throw _privateConstructorUsedError;
-  int get season => throw _privateConstructorUsedError;
-  int get teamID => throw _privateConstructorUsedError;
-  String get type => throw _privateConstructorUsedError;
-  String get current => throw _privateConstructorUsedError;
-  String get search => throw _privateConstructorUsedError;
-  int get last => throw _privateConstructorUsedError;
-  int get age => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id')
+  int get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'name')
+  String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'code')
+  String? get code => throw _privateConstructorUsedError;
+  @JsonKey(name: 'country')
+  String? get country => throw _privateConstructorUsedError;
+  @JsonKey(name: 'founded')
+  int? get founded => throw _privateConstructorUsedError;
+  @JsonKey(name: 'national')
+  bool? get national => throw _privateConstructorUsedError;
+  @JsonKey(name: 'logo')
+  String? get logo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,17 +46,13 @@ abstract class $TeamCopyWith<$Res> {
       _$TeamCopyWithImpl<$Res, Team>;
   @useResult
   $Res call(
-      {int leagueID,
-      String name,
-      String country,
-      String code,
-      int season,
-      int teamID,
-      String type,
-      String current,
-      String search,
-      int last,
-      int age});
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'code') String? code,
+      @JsonKey(name: 'country') String? country,
+      @JsonKey(name: 'founded') int? founded,
+      @JsonKey(name: 'national') bool? national,
+      @JsonKey(name: 'logo') String? logo});
 }
 
 /// @nodoc
@@ -69,63 +68,43 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? leagueID = null,
-    Object? name = null,
-    Object? country = null,
-    Object? code = null,
-    Object? season = null,
-    Object? teamID = null,
-    Object? type = null,
-    Object? current = null,
-    Object? search = null,
-    Object? last = null,
-    Object? age = null,
+    Object? id = null,
+    Object? name = freezed,
+    Object? code = freezed,
+    Object? country = freezed,
+    Object? founded = freezed,
+    Object? national = freezed,
+    Object? logo = freezed,
   }) {
     return _then(_value.copyWith(
-      leagueID: null == leagueID
-          ? _value.leagueID
-          : leagueID // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      country: null == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
+              as String?,
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      season: null == season
-          ? _value.season
-          : season // ignore: cast_nullable_to_non_nullable
-              as int,
-      teamID: null == teamID
-          ? _value.teamID
-          : teamID // ignore: cast_nullable_to_non_nullable
-              as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      current: null == current
-          ? _value.current
-          : current // ignore: cast_nullable_to_non_nullable
-              as String,
-      search: null == search
-          ? _value.search
-          : search // ignore: cast_nullable_to_non_nullable
-              as String,
-      last: null == last
-          ? _value.last
-          : last // ignore: cast_nullable_to_non_nullable
-              as int,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
+      founded: freezed == founded
+          ? _value.founded
+          : founded // ignore: cast_nullable_to_non_nullable
+              as int?,
+      national: freezed == national
+          ? _value.national
+          : national // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      logo: freezed == logo
+          ? _value.logo
+          : logo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -137,17 +116,13 @@ abstract class _$$_TeamCopyWith<$Res> implements $TeamCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int leagueID,
-      String name,
-      String country,
-      String code,
-      int season,
-      int teamID,
-      String type,
-      String current,
-      String search,
-      int last,
-      int age});
+      {@JsonKey(name: 'id') int id,
+      @JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'code') String? code,
+      @JsonKey(name: 'country') String? country,
+      @JsonKey(name: 'founded') int? founded,
+      @JsonKey(name: 'national') bool? national,
+      @JsonKey(name: 'logo') String? logo});
 }
 
 /// @nodoc
@@ -159,63 +134,43 @@ class __$$_TeamCopyWithImpl<$Res> extends _$TeamCopyWithImpl<$Res, _$_Team>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? leagueID = null,
-    Object? name = null,
-    Object? country = null,
-    Object? code = null,
-    Object? season = null,
-    Object? teamID = null,
-    Object? type = null,
-    Object? current = null,
-    Object? search = null,
-    Object? last = null,
-    Object? age = null,
+    Object? id = null,
+    Object? name = freezed,
+    Object? code = freezed,
+    Object? country = freezed,
+    Object? founded = freezed,
+    Object? national = freezed,
+    Object? logo = freezed,
   }) {
     return _then(_$_Team(
-      leagueID: null == leagueID
-          ? _value.leagueID
-          : leagueID // ignore: cast_nullable_to_non_nullable
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      country: null == country
-          ? _value.country
-          : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
+              as String?,
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      season: null == season
-          ? _value.season
-          : season // ignore: cast_nullable_to_non_nullable
-              as int,
-      teamID: null == teamID
-          ? _value.teamID
-          : teamID // ignore: cast_nullable_to_non_nullable
-              as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as String,
-      current: null == current
-          ? _value.current
-          : current // ignore: cast_nullable_to_non_nullable
-              as String,
-      search: null == search
-          ? _value.search
-          : search // ignore: cast_nullable_to_non_nullable
-              as String,
-      last: null == last
-          ? _value.last
-          : last // ignore: cast_nullable_to_non_nullable
-              as int,
-      age: null == age
-          ? _value.age
-          : age // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
+      founded: freezed == founded
+          ? _value.founded
+          : founded // ignore: cast_nullable_to_non_nullable
+              as int?,
+      national: freezed == national
+          ? _value.national
+          : national // ignore: cast_nullable_to_non_nullable
+              as bool?,
+      logo: freezed == logo
+          ? _value.logo
+          : logo // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -224,46 +179,41 @@ class __$$_TeamCopyWithImpl<$Res> extends _$TeamCopyWithImpl<$Res, _$_Team>
 @JsonSerializable()
 class _$_Team with DiagnosticableTreeMixin implements _Team {
   const _$_Team(
-      {required this.leagueID,
-      required this.name,
-      required this.country,
-      required this.code,
-      required this.season,
-      required this.teamID,
-      required this.type,
-      required this.current,
-      required this.search,
-      required this.last,
-      required this.age});
+      {@JsonKey(name: 'id') required this.id,
+      @JsonKey(name: 'name') this.name,
+      @JsonKey(name: 'code') this.code,
+      @JsonKey(name: 'country') this.country,
+      @JsonKey(name: 'founded') this.founded,
+      @JsonKey(name: 'national') this.national,
+      @JsonKey(name: 'logo') this.logo});
 
   factory _$_Team.fromJson(Map<String, dynamic> json) => _$$_TeamFromJson(json);
 
   @override
-  final int leagueID;
+  @JsonKey(name: 'id')
+  final int id;
   @override
-  final String name;
+  @JsonKey(name: 'name')
+  final String? name;
   @override
-  final String country;
+  @JsonKey(name: 'code')
+  final String? code;
   @override
-  final String code;
+  @JsonKey(name: 'country')
+  final String? country;
   @override
-  final int season;
+  @JsonKey(name: 'founded')
+  final int? founded;
   @override
-  final int teamID;
+  @JsonKey(name: 'national')
+  final bool? national;
   @override
-  final String type;
-  @override
-  final String current;
-  @override
-  final String search;
-  @override
-  final int last;
-  @override
-  final int age;
+  @JsonKey(name: 'logo')
+  final String? logo;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'Team(leagueID: $leagueID, name: $name, country: $country, code: $code, season: $season, teamID: $teamID, type: $type, current: $current, search: $search, last: $last, age: $age)';
+    return 'Team(id: $id, name: $name, code: $code, country: $country, founded: $founded, national: $national, logo: $logo)';
   }
 
   @override
@@ -271,17 +221,13 @@ class _$_Team with DiagnosticableTreeMixin implements _Team {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'Team'))
-      ..add(DiagnosticsProperty('leagueID', leagueID))
+      ..add(DiagnosticsProperty('id', id))
       ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('country', country))
       ..add(DiagnosticsProperty('code', code))
-      ..add(DiagnosticsProperty('season', season))
-      ..add(DiagnosticsProperty('teamID', teamID))
-      ..add(DiagnosticsProperty('type', type))
-      ..add(DiagnosticsProperty('current', current))
-      ..add(DiagnosticsProperty('search', search))
-      ..add(DiagnosticsProperty('last', last))
-      ..add(DiagnosticsProperty('age', age));
+      ..add(DiagnosticsProperty('country', country))
+      ..add(DiagnosticsProperty('founded', founded))
+      ..add(DiagnosticsProperty('national', national))
+      ..add(DiagnosticsProperty('logo', logo));
   }
 
   @override
@@ -289,24 +235,20 @@ class _$_Team with DiagnosticableTreeMixin implements _Team {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Team &&
-            (identical(other.leagueID, leagueID) ||
-                other.leagueID == leagueID) &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.country, country) || other.country == country) &&
             (identical(other.code, code) || other.code == code) &&
-            (identical(other.season, season) || other.season == season) &&
-            (identical(other.teamID, teamID) || other.teamID == teamID) &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.current, current) || other.current == current) &&
-            (identical(other.search, search) || other.search == search) &&
-            (identical(other.last, last) || other.last == last) &&
-            (identical(other.age, age) || other.age == age));
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.founded, founded) || other.founded == founded) &&
+            (identical(other.national, national) ||
+                other.national == national) &&
+            (identical(other.logo, logo) || other.logo == logo));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, leagueID, name, country, code,
-      season, teamID, type, current, search, last, age);
+  int get hashCode => Object.hash(
+      runtimeType, id, name, code, country, founded, national, logo);
 
   @JsonKey(ignore: true)
   @override
@@ -324,42 +266,37 @@ class _$_Team with DiagnosticableTreeMixin implements _Team {
 
 abstract class _Team implements Team {
   const factory _Team(
-      {required final int leagueID,
-      required final String name,
-      required final String country,
-      required final String code,
-      required final int season,
-      required final int teamID,
-      required final String type,
-      required final String current,
-      required final String search,
-      required final int last,
-      required final int age}) = _$_Team;
+      {@JsonKey(name: 'id') required final int id,
+      @JsonKey(name: 'name') final String? name,
+      @JsonKey(name: 'code') final String? code,
+      @JsonKey(name: 'country') final String? country,
+      @JsonKey(name: 'founded') final int? founded,
+      @JsonKey(name: 'national') final bool? national,
+      @JsonKey(name: 'logo') final String? logo}) = _$_Team;
 
   factory _Team.fromJson(Map<String, dynamic> json) = _$_Team.fromJson;
 
   @override
-  int get leagueID;
+  @JsonKey(name: 'id')
+  int get id;
   @override
-  String get name;
+  @JsonKey(name: 'name')
+  String? get name;
   @override
-  String get country;
+  @JsonKey(name: 'code')
+  String? get code;
   @override
-  String get code;
+  @JsonKey(name: 'country')
+  String? get country;
   @override
-  int get season;
+  @JsonKey(name: 'founded')
+  int? get founded;
   @override
-  int get teamID;
+  @JsonKey(name: 'national')
+  bool? get national;
   @override
-  String get type;
-  @override
-  String get current;
-  @override
-  String get search;
-  @override
-  int get last;
-  @override
-  int get age;
+  @JsonKey(name: 'logo')
+  String? get logo;
   @override
   @JsonKey(ignore: true)
   _$$_TeamCopyWith<_$_Team> get copyWith => throw _privateConstructorUsedError;
