@@ -1,46 +1,30 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'soccer.dart';
+part of 'freezed_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ApiWrapper _$$_ApiWrapperFromJson(Map<String, dynamic> json) =>
-    _$_ApiWrapper(
-      type: json['type'] as String?,
-      parameters: json['parameters'] == null
-          ? null
-          : Parameters.fromJson(json['parameters'] as Map<String, dynamic>),
-      errors:
-          (json['errors'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      results: json['results'] as int?,
-      paging: json['paging'] == null
-          ? null
-          : Paging.fromJson(json['paging'] as Map<String, dynamic>),
-      response: (json['response'] as List<dynamic>?)
-          ?.map((e) => Response.fromJson(e as Map<String, dynamic>))
+_$_TeamModel _$$_TeamModelFromJson(Map<String, dynamic> json) => _$_TeamModel(
+      get: json['get'] as String,
+      parameters: json['parameters'] as Map<String, dynamic>,
+      errors: json['errors'] as List<dynamic>,
+      results: json['results'] as int,
+      paging: Paging.fromJson(json['paging'] as Map<String, dynamic>),
+      response: (json['response'] as List<dynamic>)
+          .map((e) => Response.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$_ApiWrapperToJson(_$_ApiWrapper instance) =>
+Map<String, dynamic> _$$_TeamModelToJson(_$_TeamModel instance) =>
     <String, dynamic>{
-      'type': instance.type,
+      'get': instance.get,
       'parameters': instance.parameters,
       'errors': instance.errors,
       'results': instance.results,
       'paging': instance.paging,
       'response': instance.response,
-    };
-
-_$_Parameters _$$_ParametersFromJson(Map<String, dynamic> json) =>
-    _$_Parameters(
-      id: json['id'] as int,
-    );
-
-Map<String, dynamic> _$$_ParametersToJson(_$_Parameters instance) =>
-    <String, dynamic>{
-      'id': instance.id,
     };
 
 _$_Paging _$$_PagingFromJson(Map<String, dynamic> json) => _$_Paging(
@@ -54,12 +38,8 @@ Map<String, dynamic> _$$_PagingToJson(_$_Paging instance) => <String, dynamic>{
     };
 
 _$_Response _$$_ResponseFromJson(Map<String, dynamic> json) => _$_Response(
-      team: json['team'] == null
-          ? null
-          : Team.fromJson(json['team'] as Map<String, dynamic>),
-      venue: json['venue'] == null
-          ? null
-          : Venue.fromJson(json['venue'] as Map<String, dynamic>),
+      team: Team.fromJson(json['team'] as Map<String, dynamic>),
+      venue: Venue.fromJson(json['venue'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ResponseToJson(_$_Response instance) =>
@@ -70,12 +50,12 @@ Map<String, dynamic> _$$_ResponseToJson(_$_Response instance) =>
 
 _$_Team _$$_TeamFromJson(Map<String, dynamic> json) => _$_Team(
       id: json['id'] as int,
-      name: json['name'] as String?,
-      code: json['code'] as String?,
-      country: json['country'] as String?,
-      founded: json['founded'] as int?,
-      national: json['national'] as bool?,
-      logo: json['logo'] as String?,
+      name: json['name'] as String,
+      code: json['code'] as String,
+      country: json['country'] as String,
+      founded: json['founded'] as int,
+      national: json['national'] as bool,
+      logo: json['logo'] as String,
     );
 
 Map<String, dynamic> _$$_TeamToJson(_$_Team instance) => <String, dynamic>{
@@ -90,12 +70,12 @@ Map<String, dynamic> _$$_TeamToJson(_$_Team instance) => <String, dynamic>{
 
 _$_Venue _$$_VenueFromJson(Map<String, dynamic> json) => _$_Venue(
       id: json['id'] as int,
-      name: json['name'] as String?,
-      address: json['address'] as String?,
-      city: json['city'] as String?,
-      capacity: json['capacity'] as int?,
-      surface: json['surface'] as String?,
-      image: json['image'] as String?,
+      name: json['name'] as String,
+      address: json['address'] as String,
+      city: json['city'] as String,
+      capacity: json['capacity'] as int,
+      surface: json['surface'] as String,
+      image: json['image'] as String,
     );
 
 Map<String, dynamic> _$$_VenueToJson(_$_Venue instance) => <String, dynamic>{

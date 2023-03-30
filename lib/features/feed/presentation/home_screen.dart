@@ -1,12 +1,10 @@
 import 'dart:convert';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:goat_app/API/api_manger.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
-import 'package:goat_app/models/soccer.dart';
 
-import '../../../API/test_api.dart';
+import '../../../API/freezed_api.dart';
+import '../../../models/freezed_model.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -20,10 +18,11 @@ class _HomeState extends State<Home> {
     // final response = APIService(id: "33", type: "teams");
     // ApiWrapper? reply = await response.fetchData();
     // print("UI: " + reply!.response![0].team!.name.toString());
-    final api = MyApi();
-    final teams = await api.getTeamsById();
+    final ApiService apiService = ApiService();
+    final TeamModel teamModel = await apiService.getTeamDetails();
+
     print("//////////////////////////////////////////");
-    print(teams?.response[0].team.name);
+    print(teamModel.response[0].team.name);
   }
 
   @override
