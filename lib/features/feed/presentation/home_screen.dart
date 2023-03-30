@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -16,13 +15,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Future<String?> getData() async {
-    final api = APIService(id: "33", type: "teams");
-    final reply = api.fetchData().then((value) {
-      setState(() {
-        print(value);
-      });
-    });
-    return null;
+    final response = APIService(id: "33", type: "teams");
+    ApiWrapper? reply = await response.fetchData();
+    print("UI: " + reply!.response![0].team!.name.toString());
   }
 
   @override

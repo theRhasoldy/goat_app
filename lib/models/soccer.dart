@@ -4,6 +4,48 @@ part 'soccer.freezed.dart';
 part 'soccer.g.dart';
 
 @freezed
+class ApiWrapper with _$ApiWrapper {
+  const factory ApiWrapper({
+    String? type,
+    Parameters? parameters,
+    List<String>? errors,
+    int? results,
+    Paging? paging,
+    List<Response>? response,
+  }) = _ApiWrapper;
+  factory ApiWrapper.fromJson(Map<String, Object?> json) =>
+      _$ApiWrapperFromJson(json);
+}
+
+@freezed
+class Parameters with _$Parameters {
+  const factory Parameters({
+    @JsonKey(name: 'id') required int id,
+  }) = _Parameters;
+  factory Parameters.fromJson(Map<String, Object?> json) =>
+      _$ParametersFromJson(json);
+}
+
+@freezed
+class Paging with _$Paging {
+  const factory Paging({
+    @JsonKey(name: 'current') required int current,
+    @JsonKey(name: 'total') required int total,
+  }) = _Paging;
+  factory Paging.fromJson(Map<String, Object?> json) => _$PagingFromJson(json);
+}
+
+@freezed
+class Response with _$Response {
+  const factory Response({
+    Team? team,
+    Venue? venue,
+  }) = _Response;
+  factory Response.fromJson(Map<String, Object?> json) =>
+      _$ResponseFromJson(json);
+}
+
+@freezed
 class Team with _$Team {
   const factory Team({
     @JsonKey(name: 'id') required int id,
@@ -17,17 +59,16 @@ class Team with _$Team {
   factory Team.fromJson(Map<String, Object?> json) => _$TeamFromJson(json);
 }
 
-// class Team {
-//   Team({
-//     required this.id,
-//     required this.name,
-//   });
-//
-//   String id;
-//   String name;
-//
-//   factory Team.fromJson(Map<String, dynamic> json) => Team(
-//     id: json["id"],
-//     name: json["name"],
-//   );
-// }
+@freezed
+class Venue with _$Venue {
+  const factory Venue({
+    @JsonKey(name: 'id') required int id,
+    @JsonKey(name: 'name') String? name,
+    @JsonKey(name: 'address') String? address,
+    @JsonKey(name: 'city') String? city,
+    @JsonKey(name: 'capacity') int? capacity,
+    @JsonKey(name: 'surface') String? surface,
+    @JsonKey(name: 'image') String? image,
+  }) = _Venue;
+  factory Venue.fromJson(Map<String, Object?> json) => _$VenueFromJson(json);
+}
