@@ -6,12 +6,12 @@ part 'soccer.g.dart';
 @freezed
 class ApiWrapper with _$ApiWrapper {
   const factory ApiWrapper({
-    String? type,
-    Parameters? parameters,
-    List<String>? errors,
-    int? results,
-    Paging? paging,
-    List<Response>? response,
+    @JsonKey(name: 'type') String? type,
+    @JsonKey(name: 'parameters')Parameters? parameters,
+    @JsonKey(name: 'errors')List<String>? errors,
+    @JsonKey(name: 'results')int? results,
+    @JsonKey(name: 'paging')Paging? paging,
+    @JsonKey(name: 'response')List<Response>? response,
   }) = _ApiWrapper;
   factory ApiWrapper.fromJson(Map<String, Object?> json) =>
       _$ApiWrapperFromJson(json);
@@ -38,8 +38,8 @@ class Paging with _$Paging {
 @freezed
 class Response with _$Response {
   const factory Response({
-    Team? team,
-    Venue? venue,
+    @JsonKey(name: 'team') Team? team,
+    @JsonKey(name: 'venue') Venue? venue,
   }) = _Response;
   factory Response.fromJson(Map<String, Object?> json) =>
       _$ResponseFromJson(json);

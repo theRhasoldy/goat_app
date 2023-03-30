@@ -6,6 +6,8 @@ import 'package:goat_app/API/api_manger.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/models/soccer.dart';
 
+import '../../../API/test_api.dart';
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -15,9 +17,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Future<String?> getData() async {
-    final response = APIService(id: "33", type: "teams");
-    ApiWrapper? reply = await response.fetchData();
-    print("UI: " + reply!.response![0].team!.name.toString());
+    // final response = APIService(id: "33", type: "teams");
+    // ApiWrapper? reply = await response.fetchData();
+    // print("UI: " + reply!.response![0].team!.name.toString());
+    final api = MyApi();
+    final teams = await api.getTeamsById();
+    print("//////////////////////////////////////////");
+    print(teams?.response[0].team.name);
   }
 
   @override

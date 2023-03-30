@@ -15,14 +15,16 @@ class APIService {
     const apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
 
     try {
+      print("inside try");
       final response = await dio.get(
         url,
         options: Options(
           headers: {'x-apisports-key': apiKey},
         ),
       );
-      final data = ApiWrapper.fromJson(response.data);
-      print("API: " + data.response.toString());
+      print("before converting to dart");
+      final data = ApiWrapper.fromJson(jsonDecode(response.data));
+      print("API: " + data.response.toString()); // why not printing
       return data;
       //print(parsedata);
     } catch (e) {
