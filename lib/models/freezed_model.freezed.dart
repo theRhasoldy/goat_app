@@ -20,10 +20,10 @@ TeamModel _$TeamModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TeamModel {
-  String get get => throw _privateConstructorUsedError;
+  String? get get => throw _privateConstructorUsedError;
   Map<String, dynamic> get parameters => throw _privateConstructorUsedError;
   List<dynamic> get errors => throw _privateConstructorUsedError;
-  int get results => throw _privateConstructorUsedError;
+  int? get results => throw _privateConstructorUsedError;
   Paging get paging => throw _privateConstructorUsedError;
   List<Response> get response => throw _privateConstructorUsedError;
 
@@ -39,10 +39,10 @@ abstract class $TeamModelCopyWith<$Res> {
       _$TeamModelCopyWithImpl<$Res, TeamModel>;
   @useResult
   $Res call(
-      {String get,
+      {String? get,
       Map<String, dynamic> parameters,
       List<dynamic> errors,
-      int results,
+      int? results,
       Paging paging,
       List<Response> response});
 
@@ -62,18 +62,18 @@ class _$TeamModelCopyWithImpl<$Res, $Val extends TeamModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? get = null,
+    Object? get = freezed,
     Object? parameters = null,
     Object? errors = null,
-    Object? results = null,
+    Object? results = freezed,
     Object? paging = null,
     Object? response = null,
   }) {
     return _then(_value.copyWith(
-      get: null == get
+      get: freezed == get
           ? _value.get
           : get // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       parameters: null == parameters
           ? _value.parameters
           : parameters // ignore: cast_nullable_to_non_nullable
@@ -82,10 +82,10 @@ class _$TeamModelCopyWithImpl<$Res, $Val extends TeamModel>
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      results: null == results
+      results: freezed == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       paging: null == paging
           ? _value.paging
           : paging // ignore: cast_nullable_to_non_nullable
@@ -114,10 +114,10 @@ abstract class _$$_TeamModelCopyWith<$Res> implements $TeamModelCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {String get,
+      {String? get,
       Map<String, dynamic> parameters,
       List<dynamic> errors,
-      int results,
+      int? results,
       Paging paging,
       List<Response> response});
 
@@ -136,18 +136,18 @@ class __$$_TeamModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? get = null,
+    Object? get = freezed,
     Object? parameters = null,
     Object? errors = null,
-    Object? results = null,
+    Object? results = freezed,
     Object? paging = null,
     Object? response = null,
   }) {
     return _then(_$_TeamModel(
-      get: null == get
+      get: freezed == get
           ? _value.get
           : get // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       parameters: null == parameters
           ? _value._parameters
           : parameters // ignore: cast_nullable_to_non_nullable
@@ -156,10 +156,10 @@ class __$$_TeamModelCopyWithImpl<$Res>
           ? _value._errors
           : errors // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      results: null == results
+      results: freezed == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       paging: null == paging
           ? _value.paging
           : paging // ignore: cast_nullable_to_non_nullable
@@ -190,7 +190,7 @@ class _$_TeamModel implements _TeamModel {
       _$$_TeamModelFromJson(json);
 
   @override
-  final String get;
+  final String? get;
   final Map<String, dynamic> _parameters;
   @override
   Map<String, dynamic> get parameters {
@@ -208,7 +208,7 @@ class _$_TeamModel implements _TeamModel {
   }
 
   @override
-  final int results;
+  final int? results;
   @override
   final Paging paging;
   final List<Response> _response;
@@ -265,10 +265,10 @@ class _$_TeamModel implements _TeamModel {
 
 abstract class _TeamModel implements TeamModel {
   const factory _TeamModel(
-      {required final String get,
+      {required final String? get,
       required final Map<String, dynamic> parameters,
       required final List<dynamic> errors,
-      required final int results,
+      required final int? results,
       required final Paging paging,
       required final List<Response> response}) = _$_TeamModel;
 
@@ -276,13 +276,13 @@ abstract class _TeamModel implements TeamModel {
       _$_TeamModel.fromJson;
 
   @override
-  String get get;
+  String? get get;
   @override
   Map<String, dynamic> get parameters;
   @override
   List<dynamic> get errors;
   @override
-  int get results;
+  int? get results;
   @override
   Paging get paging;
   @override
@@ -299,8 +299,8 @@ Paging _$PagingFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Paging {
-  int get current => throw _privateConstructorUsedError;
-  int get total => throw _privateConstructorUsedError;
+  int? get current => throw _privateConstructorUsedError;
+  int? get total => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -312,7 +312,7 @@ abstract class $PagingCopyWith<$Res> {
   factory $PagingCopyWith(Paging value, $Res Function(Paging) then) =
       _$PagingCopyWithImpl<$Res, Paging>;
   @useResult
-  $Res call({int current, int total});
+  $Res call({int? current, int? total});
 }
 
 /// @nodoc
@@ -328,18 +328,18 @@ class _$PagingCopyWithImpl<$Res, $Val extends Paging>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? current = null,
-    Object? total = null,
+    Object? current = freezed,
+    Object? total = freezed,
   }) {
     return _then(_value.copyWith(
-      current: null == current
+      current: freezed == current
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
-              as int,
-      total: null == total
+              as int?,
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -350,7 +350,7 @@ abstract class _$$_PagingCopyWith<$Res> implements $PagingCopyWith<$Res> {
       __$$_PagingCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int current, int total});
+  $Res call({int? current, int? total});
 }
 
 /// @nodoc
@@ -363,18 +363,18 @@ class __$$_PagingCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? current = null,
-    Object? total = null,
+    Object? current = freezed,
+    Object? total = freezed,
   }) {
     return _then(_$_Paging(
-      current: null == current
+      current: freezed == current
           ? _value.current
           : current // ignore: cast_nullable_to_non_nullable
-              as int,
-      total: null == total
+              as int?,
+      total: freezed == total
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -388,9 +388,9 @@ class _$_Paging implements _Paging {
       _$$_PagingFromJson(json);
 
   @override
-  final int current;
+  final int? current;
   @override
-  final int total;
+  final int? total;
 
   @override
   String toString() {
@@ -426,14 +426,14 @@ class _$_Paging implements _Paging {
 
 abstract class _Paging implements Paging {
   const factory _Paging(
-      {required final int current, required final int total}) = _$_Paging;
+      {required final int? current, required final int? total}) = _$_Paging;
 
   factory _Paging.fromJson(Map<String, dynamic> json) = _$_Paging.fromJson;
 
   @override
-  int get current;
+  int? get current;
   @override
-  int get total;
+  int? get total;
   @override
   @JsonKey(ignore: true)
   _$$_PagingCopyWith<_$_Paging> get copyWith =>
@@ -620,13 +620,13 @@ Team _$TeamFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Team {
-  int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get code => throw _privateConstructorUsedError;
-  String get country => throw _privateConstructorUsedError;
-  int get founded => throw _privateConstructorUsedError;
-  bool get national => throw _privateConstructorUsedError;
-  String get logo => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get code => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
+  int? get founded => throw _privateConstructorUsedError;
+  bool? get national => throw _privateConstructorUsedError;
+  String? get logo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -639,13 +639,13 @@ abstract class $TeamCopyWith<$Res> {
       _$TeamCopyWithImpl<$Res, Team>;
   @useResult
   $Res call(
-      {int id,
-      String name,
-      String code,
-      String country,
-      int founded,
-      bool national,
-      String logo});
+      {int? id,
+      String? name,
+      String? code,
+      String? country,
+      int? founded,
+      bool? national,
+      String? logo});
 }
 
 /// @nodoc
@@ -661,43 +661,43 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? code = null,
-    Object? country = null,
-    Object? founded = null,
-    Object? national = null,
-    Object? logo = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? code = freezed,
+    Object? country = freezed,
+    Object? founded = freezed,
+    Object? national = freezed,
+    Object? logo = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
+              as int?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
+              as String?,
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      country: null == country
+              as String?,
+      country: freezed == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      founded: null == founded
+              as String?,
+      founded: freezed == founded
           ? _value.founded
           : founded // ignore: cast_nullable_to_non_nullable
-              as int,
-      national: null == national
+              as int?,
+      national: freezed == national
           ? _value.national
           : national // ignore: cast_nullable_to_non_nullable
-              as bool,
-      logo: null == logo
+              as bool?,
+      logo: freezed == logo
           ? _value.logo
           : logo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -709,13 +709,13 @@ abstract class _$$_TeamCopyWith<$Res> implements $TeamCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
-      String name,
-      String code,
-      String country,
-      int founded,
-      bool national,
-      String logo});
+      {int? id,
+      String? name,
+      String? code,
+      String? country,
+      int? founded,
+      bool? national,
+      String? logo});
 }
 
 /// @nodoc
@@ -727,43 +727,43 @@ class __$$_TeamCopyWithImpl<$Res> extends _$TeamCopyWithImpl<$Res, _$_Team>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? code = null,
-    Object? country = null,
-    Object? founded = null,
-    Object? national = null,
-    Object? logo = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? code = freezed,
+    Object? country = freezed,
+    Object? founded = freezed,
+    Object? national = freezed,
+    Object? logo = freezed,
   }) {
     return _then(_$_Team(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
+              as int?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      code: null == code
+              as String?,
+      code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
-              as String,
-      country: null == country
+              as String?,
+      country: freezed == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      founded: null == founded
+              as String?,
+      founded: freezed == founded
           ? _value.founded
           : founded // ignore: cast_nullable_to_non_nullable
-              as int,
-      national: null == national
+              as int?,
+      national: freezed == national
           ? _value.national
           : national // ignore: cast_nullable_to_non_nullable
-              as bool,
-      logo: null == logo
+              as bool?,
+      logo: freezed == logo
           ? _value.logo
           : logo // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -783,19 +783,19 @@ class _$_Team implements _Team {
   factory _$_Team.fromJson(Map<String, dynamic> json) => _$$_TeamFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String code;
+  final String? code;
   @override
-  final String country;
+  final String? country;
   @override
-  final int founded;
+  final int? founded;
   @override
-  final bool national;
+  final bool? national;
   @override
-  final String logo;
+  final String? logo;
 
   @override
   String toString() {
@@ -838,30 +838,30 @@ class _$_Team implements _Team {
 
 abstract class _Team implements Team {
   const factory _Team(
-      {required final int id,
-      required final String name,
-      required final String code,
-      required final String country,
-      required final int founded,
-      required final bool national,
-      required final String logo}) = _$_Team;
+      {required final int? id,
+      required final String? name,
+      required final String? code,
+      required final String? country,
+      required final int? founded,
+      required final bool? national,
+      required final String? logo}) = _$_Team;
 
   factory _Team.fromJson(Map<String, dynamic> json) = _$_Team.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get name;
+  String? get name;
   @override
-  String get code;
+  String? get code;
   @override
-  String get country;
+  String? get country;
   @override
-  int get founded;
+  int? get founded;
   @override
-  bool get national;
+  bool? get national;
   @override
-  String get logo;
+  String? get logo;
   @override
   @JsonKey(ignore: true)
   _$$_TeamCopyWith<_$_Team> get copyWith => throw _privateConstructorUsedError;
@@ -873,13 +873,13 @@ Venue _$VenueFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Venue {
-  int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
-  String get city => throw _privateConstructorUsedError;
-  int get capacity => throw _privateConstructorUsedError;
-  String get surface => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get address => throw _privateConstructorUsedError;
+  String? get city => throw _privateConstructorUsedError;
+  int? get capacity => throw _privateConstructorUsedError;
+  String? get surface => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -892,13 +892,13 @@ abstract class $VenueCopyWith<$Res> {
       _$VenueCopyWithImpl<$Res, Venue>;
   @useResult
   $Res call(
-      {int id,
-      String name,
-      String address,
-      String city,
-      int capacity,
-      String surface,
-      String image});
+      {int? id,
+      String? name,
+      String? address,
+      String? city,
+      int? capacity,
+      String? surface,
+      String? image});
 }
 
 /// @nodoc
@@ -914,43 +914,43 @@ class _$VenueCopyWithImpl<$Res, $Val extends Venue>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? address = null,
-    Object? city = null,
-    Object? capacity = null,
-    Object? surface = null,
-    Object? image = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? address = freezed,
+    Object? city = freezed,
+    Object? capacity = freezed,
+    Object? surface = freezed,
+    Object? image = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
+              as int?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
+              as String?,
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
-      city: null == city
+              as String?,
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
-      capacity: null == capacity
+              as String?,
+      capacity: freezed == capacity
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
-              as int,
-      surface: null == surface
+              as int?,
+      surface: freezed == surface
           ? _value.surface
           : surface // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -962,13 +962,13 @@ abstract class _$$_VenueCopyWith<$Res> implements $VenueCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
-      String name,
-      String address,
-      String city,
-      int capacity,
-      String surface,
-      String image});
+      {int? id,
+      String? name,
+      String? address,
+      String? city,
+      int? capacity,
+      String? surface,
+      String? image});
 }
 
 /// @nodoc
@@ -980,43 +980,43 @@ class __$$_VenueCopyWithImpl<$Res> extends _$VenueCopyWithImpl<$Res, _$_Venue>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? address = null,
-    Object? city = null,
-    Object? capacity = null,
-    Object? surface = null,
-    Object? image = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? address = freezed,
+    Object? city = freezed,
+    Object? capacity = freezed,
+    Object? surface = freezed,
+    Object? image = freezed,
   }) {
     return _then(_$_Venue(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
+              as int?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      address: null == address
+              as String?,
+      address: freezed == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
-              as String,
-      city: null == city
+              as String?,
+      city: freezed == city
           ? _value.city
           : city // ignore: cast_nullable_to_non_nullable
-              as String,
-      capacity: null == capacity
+              as String?,
+      capacity: freezed == capacity
           ? _value.capacity
           : capacity // ignore: cast_nullable_to_non_nullable
-              as int,
-      surface: null == surface
+              as int?,
+      surface: freezed == surface
           ? _value.surface
           : surface // ignore: cast_nullable_to_non_nullable
-              as String,
-      image: null == image
+              as String?,
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1037,19 +1037,19 @@ class _$_Venue implements _Venue {
       _$$_VenueFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String address;
+  final String? address;
   @override
-  final String city;
+  final String? city;
   @override
-  final int capacity;
+  final int? capacity;
   @override
-  final String surface;
+  final String? surface;
   @override
-  final String image;
+  final String? image;
 
   @override
   String toString() {
@@ -1092,30 +1092,30 @@ class _$_Venue implements _Venue {
 
 abstract class _Venue implements Venue {
   const factory _Venue(
-      {required final int id,
-      required final String name,
-      required final String address,
-      required final String city,
-      required final int capacity,
-      required final String surface,
-      required final String image}) = _$_Venue;
+      {required final int? id,
+      required final String? name,
+      required final String? address,
+      required final String? city,
+      required final int? capacity,
+      required final String? surface,
+      required final String? image}) = _$_Venue;
 
   factory _Venue.fromJson(Map<String, dynamic> json) = _$_Venue.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get name;
+  String? get name;
   @override
-  String get address;
+  String? get address;
   @override
-  String get city;
+  String? get city;
   @override
-  int get capacity;
+  int? get capacity;
   @override
-  String get surface;
+  String? get surface;
   @override
-  String get image;
+  String? get image;
   @override
   @JsonKey(ignore: true)
   _$$_VenueCopyWith<_$_Venue> get copyWith =>

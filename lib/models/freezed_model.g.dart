@@ -7,10 +7,10 @@ part of 'freezed_model.dart';
 // **************************************************************************
 
 _$_TeamModel _$$_TeamModelFromJson(Map<String, dynamic> json) => _$_TeamModel(
-      get: json['get'] as String,
+      get: json['get'] as String?,
       parameters: json['parameters'] as Map<String, dynamic>,
       errors: json['errors'] as List<dynamic>,
-      results: json['results'] as int,
+      results: json['results'] as int?,
       paging: Paging.fromJson(json['paging'] as Map<String, dynamic>),
       response: (json['response'] as List<dynamic>)
           .map((e) => Response.fromJson(e as Map<String, dynamic>))
@@ -28,8 +28,8 @@ Map<String, dynamic> _$$_TeamModelToJson(_$_TeamModel instance) =>
     };
 
 _$_Paging _$$_PagingFromJson(Map<String, dynamic> json) => _$_Paging(
-      current: json['current'] as int,
-      total: json['total'] as int,
+      current: json['current'] as int?,
+      total: json['total'] as int?,
     );
 
 Map<String, dynamic> _$$_PagingToJson(_$_Paging instance) => <String, dynamic>{
@@ -49,13 +49,13 @@ Map<String, dynamic> _$$_ResponseToJson(_$_Response instance) =>
     };
 
 _$_Team _$$_TeamFromJson(Map<String, dynamic> json) => _$_Team(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      code: json['code'] as String,
-      country: json['country'] as String,
-      founded: json['founded'] as int,
-      national: json['national'] as bool,
-      logo: json['logo'] as String,
+      id: json['id'] as int?,
+      name: json['name'] as String?,
+      code: json['code'] as String?,
+      country: json['country'] as String?,
+      founded: json['founded'] as int?,
+      national: json['national'] as bool?,
+      logo: json['logo'] as String?,
     );
 
 Map<String, dynamic> _$$_TeamToJson(_$_Team instance) => <String, dynamic>{
@@ -69,13 +69,13 @@ Map<String, dynamic> _$$_TeamToJson(_$_Team instance) => <String, dynamic>{
     };
 
 _$_Venue _$$_VenueFromJson(Map<String, dynamic> json) => _$_Venue(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      address: json['address'] as String,
-      city: json['city'] as String,
-      capacity: json['capacity'] as int,
-      surface: json['surface'] as String,
-      image: json['image'] as String,
+      id: json['id'] as int?,
+      name: json['name'] as String?,
+      address: json['address'] as String?,
+      city: json['city'] as String?,
+      capacity: json['capacity'] as int?,
+      surface: json['surface'] as String?,
+      image: json['image'] as String?,
     );
 
 Map<String, dynamic> _$$_VenueToJson(_$_Venue instance) => <String, dynamic>{

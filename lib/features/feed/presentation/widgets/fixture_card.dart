@@ -17,10 +17,10 @@ class _FixtureCardState extends State<FixtureCard> {
     // ApiWrapper? reply = await response.fetchData();
     // print("UI: " + reply!.response![0].team!.name.toString());
     final ApiService apiService = ApiService();
-    final FixtureModel fixtureModel = await apiService.getMatches();
+    final FixtureModel? fixtureModel = await apiService.getMatches();
     print("FIXTURE//////////////////////////////////////////");
 
-    print(fixtureModel.response[0].teams.home.name);
+    print(fixtureModel!.response[0].teams.home.logo);
   }
 
   @override

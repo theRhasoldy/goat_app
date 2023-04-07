@@ -8,10 +8,10 @@ part of 'fixture.dart';
 
 _$_FixtureModel _$$_FixtureModelFromJson(Map<String, dynamic> json) =>
     _$_FixtureModel(
-      get: json['get'] as String,
+      get: json['get'] as String?,
       parameters: json['parameters'] as Map<String, dynamic>,
       errors: json['errors'] as List<dynamic>,
-      results: json['results'] as int,
+      results: json['results'] as int?,
       paging: Paging.fromJson(json['paging'] as Map<String, dynamic>),
       response: (json['response'] as List<dynamic>)
           .map((e) => FixtureResponse.fromJson(e as Map<String, dynamic>))
@@ -33,7 +33,7 @@ _$_FixtureResponse _$$_FixtureResponseFromJson(Map<String, dynamic> json) =>
       fixture: Fixture.fromJson(json['fixture'] as Map<String, dynamic>),
       league: League.fromJson(json['league'] as Map<String, dynamic>),
       teams: Teams.fromJson(json['teams'] as Map<String, dynamic>),
-      goals: Map<String, int>.from(json['goals'] as Map),
+      goals: Map<String, int?>.from(json['goals'] as Map),
       score: Score.fromJson(json['score'] as Map<String, dynamic>),
     );
 
@@ -47,11 +47,11 @@ Map<String, dynamic> _$$_FixtureResponseToJson(_$_FixtureResponse instance) =>
     };
 
 _$_Fixture _$$_FixtureFromJson(Map<String, dynamic> json) => _$_Fixture(
-      id: json['id'] as int,
-      referee: json['referee'] as String,
-      timezone: json['timezone'] as String,
-      date: json['date'] as String,
-      timestamp: json['timestamp'] as int,
+      id: json['id'] as int?,
+      referee: json['referee'] as String?,
+      timezone: json['timezone'] as String?,
+      date: json['date'] as String?,
+      timestamp: json['timestamp'] as int?,
       periods: Periods.fromJson(json['periods'] as Map<String, dynamic>),
       venue: Venue.fromJson(json['venue'] as Map<String, dynamic>),
       status: Status.fromJson(json['status'] as Map<String, dynamic>),
@@ -80,7 +80,7 @@ Map<String, dynamic> _$$_TeamsToJson(_$_Teams instance) => <String, dynamic>{
     };
 
 _$_Periods _$$_PeriodsFromJson(Map<String, dynamic> json) => _$_Periods(
-      first: json['first'] as int,
+      first: json['first'] as int?,
       second: json['second'] as int?,
     );
 
@@ -91,9 +91,9 @@ Map<String, dynamic> _$$_PeriodsToJson(_$_Periods instance) =>
     };
 
 _$_Status _$$_StatusFromJson(Map<String, dynamic> json) => _$_Status(
-      long: json['long'] as String,
-      short: json['short'] as String,
-      elapsed: json['elapsed'] as int,
+      long: json['long'] as String?,
+      short: json['short'] as String?,
+      elapsed: json['elapsed'] as int?,
     );
 
 Map<String, dynamic> _$$_StatusToJson(_$_Status instance) => <String, dynamic>{
@@ -103,13 +103,13 @@ Map<String, dynamic> _$$_StatusToJson(_$_Status instance) => <String, dynamic>{
     };
 
 _$_League _$$_LeagueFromJson(Map<String, dynamic> json) => _$_League(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      country: json['country'] as String,
-      logo: json['logo'] as String,
-      flag: json['flag'] as String,
-      season: json['season'] as int,
-      round: json['round'] as String,
+      id: json['id'] as int?,
+      name: json['name'] as String?,
+      country: json['country'] as String?,
+      logo: json['logo'] as String?,
+      flag: json['flag'] as String?,
+      season: json['season'] as int?,
+      round: json['round'] as String?,
     );
 
 Map<String, dynamic> _$$_LeagueToJson(_$_League instance) => <String, dynamic>{

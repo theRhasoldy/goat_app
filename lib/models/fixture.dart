@@ -7,10 +7,10 @@ part 'fixture.g.dart';
 @freezed
 class FixtureModel with _$FixtureModel {
   const factory FixtureModel({
-    required String get,
+    required String? get,
     required Map<String, dynamic> parameters,
     required List<dynamic> errors,
-    required int results,
+    required int? results,
     required Paging paging,
     required List<FixtureResponse> response,
   }) = _FixtureModel;
@@ -25,7 +25,7 @@ class FixtureResponse with _$FixtureResponse {
     required Fixture fixture,
     required League league,
     required Teams teams,
-    required Map<String, int> goals,
+    required Map<String, int?> goals,
     required Score score,
   }) = _FixtureResponse;
 
@@ -36,11 +36,11 @@ class FixtureResponse with _$FixtureResponse {
 @freezed
 class Fixture with _$Fixture {
   const factory Fixture({
-    required int id,
-    required String referee,
-    required String timezone,
-    required String date,
-    required int timestamp,
+    required int? id,
+    required String? referee,
+    required String? timezone,
+    required String? date,
+    required int? timestamp,
     required Periods periods,
     required Venue venue,
     required Status status,
@@ -63,7 +63,7 @@ class Teams with _$Teams {
 @freezed
 class Periods with _$Periods {
   const factory Periods({
-    required int first,
+    required int? first,
     required int? second,
   }) = _Periods;
 
@@ -74,9 +74,9 @@ class Periods with _$Periods {
 @freezed
 class Status with _$Status {
   const factory Status({
-    required String long,
-    required String short,
-    required int elapsed,
+    required String? long,
+    required String? short,
+    required int? elapsed,
   }) = _Status;
 
   factory Status.fromJson(Map<String, dynamic> json) => _$StatusFromJson(json);
@@ -85,13 +85,13 @@ class Status with _$Status {
 @freezed
 class League with _$League {
   const factory League({
-    required int id,
-    required String name,
-    required String country,
-    required String logo,
-    required String flag,
-    required int season,
-    required String round,
+    required int? id,
+    required String? name,
+    required String? country,
+    required String? logo,
+    required String? flag,
+    required int? season,
+    required String? round,
   }) = _League;
 
   factory League.fromJson(Map<String, dynamic> json) => _$LeagueFromJson(json);
@@ -108,3 +108,6 @@ class Score with _$Score {
 
   factory Score.fromJson(Map<String, dynamic> json) => _$ScoreFromJson(json);
 }
+
+
+

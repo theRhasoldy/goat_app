@@ -19,21 +19,25 @@ class ApiService {
     }
   }
 
-  Future<FixtureModel> getMatches(
-      {String league = "39",
-      String season = "2022",
-      String date = "2023-04-09"}) async {
+  Future<FixtureModel>? getMatches({
+    String league = "39",
+    String season = "2022",
+    String date = "2023-04-09",
+  }) async {
     const apiKey = '92aa37633c546709b766f3a9d29eabaf';
+    final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
     try {
-      final response = await _dio.get(
-        'https://v3.football.api-sports.io/fixtures?league=39&season=2022&date=2023-04-09',
-        options: Options(headers: {'x-apisports-key': apiKey}),
+      final response = await dio.get(
+        'https://v3.football.api-sports.io/fixtures',
+        queryParameters: {
+          'league': league,
+          'season': season,
+          'date': date,
+        },
       );
       final json = response.data as Map<String, dynamic>;
-      print("FIXTURE//////////////////////////////////////////");
       return FixtureModel.fromJson(json);
     } catch (error) {
-      print("//////////////////////////////////////////");
       throw error;
     }
   }

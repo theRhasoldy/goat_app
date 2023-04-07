@@ -20,10 +20,10 @@ FixtureModel _$FixtureModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FixtureModel {
-  String get get => throw _privateConstructorUsedError;
+  String? get get => throw _privateConstructorUsedError;
   Map<String, dynamic> get parameters => throw _privateConstructorUsedError;
   List<dynamic> get errors => throw _privateConstructorUsedError;
-  int get results => throw _privateConstructorUsedError;
+  int? get results => throw _privateConstructorUsedError;
   Paging get paging => throw _privateConstructorUsedError;
   List<FixtureResponse> get response => throw _privateConstructorUsedError;
 
@@ -40,10 +40,10 @@ abstract class $FixtureModelCopyWith<$Res> {
       _$FixtureModelCopyWithImpl<$Res, FixtureModel>;
   @useResult
   $Res call(
-      {String get,
+      {String? get,
       Map<String, dynamic> parameters,
       List<dynamic> errors,
-      int results,
+      int? results,
       Paging paging,
       List<FixtureResponse> response});
 
@@ -63,18 +63,18 @@ class _$FixtureModelCopyWithImpl<$Res, $Val extends FixtureModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? get = null,
+    Object? get = freezed,
     Object? parameters = null,
     Object? errors = null,
-    Object? results = null,
+    Object? results = freezed,
     Object? paging = null,
     Object? response = null,
   }) {
     return _then(_value.copyWith(
-      get: null == get
+      get: freezed == get
           ? _value.get
           : get // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       parameters: null == parameters
           ? _value.parameters
           : parameters // ignore: cast_nullable_to_non_nullable
@@ -83,10 +83,10 @@ class _$FixtureModelCopyWithImpl<$Res, $Val extends FixtureModel>
           ? _value.errors
           : errors // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      results: null == results
+      results: freezed == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       paging: null == paging
           ? _value.paging
           : paging // ignore: cast_nullable_to_non_nullable
@@ -116,10 +116,10 @@ abstract class _$$_FixtureModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String get,
+      {String? get,
       Map<String, dynamic> parameters,
       List<dynamic> errors,
-      int results,
+      int? results,
       Paging paging,
       List<FixtureResponse> response});
 
@@ -138,18 +138,18 @@ class __$$_FixtureModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? get = null,
+    Object? get = freezed,
     Object? parameters = null,
     Object? errors = null,
-    Object? results = null,
+    Object? results = freezed,
     Object? paging = null,
     Object? response = null,
   }) {
     return _then(_$_FixtureModel(
-      get: null == get
+      get: freezed == get
           ? _value.get
           : get // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       parameters: null == parameters
           ? _value._parameters
           : parameters // ignore: cast_nullable_to_non_nullable
@@ -158,10 +158,10 @@ class __$$_FixtureModelCopyWithImpl<$Res>
           ? _value._errors
           : errors // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      results: null == results
+      results: freezed == results
           ? _value.results
           : results // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       paging: null == paging
           ? _value.paging
           : paging // ignore: cast_nullable_to_non_nullable
@@ -192,7 +192,7 @@ class _$_FixtureModel implements _FixtureModel {
       _$$_FixtureModelFromJson(json);
 
   @override
-  final String get;
+  final String? get;
   final Map<String, dynamic> _parameters;
   @override
   Map<String, dynamic> get parameters {
@@ -210,7 +210,7 @@ class _$_FixtureModel implements _FixtureModel {
   }
 
   @override
-  final int results;
+  final int? results;
   @override
   final Paging paging;
   final List<FixtureResponse> _response;
@@ -267,10 +267,10 @@ class _$_FixtureModel implements _FixtureModel {
 
 abstract class _FixtureModel implements FixtureModel {
   const factory _FixtureModel(
-      {required final String get,
+      {required final String? get,
       required final Map<String, dynamic> parameters,
       required final List<dynamic> errors,
-      required final int results,
+      required final int? results,
       required final Paging paging,
       required final List<FixtureResponse> response}) = _$_FixtureModel;
 
@@ -278,13 +278,13 @@ abstract class _FixtureModel implements FixtureModel {
       _$_FixtureModel.fromJson;
 
   @override
-  String get get;
+  String? get get;
   @override
   Map<String, dynamic> get parameters;
   @override
   List<dynamic> get errors;
   @override
-  int get results;
+  int? get results;
   @override
   Paging get paging;
   @override
@@ -304,7 +304,7 @@ mixin _$FixtureResponse {
   Fixture get fixture => throw _privateConstructorUsedError;
   League get league => throw _privateConstructorUsedError;
   Teams get teams => throw _privateConstructorUsedError;
-  Map<String, int> get goals => throw _privateConstructorUsedError;
+  Map<String, int?> get goals => throw _privateConstructorUsedError;
   Score get score => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -323,7 +323,7 @@ abstract class $FixtureResponseCopyWith<$Res> {
       {Fixture fixture,
       League league,
       Teams teams,
-      Map<String, int> goals,
+      Map<String, int?> goals,
       Score score});
 
   $FixtureCopyWith<$Res> get fixture;
@@ -367,7 +367,7 @@ class _$FixtureResponseCopyWithImpl<$Res, $Val extends FixtureResponse>
       goals: null == goals
           ? _value.goals
           : goals // ignore: cast_nullable_to_non_nullable
-              as Map<String, int>,
+              as Map<String, int?>,
       score: null == score
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
@@ -420,7 +420,7 @@ abstract class _$$_FixtureResponseCopyWith<$Res>
       {Fixture fixture,
       League league,
       Teams teams,
-      Map<String, int> goals,
+      Map<String, int?> goals,
       Score score});
 
   @override
@@ -466,7 +466,7 @@ class __$$_FixtureResponseCopyWithImpl<$Res>
       goals: null == goals
           ? _value._goals
           : goals // ignore: cast_nullable_to_non_nullable
-              as Map<String, int>,
+              as Map<String, int?>,
       score: null == score
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
@@ -482,7 +482,7 @@ class _$_FixtureResponse implements _FixtureResponse {
       {required this.fixture,
       required this.league,
       required this.teams,
-      required final Map<String, int> goals,
+      required final Map<String, int?> goals,
       required this.score})
       : _goals = goals;
 
@@ -495,9 +495,9 @@ class _$_FixtureResponse implements _FixtureResponse {
   final League league;
   @override
   final Teams teams;
-  final Map<String, int> _goals;
+  final Map<String, int?> _goals;
   @override
-  Map<String, int> get goals {
+  Map<String, int?> get goals {
     if (_goals is EqualUnmodifiableMapView) return _goals;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableMapView(_goals);
@@ -547,7 +547,7 @@ abstract class _FixtureResponse implements FixtureResponse {
       {required final Fixture fixture,
       required final League league,
       required final Teams teams,
-      required final Map<String, int> goals,
+      required final Map<String, int?> goals,
       required final Score score}) = _$_FixtureResponse;
 
   factory _FixtureResponse.fromJson(Map<String, dynamic> json) =
@@ -560,7 +560,7 @@ abstract class _FixtureResponse implements FixtureResponse {
   @override
   Teams get teams;
   @override
-  Map<String, int> get goals;
+  Map<String, int?> get goals;
   @override
   Score get score;
   @override
@@ -575,11 +575,11 @@ Fixture _$FixtureFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Fixture {
-  int get id => throw _privateConstructorUsedError;
-  String get referee => throw _privateConstructorUsedError;
-  String get timezone => throw _privateConstructorUsedError;
-  String get date => throw _privateConstructorUsedError;
-  int get timestamp => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get referee => throw _privateConstructorUsedError;
+  String? get timezone => throw _privateConstructorUsedError;
+  String? get date => throw _privateConstructorUsedError;
+  int? get timestamp => throw _privateConstructorUsedError;
   Periods get periods => throw _privateConstructorUsedError;
   Venue get venue => throw _privateConstructorUsedError;
   Status get status => throw _privateConstructorUsedError;
@@ -595,11 +595,11 @@ abstract class $FixtureCopyWith<$Res> {
       _$FixtureCopyWithImpl<$Res, Fixture>;
   @useResult
   $Res call(
-      {int id,
-      String referee,
-      String timezone,
-      String date,
-      int timestamp,
+      {int? id,
+      String? referee,
+      String? timezone,
+      String? date,
+      int? timestamp,
       Periods periods,
       Venue venue,
       Status status});
@@ -622,36 +622,36 @@ class _$FixtureCopyWithImpl<$Res, $Val extends Fixture>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? referee = null,
-    Object? timezone = null,
-    Object? date = null,
-    Object? timestamp = null,
+    Object? id = freezed,
+    Object? referee = freezed,
+    Object? timezone = freezed,
+    Object? date = freezed,
+    Object? timestamp = freezed,
     Object? periods = null,
     Object? venue = null,
     Object? status = null,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      referee: null == referee
+              as int?,
+      referee: freezed == referee
           ? _value.referee
           : referee // ignore: cast_nullable_to_non_nullable
-              as String,
-      timezone: null == timezone
+              as String?,
+      timezone: freezed == timezone
           ? _value.timezone
           : timezone // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
+              as String?,
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
-      timestamp: null == timestamp
+              as String?,
+      timestamp: freezed == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       periods: null == periods
           ? _value.periods
           : periods // ignore: cast_nullable_to_non_nullable
@@ -700,11 +700,11 @@ abstract class _$$_FixtureCopyWith<$Res> implements $FixtureCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
-      String referee,
-      String timezone,
-      String date,
-      int timestamp,
+      {int? id,
+      String? referee,
+      String? timezone,
+      String? date,
+      int? timestamp,
       Periods periods,
       Venue venue,
       Status status});
@@ -727,36 +727,36 @@ class __$$_FixtureCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? referee = null,
-    Object? timezone = null,
-    Object? date = null,
-    Object? timestamp = null,
+    Object? id = freezed,
+    Object? referee = freezed,
+    Object? timezone = freezed,
+    Object? date = freezed,
+    Object? timestamp = freezed,
     Object? periods = null,
     Object? venue = null,
     Object? status = null,
   }) {
     return _then(_$_Fixture(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      referee: null == referee
+              as int?,
+      referee: freezed == referee
           ? _value.referee
           : referee // ignore: cast_nullable_to_non_nullable
-              as String,
-      timezone: null == timezone
+              as String?,
+      timezone: freezed == timezone
           ? _value.timezone
           : timezone // ignore: cast_nullable_to_non_nullable
-              as String,
-      date: null == date
+              as String?,
+      date: freezed == date
           ? _value.date
           : date // ignore: cast_nullable_to_non_nullable
-              as String,
-      timestamp: null == timestamp
+              as String?,
+      timestamp: freezed == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       periods: null == periods
           ? _value.periods
           : periods // ignore: cast_nullable_to_non_nullable
@@ -790,15 +790,15 @@ class _$_Fixture implements _Fixture {
       _$$_FixtureFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String referee;
+  final String? referee;
   @override
-  final String timezone;
+  final String? timezone;
   @override
-  final String date;
+  final String? date;
   @override
-  final int timestamp;
+  final int? timestamp;
   @override
   final Periods periods;
   @override
@@ -849,11 +849,11 @@ class _$_Fixture implements _Fixture {
 
 abstract class _Fixture implements Fixture {
   const factory _Fixture(
-      {required final int id,
-      required final String referee,
-      required final String timezone,
-      required final String date,
-      required final int timestamp,
+      {required final int? id,
+      required final String? referee,
+      required final String? timezone,
+      required final String? date,
+      required final int? timestamp,
       required final Periods periods,
       required final Venue venue,
       required final Status status}) = _$_Fixture;
@@ -861,15 +861,15 @@ abstract class _Fixture implements Fixture {
   factory _Fixture.fromJson(Map<String, dynamic> json) = _$_Fixture.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get referee;
+  String? get referee;
   @override
-  String get timezone;
+  String? get timezone;
   @override
-  String get date;
+  String? get date;
   @override
-  int get timestamp;
+  int? get timestamp;
   @override
   Periods get periods;
   @override
@@ -1058,7 +1058,7 @@ Periods _$PeriodsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Periods {
-  int get first => throw _privateConstructorUsedError;
+  int? get first => throw _privateConstructorUsedError;
   int? get second => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1071,7 +1071,7 @@ abstract class $PeriodsCopyWith<$Res> {
   factory $PeriodsCopyWith(Periods value, $Res Function(Periods) then) =
       _$PeriodsCopyWithImpl<$Res, Periods>;
   @useResult
-  $Res call({int first, int? second});
+  $Res call({int? first, int? second});
 }
 
 /// @nodoc
@@ -1087,14 +1087,14 @@ class _$PeriodsCopyWithImpl<$Res, $Val extends Periods>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? first = null,
+    Object? first = freezed,
     Object? second = freezed,
   }) {
     return _then(_value.copyWith(
-      first: null == first
+      first: freezed == first
           ? _value.first
           : first // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       second: freezed == second
           ? _value.second
           : second // ignore: cast_nullable_to_non_nullable
@@ -1110,7 +1110,7 @@ abstract class _$$_PeriodsCopyWith<$Res> implements $PeriodsCopyWith<$Res> {
       __$$_PeriodsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int first, int? second});
+  $Res call({int? first, int? second});
 }
 
 /// @nodoc
@@ -1123,14 +1123,14 @@ class __$$_PeriodsCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? first = null,
+    Object? first = freezed,
     Object? second = freezed,
   }) {
     return _then(_$_Periods(
-      first: null == first
+      first: freezed == first
           ? _value.first
           : first // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       second: freezed == second
           ? _value.second
           : second // ignore: cast_nullable_to_non_nullable
@@ -1148,7 +1148,7 @@ class _$_Periods implements _Periods {
       _$$_PeriodsFromJson(json);
 
   @override
-  final int first;
+  final int? first;
   @override
   final int? second;
 
@@ -1186,12 +1186,12 @@ class _$_Periods implements _Periods {
 
 abstract class _Periods implements Periods {
   const factory _Periods(
-      {required final int first, required final int? second}) = _$_Periods;
+      {required final int? first, required final int? second}) = _$_Periods;
 
   factory _Periods.fromJson(Map<String, dynamic> json) = _$_Periods.fromJson;
 
   @override
-  int get first;
+  int? get first;
   @override
   int? get second;
   @override
@@ -1206,9 +1206,9 @@ Status _$StatusFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Status {
-  String get long => throw _privateConstructorUsedError;
-  String get short => throw _privateConstructorUsedError;
-  int get elapsed => throw _privateConstructorUsedError;
+  String? get long => throw _privateConstructorUsedError;
+  String? get short => throw _privateConstructorUsedError;
+  int? get elapsed => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1220,7 +1220,7 @@ abstract class $StatusCopyWith<$Res> {
   factory $StatusCopyWith(Status value, $Res Function(Status) then) =
       _$StatusCopyWithImpl<$Res, Status>;
   @useResult
-  $Res call({String long, String short, int elapsed});
+  $Res call({String? long, String? short, int? elapsed});
 }
 
 /// @nodoc
@@ -1236,23 +1236,23 @@ class _$StatusCopyWithImpl<$Res, $Val extends Status>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? long = null,
-    Object? short = null,
-    Object? elapsed = null,
+    Object? long = freezed,
+    Object? short = freezed,
+    Object? elapsed = freezed,
   }) {
     return _then(_value.copyWith(
-      long: null == long
+      long: freezed == long
           ? _value.long
           : long // ignore: cast_nullable_to_non_nullable
-              as String,
-      short: null == short
+              as String?,
+      short: freezed == short
           ? _value.short
           : short // ignore: cast_nullable_to_non_nullable
-              as String,
-      elapsed: null == elapsed
+              as String?,
+      elapsed: freezed == elapsed
           ? _value.elapsed
           : elapsed // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 }
@@ -1263,7 +1263,7 @@ abstract class _$$_StatusCopyWith<$Res> implements $StatusCopyWith<$Res> {
       __$$_StatusCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String long, String short, int elapsed});
+  $Res call({String? long, String? short, int? elapsed});
 }
 
 /// @nodoc
@@ -1276,23 +1276,23 @@ class __$$_StatusCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? long = null,
-    Object? short = null,
-    Object? elapsed = null,
+    Object? long = freezed,
+    Object? short = freezed,
+    Object? elapsed = freezed,
   }) {
     return _then(_$_Status(
-      long: null == long
+      long: freezed == long
           ? _value.long
           : long // ignore: cast_nullable_to_non_nullable
-              as String,
-      short: null == short
+              as String?,
+      short: freezed == short
           ? _value.short
           : short // ignore: cast_nullable_to_non_nullable
-              as String,
-      elapsed: null == elapsed
+              as String?,
+      elapsed: freezed == elapsed
           ? _value.elapsed
           : elapsed // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -1307,11 +1307,11 @@ class _$_Status implements _Status {
       _$$_StatusFromJson(json);
 
   @override
-  final String long;
+  final String? long;
   @override
-  final String short;
+  final String? short;
   @override
-  final int elapsed;
+  final int? elapsed;
 
   @override
   String toString() {
@@ -1348,18 +1348,18 @@ class _$_Status implements _Status {
 
 abstract class _Status implements Status {
   const factory _Status(
-      {required final String long,
-      required final String short,
-      required final int elapsed}) = _$_Status;
+      {required final String? long,
+      required final String? short,
+      required final int? elapsed}) = _$_Status;
 
   factory _Status.fromJson(Map<String, dynamic> json) = _$_Status.fromJson;
 
   @override
-  String get long;
+  String? get long;
   @override
-  String get short;
+  String? get short;
   @override
-  int get elapsed;
+  int? get elapsed;
   @override
   @JsonKey(ignore: true)
   _$$_StatusCopyWith<_$_Status> get copyWith =>
@@ -1372,13 +1372,13 @@ League _$LeagueFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$League {
-  int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  String get country => throw _privateConstructorUsedError;
-  String get logo => throw _privateConstructorUsedError;
-  String get flag => throw _privateConstructorUsedError;
-  int get season => throw _privateConstructorUsedError;
-  String get round => throw _privateConstructorUsedError;
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
+  String? get logo => throw _privateConstructorUsedError;
+  String? get flag => throw _privateConstructorUsedError;
+  int? get season => throw _privateConstructorUsedError;
+  String? get round => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1391,13 +1391,13 @@ abstract class $LeagueCopyWith<$Res> {
       _$LeagueCopyWithImpl<$Res, League>;
   @useResult
   $Res call(
-      {int id,
-      String name,
-      String country,
-      String logo,
-      String flag,
-      int season,
-      String round});
+      {int? id,
+      String? name,
+      String? country,
+      String? logo,
+      String? flag,
+      int? season,
+      String? round});
 }
 
 /// @nodoc
@@ -1413,43 +1413,43 @@ class _$LeagueCopyWithImpl<$Res, $Val extends League>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? country = null,
-    Object? logo = null,
-    Object? flag = null,
-    Object? season = null,
-    Object? round = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? country = freezed,
+    Object? logo = freezed,
+    Object? flag = freezed,
+    Object? season = freezed,
+    Object? round = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
+              as int?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      country: null == country
+              as String?,
+      country: freezed == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      logo: null == logo
+              as String?,
+      logo: freezed == logo
           ? _value.logo
           : logo // ignore: cast_nullable_to_non_nullable
-              as String,
-      flag: null == flag
+              as String?,
+      flag: freezed == flag
           ? _value.flag
           : flag // ignore: cast_nullable_to_non_nullable
-              as String,
-      season: null == season
+              as String?,
+      season: freezed == season
           ? _value.season
           : season // ignore: cast_nullable_to_non_nullable
-              as int,
-      round: null == round
+              as int?,
+      round: freezed == round
           ? _value.round
           : round // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -1461,13 +1461,13 @@ abstract class _$$_LeagueCopyWith<$Res> implements $LeagueCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int id,
-      String name,
-      String country,
-      String logo,
-      String flag,
-      int season,
-      String round});
+      {int? id,
+      String? name,
+      String? country,
+      String? logo,
+      String? flag,
+      int? season,
+      String? round});
 }
 
 /// @nodoc
@@ -1480,43 +1480,43 @@ class __$$_LeagueCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? country = null,
-    Object? logo = null,
-    Object? flag = null,
-    Object? season = null,
-    Object? round = null,
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? country = freezed,
+    Object? logo = freezed,
+    Object? flag = freezed,
+    Object? season = freezed,
+    Object? round = freezed,
   }) {
     return _then(_$_League(
-      id: null == id
+      id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
+              as int?,
+      name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      country: null == country
+              as String?,
+      country: freezed == country
           ? _value.country
           : country // ignore: cast_nullable_to_non_nullable
-              as String,
-      logo: null == logo
+              as String?,
+      logo: freezed == logo
           ? _value.logo
           : logo // ignore: cast_nullable_to_non_nullable
-              as String,
-      flag: null == flag
+              as String?,
+      flag: freezed == flag
           ? _value.flag
           : flag // ignore: cast_nullable_to_non_nullable
-              as String,
-      season: null == season
+              as String?,
+      season: freezed == season
           ? _value.season
           : season // ignore: cast_nullable_to_non_nullable
-              as int,
-      round: null == round
+              as int?,
+      round: freezed == round
           ? _value.round
           : round // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -1537,19 +1537,19 @@ class _$_League implements _League {
       _$$_LeagueFromJson(json);
 
   @override
-  final int id;
+  final int? id;
   @override
-  final String name;
+  final String? name;
   @override
-  final String country;
+  final String? country;
   @override
-  final String logo;
+  final String? logo;
   @override
-  final String flag;
+  final String? flag;
   @override
-  final int season;
+  final int? season;
   @override
-  final String round;
+  final String? round;
 
   @override
   String toString() {
@@ -1591,30 +1591,30 @@ class _$_League implements _League {
 
 abstract class _League implements League {
   const factory _League(
-      {required final int id,
-      required final String name,
-      required final String country,
-      required final String logo,
-      required final String flag,
-      required final int season,
-      required final String round}) = _$_League;
+      {required final int? id,
+      required final String? name,
+      required final String? country,
+      required final String? logo,
+      required final String? flag,
+      required final int? season,
+      required final String? round}) = _$_League;
 
   factory _League.fromJson(Map<String, dynamic> json) = _$_League.fromJson;
 
   @override
-  int get id;
+  int? get id;
   @override
-  String get name;
+  String? get name;
   @override
-  String get country;
+  String? get country;
   @override
-  String get logo;
+  String? get logo;
   @override
-  String get flag;
+  String? get flag;
   @override
-  int get season;
+  int? get season;
   @override
-  String get round;
+  String? get round;
   @override
   @JsonKey(ignore: true)
   _$$_LeagueCopyWith<_$_League> get copyWith =>

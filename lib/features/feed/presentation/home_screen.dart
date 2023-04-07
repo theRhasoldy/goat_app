@@ -16,14 +16,14 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   Future<String?> getData() async {
-    // final response = APIService(id: "33", type: "teams");
-    // ApiWrapper? reply = await response.fetchData();
-    // print("UI: " + reply!.response![0].team!.name.toString());
-    // final ApiService apiService = ApiService();
-    // final TeamModel teamModel = await apiService.getTeamDetails();
-    //
-    // print("//////////////////////////////////////////");
-    // print(teamModel.response[0].team.name);
+   // final response = APIService(id: "33", type: "teams");
+   // ApiWrapper? reply = await response.fetchData();
+  //  print("UI: " + reply!.response![0].team!.name.toString());
+    final ApiService apiService = ApiService();
+    final TeamModel teamModel = await apiService.getTeamDetails();
+
+    print("//////////////////////////////////////////");
+    print(teamModel.response[0].team.name);
   }
 
   @override
