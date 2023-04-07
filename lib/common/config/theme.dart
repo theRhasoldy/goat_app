@@ -37,6 +37,8 @@ const lightColorScheme = ColorScheme(
   onError: onSurfaceTextColor,
 );
 
+TextTheme textTheme = TextTheme(labelMedium: TextStyle(color: Colors.red));
+
 ThemeData mainTheme = ThemeData(
   scaffoldBackgroundColor: lightColorScheme.background,
   textTheme:
