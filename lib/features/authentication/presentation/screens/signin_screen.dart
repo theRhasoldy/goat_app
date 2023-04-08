@@ -4,9 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/logic/auth.dart';
-import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
+import 'package:goat_app/features/feed/presentation/home_screen.dart';
+import 'package:goat_app/models/user.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -16,10 +17,12 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final _auth = AuthService();
+  // final _auth = AuthService();
 
   String _email = "";
   String _password = "";
+
+  FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -61,21 +64,21 @@ class _SignInState extends State<SignIn> {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(vertical: 6),
+                          padding: const EdgeInsets.symmetric(vertical: 6),
                           child: TextFormField(
                             onChanged: (value) => _email = value,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               prefixIcon: Icon(Icons.mail_outline),
                               labelText: 'Email',
                             ),
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: 6),
+                          padding: const EdgeInsets.only(bottom: 6),
                           child: TextFormField(
                             onChanged: (value) => _password = value,
                             obscureText: true,
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               prefixIcon: Icon(Icons.key_outlined),
                               labelText: 'Password',
                             ),
@@ -84,27 +87,35 @@ class _SignInState extends State<SignIn> {
                         ElevatedButton(
                           style: const ButtonStyle(),
                           onPressed: () async {
-                            _auth.signInWithEmail(_email, _password);
+                            AuthService _authService = new AuthService(
+                                auth: _auth,
+                                user: CustomUser(
+                                    email: _email, password: _password));
+                            _authService.signInWithEmail();
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Home()));
                           },
                           child: const Text('SIGN IN'),
                         ),
                         TextButton(
                           onPressed: () {},
-                          child: Text("Forgot Password?"),
+                          child: const Text("Forgot Password?"),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             IconButton(
                               onPressed: () => {},
-                              icon: Icon(FontAwesomeIcons.facebookF, size: 30),
+                              icon: const Icon(FontAwesomeIcons.facebookF,
+                                  size: 30),
                               iconSize: 32,
                               color: lightColorScheme.primary,
                             ),
                             SizedBox(width: getWidth(context) / 12),
                             IconButton(
                               onPressed: () => {},
-                              icon: Icon(FontAwesomeIcons.google, size: 30),
+                              icon:
+                                  const Icon(FontAwesomeIcons.google, size: 30),
                               iconSize: 32,
                               color: lightColorScheme.primary,
                             )
@@ -115,7 +126,7 @@ class _SignInState extends State<SignIn> {
                             onPressed: () => {
                                   // Navigate to Sign in Page
                                   Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => SignUp()))
+                                      builder: (context) => Home()))
                                 },
                             child: const Text("SIGN UP"))
                       ],

@@ -1,14 +1,17 @@
+import 'package:flutter/foundation.dart';
+
+@immutable
 class CustomUser {
-  String fullname;
-  String username;
+  String? fullname;
+  String? username;
   String email;
-  String uid;
+  String password;
   List? teams;
   CustomUser({
-    required this.fullname,
-    required this.username,
+    this.fullname,
+    this.username,
     required this.email,
-    required this.uid,
+    required this.password,
     this.teams,
   });
 }
