@@ -91,11 +91,12 @@ class League with _$League {
     required String? logo,
     required String? flag,
     required int? season,
-    required String? round,
+    required String?round,
   }) = _League;
 
   factory League.fromJson(Map<String, dynamic> json) => _$LeagueFromJson(json);
 }
+
 
 @freezed
 class Score with _$Score {
@@ -108,6 +109,7 @@ class Score with _$Score {
 
   factory Score.fromJson(Map<String, dynamic> json) => _$ScoreFromJson(json);
 }
+
 
 
 

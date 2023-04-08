@@ -12,20 +12,20 @@ class FixtureCard extends StatefulWidget {
 }
 
 class _FixtureCardState extends State<FixtureCard> {
-  Future<String?> getData() async {
-    // final response = APIService(id: "33", type: "teams");
-    // ApiWrapper? reply = await response.fetchData();
-    // print("UI: " + reply!.response![0].team!.name.toString());
-    final ApiService apiService = ApiService();
-    final FixtureModel? fixtureModel = await apiService.getMatches();
-    print("FIXTURE//////////////////////////////////////////");
-
-    print(fixtureModel!.response[0].teams.home.logo);
-  }
+  FixtureModel? _fixtureModel;
 
   @override
-  initState() {
-    getData();
+  void initState() {
+    super.initState();
+    _getFixtureData();
+  }
+
+  Future<void> _getFixtureData() async {
+    final ApiService apiService = ApiService();
+    final FixtureModel? fixtureModel = await apiService.getMatches();
+    setState(() {
+      _fixtureModel = fixtureModel;
+    });
   }
 
   @override
@@ -36,51 +36,55 @@ class _FixtureCardState extends State<FixtureCard> {
         child: Padding(
           padding: EdgeInsets.all(25),
           child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      width: getWidth(context) / 5,
-                      child: Image.network(
-                          "https://media.api-sports.io/football/teams/33.png"),
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
+                  SizedBox(
+                    width: getWidth(context) / 5,
+                    child: Image.network(
+                        _fixtureModel?.response[0].teams.home.logo ?? ''),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Text(
+                      _fixtureModel?.response[0].teams.home.name ?? '',
+                      style: textTheme.labelMedium,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Text(
-                        "Manchester United",
-                        style: textTheme.labelMedium,
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  child: Column(children: [
-                    Text("Stadium"),
+                  )
+                ],
+              ),
+              SizedBox(
+                child: Column(
+                  children: [
+                    Text(_fixtureModel?.response[0].fixture.venue.name ?? ''),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("21:00"),
-                    )
-                  ]),
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      width: getWidth(context) / 5,
-                      child: Image.network(
-                          "https://media.api-sports.io/football/teams/33.png"),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Text(
-                        "Manchester United",
-                        style: textTheme.labelMedium,
-                      ),
+                      child: Text(_fixtureModel?.response[0].fixture.date ?? ''),
                     )
                   ],
                 ),
-              ]),
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    width: getWidth(context) / 5,
+                    child: Image.network(
+                         _fixtureModel?.response[0].teams.away.logo ?? ''),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Text(
+                      _fixtureModel?.response[0].teams.away.name ?? '',
+// Use the null-aware operator (??) to provide a default value
+                      style: textTheme.labelMedium,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
