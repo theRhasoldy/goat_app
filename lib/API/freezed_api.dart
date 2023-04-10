@@ -6,7 +6,7 @@ class ApiService {
   final Dio _dio = Dio();
 
   Future<TeamModel> getTeamDetails({String id = "33"}) async {
-    const apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
+    const apiKey = '0f97123efc021235a9b96cfdcb787eff';
     try {
       final response = await _dio.get(
         'https://v3.football.api-sports.io/teams?id=$id',
@@ -24,7 +24,7 @@ class ApiService {
     String season = "2022",
     String date = "2023-04-09",
   }) async {
-    const apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
+    const apiKey = '0f97123efc021235a9b96cfdcb787eff';
     final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
     try {
       final response = await dio.get(

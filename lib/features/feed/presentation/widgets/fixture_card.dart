@@ -1,35 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:goat_app/API/freezed_api.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/models/fixture.dart';
+import 'package:intl/intl.dart';
 
-class FixtureCard extends StatefulWidget {
-  const FixtureCard({super.key});
+Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
+  try {
+    List<String>? format = fixture?.response[index].fixture.date?.split("T");
+    String date = format?[0] ?? "TBD";
+    String time =
+        format?[1].split("+")[0].split(":").sublist(0, 2).join(":") ?? "TBD";
 
-  @override
-  State<FixtureCard> createState() => _FixtureCardState();
-}
-
-class _FixtureCardState extends State<FixtureCard> {
-  FixtureModel? _fixtureModel;
-
-  @override
-  void initState() {
-    super.initState();
-    _getFixtureData();
-  }
-
-  Future<void> _getFixtureData() async {
-    final ApiService apiService = ApiService();
-    final FixtureModel? fixtureModel = await apiService.getMatches();
-    setState(() {
-      _fixtureModel = fixtureModel;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       child: Card(
@@ -42,14 +23,14 @@ class _FixtureCardState extends State<FixtureCard> {
               Column(
                 children: [
                   SizedBox(
-                    width: getWidth(context) / 5,
+                    width: getWidth(context) / 6.5,
                     child: Image.network(
-                        _fixtureModel?.response[0].teams.home.logo ?? ''),
+                        fixture?.response[index].teams.home.logo ?? ''),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Text(
-                      _fixtureModel?.response[0].teams.home.name ?? '',
+                      fixture?.response[index].teams.home.name ?? '',
                       style: textTheme.labelMedium,
                     ),
                   )
@@ -58,26 +39,27 @@ class _FixtureCardState extends State<FixtureCard> {
               SizedBox(
                 child: Column(
                   children: [
-                    Text(_fixtureModel?.response[0].fixture.venue.name ?? ''),
+                    Text(fixture?.response[index].fixture.venue.name ?? ''),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(_fixtureModel?.response[0].fixture.date ?? ''),
-                    )
+                      child: Text(date),
+                    ),
+                    Text(time),
                   ],
                 ),
               ),
               Column(
                 children: [
                   SizedBox(
-                    width: getWidth(context) / 5,
+                    width: getWidth(context) / 6.5,
                     child: Image.network(
-                         _fixtureModel?.response[0].teams.away.logo ?? ''),
+                        fixture?.response[index].teams.away.logo ?? ''),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Text(
-                      _fixtureModel?.response[0].teams.away.name ?? '',
-// Use the null-aware operator (??) to provide a default value
+                      fixture?.response[index].teams.away.name ?? '',
+                      // Use the null-aware operator (??) to provide a default value
                       style: textTheme.labelMedium,
                     ),
                   ),
@@ -88,5 +70,7 @@ class _FixtureCardState extends State<FixtureCard> {
         ),
       ),
     );
+  } catch (e) {
+    print(e);
   }
 }
