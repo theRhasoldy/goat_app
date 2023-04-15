@@ -73,14 +73,14 @@ ThemeData mainTheme = ThemeData(
   ),
   outlinedButtonTheme: OutlinedButtonThemeData(
       style: ButtonStyle(
-    minimumSize: const MaterialStatePropertyAll(Size.fromHeight(54)),
+    minimumSize: const MaterialStatePropertyAll(Size.fromHeight(40)),
     backgroundColor: const MaterialStatePropertyAll(unselectedColor),
     shape: MaterialStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(100))),
   )),
   elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
-    minimumSize: const MaterialStatePropertyAll(Size(double.infinity, 54)),
+    minimumSize: const MaterialStatePropertyAll(Size(double.infinity, 40)),
     shape: MaterialStatePropertyAll(
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(200))),
   )),
