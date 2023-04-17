@@ -11,6 +11,9 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
     String time =
         format?[1].split("+")[0].split(":").sublist(0, 2).join(":") ?? "TBD";
 
+    int homeScore = fixture?.response[index].goals.home ?? 0;
+    int awayScore = fixture?.response[index].goals.away ?? 0;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       child: Card(
@@ -33,7 +36,8 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
                       fixture?.response[index].teams.home.name ?? '',
                       style: textTheme.labelMedium,
                     ),
-                  )
+                  ),
+                  Text(homeScore.toString()), // Display home score
                 ],
               ),
               SizedBox(
@@ -59,10 +63,10 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
                     padding: const EdgeInsets.only(top: 15),
                     child: Text(
                       fixture?.response[index].teams.away.name ?? '',
-                      // Use the null-aware operator (??) to provide a default value
                       style: textTheme.labelMedium,
                     ),
                   ),
+                  Text(awayScore.toString()), // Display away score
                 ],
               ),
             ],
@@ -74,3 +78,4 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
     print(e);
   }
 }
+

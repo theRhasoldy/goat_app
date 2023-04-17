@@ -19,7 +19,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   FixtureModel? _fixtureModel;
   bool isLoading = true;
-  int _selectedDay = 1;
+
+  int _selectedDay = 0;
+  int _pressedIndex = -1;
+
 
   Future<void> _getFixtureData(String date) async {
     final ApiService apiService = ApiService();
@@ -30,12 +33,21 @@ class _HomeState extends State<Home> {
     });
   }
 
-  void _onButtonPressed(int index, String date) {
+  void _onButtonPressed(int index) {
     setState(() {
       _selectedDay = index;
-      _getFixtureData(date);
+      _pressedIndex = index;
+      isLoading = true;
+      final DateTime now = DateTime.now();
+      final List<String> dates = [];
+      for (int i = 0; i < 7; i++) {
+        final String date = DateFormat('yyyy-MM-dd').format(now.add(Duration(days: i - now.weekday)));
+        dates.add(date);
+      }
+      _getFixtureData(dates[index]);
     });
   }
+
 
   @override
   void initState() {
@@ -67,83 +79,49 @@ class _HomeState extends State<Home> {
           )
         ]),
         body: Column(
+
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(getWidth(context) / 32),
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                            shadowColor:
-                                MaterialStatePropertyAll(Colors.transparent),
-                            backgroundColor: MaterialStatePropertyAll(
-                                _selectedDay == 0
-                                    ? Colors.green
-                                    : Colors.transparent)),
-                        onPressed: () {
-                          String _date = DateTime.now()
-                              .subtract(Duration(days: 1))
-                              .toString()
-                              .split(" ")[0];
-                          print(_date);
-                          _onButtonPressed(0, _date);
-                        },
+                for (int i = 0; i < 7; i++)
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(getWidth(context) / 400),
+                      child: _pressedIndex == i
+                          ? ElevatedButton(
+                        onPressed: () => _onButtonPressed(i),
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          primary: Colors.green,
+                        ),
                         child: Text(
-                          "YEST",
-                          style: TextStyle(color: lightColorScheme.primary),
-                        )),
-                  ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(getWidth(context) / 32),
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                            shadowColor:
-                                MaterialStatePropertyAll(Colors.transparent),
-                            backgroundColor: MaterialStatePropertyAll(
-                                _selectedDay == 1
-                                    ? Colors.green
-                                    : Colors.transparent)),
-                        onPressed: () {
-                          String _date =
-                              DateTime.now().toString().split(" ")[0];
-                          print(_date);
-                          _onButtonPressed(1, _date);
-                        },
+                          DateFormat('EEE').format(DateTime.now().add(Duration(days: i - DateTime.now().weekday))),
+                          style: TextStyle(
+                            color: Color(0xFF6750A4),
+                            fontSize: 15,
+                          ),
+                        ),
+                      )
+                          : TextButton(
+                        onPressed: () => _onButtonPressed(i),
+                        style: TextButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
                         child: Text(
-                          "TOD",
-                          style: TextStyle(color: lightColorScheme.primary),
-                        )),
+                          DateFormat('EEE').format(DateTime.now().add(Duration(days: i - DateTime.now().weekday))),
+                          style: TextStyle(
+                            color: _selectedDay == i ? Colors.green : lightColorScheme.primary,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(getWidth(context) / 32),
-                    child: ElevatedButton(
-                        style: ButtonStyle(
-                            shadowColor:
-                                MaterialStatePropertyAll(Colors.transparent),
-                            backgroundColor: MaterialStatePropertyAll(
-                                _selectedDay == 2
-                                    ? Colors.green
-                                    : Colors.transparent)),
-                        onPressed: () {
-                          String _date = DateTime.now()
-                              .add(Duration(days: 1))
-                              .toString()
-                              .split(" ")[0];
-                          print(_date);
-                          _onButtonPressed(2, _date);
-                        },
-                        child: Text(
-                          "TOM",
-                          style: TextStyle(color: lightColorScheme.primary),
-                        )),
-                  ),
-                ),
               ],
             ),
             Expanded(
@@ -168,4 +146,6 @@ class _HomeState extends State<Home> {
       ),
     );
   }
+
 }
+
