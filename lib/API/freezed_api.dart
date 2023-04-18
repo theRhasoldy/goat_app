@@ -21,7 +21,7 @@ class ApiService {
 
   Future<FixtureModel>? getMatches({
     // Default values
-    String league = "39",
+    String league = "2",
     String season = "2022",
     String date = "2023-04-09",
   }) async {

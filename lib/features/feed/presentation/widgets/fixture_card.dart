@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
+import 'package:goat_app/features/feed/presentation/screens/statistics.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:intl/intl.dart';
 
@@ -16,7 +17,11 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      child: Card(
+      child:GestureDetector(onTap:() => Navigator.of(context).push(
+          MaterialPageRoute(
+              builder: (context) =>
+              const Statistics())) ,child:
+      Card(
         child: Padding(
           padding: EdgeInsets.all(25),
           child: Row(
@@ -72,6 +77,7 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
             ],
           ),
         ),
+      ),
       ),
     );
   } catch (e) {
