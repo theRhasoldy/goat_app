@@ -1,8 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 class Statistics extends StatelessWidget {
-  int? id;
-  Statistics({Key? key,this.id}) : super(key: key);
+  final String homeTeamName;
+  final String awayTeamName;
+  final String homeTeamLogo;
+  final String awayTeamLogo;
+  final String venueName;
+  final String date;
+  final String time;
+  final int homeScore;
+  final int awayScore;
+
+  Statistics({
+    required this.homeTeamName,
+    required this.awayTeamName,
+    required this.homeTeamLogo,
+    required this.awayTeamLogo,
+    required this.venueName,
+    required this.date,
+    required this.time,
+    required this.homeScore,
+    required this.awayScore,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +41,21 @@ class Statistics extends StatelessWidget {
             ),
             title: const Text('Tabs Demo'),
           ),
-          body: const TabBarView(
+          body: TabBarView(
             children: [
-              Icon(Icons.directions_car),
-              Icon(Icons.directions_transit),
-              Icon(Icons.directions_bike),
+
+              Column(
+                children: [
+                  Text('Home Team: $homeTeamName'),
+                  Text('Away Team: $awayTeamName'),
+                  Text('Venue: $venueName'),
+                  Text('Date: $date'),
+                  Text('Time: $time'),
+                  Text('Home Score: $homeScore'),
+                  Text('Away Score: $awayScore'),
+                ],
+              ),
+              // Your H2H tab content
             ],
           ),
         ),
@@ -34,3 +63,4 @@ class Statistics extends StatelessWidget {
     );
   }
 }
+

@@ -20,7 +20,17 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
       child:GestureDetector(onTap:() => Navigator.of(context).push(
           MaterialPageRoute(
               builder: (context) =>
-              const Statistics())) ,child:
+               Statistics(
+                 homeTeamName: fixture?.response[index].teams.home.name ?? '',
+                 awayTeamName: fixture?.response[index].teams.away.name ?? '',
+                 homeTeamLogo: fixture?.response[index].teams.home.logo ?? '',
+                 awayTeamLogo: fixture?.response[index].teams.away.logo ?? '',
+                 venueName: fixture?.response[index].fixture.venue.name ?? '',
+                 date: date,
+                 time: time,
+                 homeScore: homeScore,
+                 awayScore: awayScore,
+               ))) ,child:
       Card(
         child: Padding(
           padding: EdgeInsets.all(25),
