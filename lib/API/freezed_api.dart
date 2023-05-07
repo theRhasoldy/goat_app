@@ -24,7 +24,7 @@ class ApiService {
     // Default values
     String league = "39",
     String season = "2022",
-    String date = "2023-04-09",
+    String date = "2023-04-21",
   }) async {
     const apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
     final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));

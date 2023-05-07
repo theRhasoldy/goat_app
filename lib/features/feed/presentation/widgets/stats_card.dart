@@ -9,25 +9,47 @@ class StatsRow extends StatefulWidget {
 class _StatsRowState extends State<StatsRow> {
   @override
   Widget build(BuildContext context) {
-    return  Row(
-      children: [
-        Row(
-          children: [
-            Text('5'),
-            Text('Shots'),
-            Text('10'),
-          ],
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.all(25),
+        child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('5'),
+                  Text('Shots'),
+                  Text('10'),
+                ],
 
-        ),
-        LinearProgressIndicator(
-          value: 0.5,
-          color: Colors.pink,
-        ),
-        LinearProgressIndicator(
-        value: 0.5,
-        color: Colors.pink,
-        ),
-      ],
+              ),
+              SizedBox(
+                height: 16,
+              ),
+
+              Row(
+
+                  children: [
+                    Expanded(child:
+                    LinearProgressIndicator(
+                      value: 0.7,
+                      color: Colors.grey,
+                      backgroundColor: Colors.green,
+                    ),
+                    ),
+                    Expanded(child:
+                    LinearProgressIndicator(
+                      value: 0.8,
+                      color: Colors.blue,
+                      backgroundColor: Colors.grey,
+                    ),
+                    )
+                  ],
+                ),
+
+            ],
+          ),
+      ),
     );
   }
 }
