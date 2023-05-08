@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:goat_app/API/freezed_api.dart';
+import 'package:goat_app/models/statistics.dart';
 class StatsRow extends StatefulWidget {
   const StatsRow({Key? key}) : super(key: key);
 
@@ -8,6 +10,7 @@ class StatsRow extends StatefulWidget {
 
 class _StatsRowState extends State<StatsRow> {
   @override
+
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
@@ -17,7 +20,7 @@ class _StatsRowState extends State<StatsRow> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('5'),
+                 Text('5'),
                   Text('Shots'),
                   Text('10'),
                 ],
@@ -32,7 +35,7 @@ class _StatsRowState extends State<StatsRow> {
                   children: [
                     Expanded(child:
                     LinearProgressIndicator(
-                      value: 0.7,
+                      value: 0.65,
                       color: Colors.grey,
                       backgroundColor: Colors.green,
                     ),
