@@ -21,9 +21,10 @@ class FixtureDetailsTabs extends StatefulWidget {
 class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   StatisticsModel? _statisticsModel;
 
-  Future<void> _getStatisticsData(int id) async {
+  Future<void> _getStatisticsData(String fixtureId) async {
     final ApiService apiService = ApiService();
-    final StatisticsModel? statisticsModel = await apiService.getStatistics();
+    final StatisticsModel? statisticsModel =
+        await apiService.getStatistics(fixture: fixtureId);
     print(statisticsModel);
     setState(() {
       _statisticsModel = statisticsModel;
@@ -34,7 +35,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   void initState() {
     super.initState();
     int _id = widget.fixture?.response[widget.index].fixture.id ?? 0;
-    _getStatisticsData(_id);
+    _getStatisticsData(_id.toString());
   }
 
   Widget build(BuildContext context) {
@@ -61,8 +62,13 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
               // Lineup tab
               Icon(Icons.directions_transit),
               // Stats tab
-              FixtureCard(widget.fixture, context, widget.index) ??
-                  Text("Null"),
+              Column(
+                children: [
+                  FixtureCard(widget.fixture, context, widget.index) ??
+                      Text("Null"),
+                  Text(_statisticsModel?.response[0].toString() ?? "Nykk"),
+                ],
+              ),
               // H2H tab
               Icon(Icons.directions_bike),
             ],

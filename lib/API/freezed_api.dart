@@ -5,7 +5,7 @@ import '../models/freezed_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();
-  final apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
+  final apiKey = '0f97123efc021235a9b96cfdcb787eff';
 
   Future<TeamModel> getTeamDetails({String id = "33"}) async {
     try {
@@ -45,16 +45,16 @@ class ApiService {
 
   Future<StatisticsModel> getStatistics({
     // Default values
-    int? fixture = 215662,
+    String? fixture = "215662",
   }) async {
     final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
     try {
       final response = await dio.get(
         'https://v3.football.api-sports.io/fixtures/statistics',
-        queryParameters: {"fixture": "215662"},
+        queryParameters: {"fixture": fixture},
       );
       final json = response.data as Map<String, dynamic>;
-      print(response);
+      print(json);
       return StatisticsModel.fromJson(json);
     } catch (error) {
       throw error;

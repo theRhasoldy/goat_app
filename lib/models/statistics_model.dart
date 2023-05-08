@@ -12,7 +12,7 @@ class StatisticsModel with _$StatisticsModel {
     required List<dynamic> errors,
     required int? results,
     required Paging paging,
-    required List<StatisticsModel> response,
+    required List<StatisticsResponse> response,
   }) = _StatisticsModel;
 
   factory StatisticsModel.fromJson(Map<String, dynamic> json) =>
@@ -22,7 +22,8 @@ class StatisticsModel with _$StatisticsModel {
 @freezed
 class StatisticsResponse with _$StatisticsResponse {
   const factory StatisticsResponse({
-    required List<Statistics>? sides,
+    required Team? team,
+    required List<StatisticType?>? statistics,
   }) = _StatisticsResponse;
 
   factory StatisticsResponse.fromJson(Map<String, dynamic> json) =>
@@ -30,21 +31,10 @@ class StatisticsResponse with _$StatisticsResponse {
 }
 
 @freezed
-class Statistics with _$Statistics {
-  const factory Statistics({
-    required Team? team,
-    required List<StatisticType>? stats,
-  }) = _Statistics;
-
-  factory Statistics.fromJson(Map<String, dynamic> json) =>
-      _$StatisticsFromJson(json);
-}
-
-@freezed
 class StatisticType with _$StatisticType {
   const factory StatisticType({
     required String? type,
-    required int? value,
+    required String? value,
   }) = _StatisticType;
 
   factory StatisticType.fromJson(Map<String, dynamic> json) =>

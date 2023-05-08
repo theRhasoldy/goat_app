@@ -25,7 +25,7 @@ mixin _$StatisticsModel {
   List<dynamic> get errors => throw _privateConstructorUsedError;
   int? get results => throw _privateConstructorUsedError;
   Paging get paging => throw _privateConstructorUsedError;
-  List<StatisticsModel> get response => throw _privateConstructorUsedError;
+  List<StatisticsResponse> get response => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +45,7 @@ abstract class $StatisticsModelCopyWith<$Res> {
       List<dynamic> errors,
       int? results,
       Paging paging,
-      List<StatisticsModel> response});
+      List<StatisticsResponse> response});
 
   $PagingCopyWith<$Res> get paging;
 }
@@ -94,7 +94,7 @@ class _$StatisticsModelCopyWithImpl<$Res, $Val extends StatisticsModel>
       response: null == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as List<StatisticsModel>,
+              as List<StatisticsResponse>,
     ) as $Val);
   }
 
@@ -121,7 +121,7 @@ abstract class _$$_StatisticsModelCopyWith<$Res>
       List<dynamic> errors,
       int? results,
       Paging paging,
-      List<StatisticsModel> response});
+      List<StatisticsResponse> response});
 
   @override
   $PagingCopyWith<$Res> get paging;
@@ -169,7 +169,7 @@ class __$$_StatisticsModelCopyWithImpl<$Res>
       response: null == response
           ? _value._response
           : response // ignore: cast_nullable_to_non_nullable
-              as List<StatisticsModel>,
+              as List<StatisticsResponse>,
     ));
   }
 }
@@ -183,7 +183,7 @@ class _$_StatisticsModel implements _StatisticsModel {
       required final List<dynamic> errors,
       required this.results,
       required this.paging,
-      required final List<StatisticsModel> response})
+      required final List<StatisticsResponse> response})
       : _parameters = parameters,
         _errors = errors,
         _response = response;
@@ -213,9 +213,9 @@ class _$_StatisticsModel implements _StatisticsModel {
   final int? results;
   @override
   final Paging paging;
-  final List<StatisticsModel> _response;
+  final List<StatisticsResponse> _response;
   @override
-  List<StatisticsModel> get response {
+  List<StatisticsResponse> get response {
     if (_response is EqualUnmodifiableListView) return _response;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_response);
@@ -272,7 +272,7 @@ abstract class _StatisticsModel implements StatisticsModel {
       required final List<dynamic> errors,
       required final int? results,
       required final Paging paging,
-      required final List<StatisticsModel> response}) = _$_StatisticsModel;
+      required final List<StatisticsResponse> response}) = _$_StatisticsModel;
 
   factory _StatisticsModel.fromJson(Map<String, dynamic> json) =
       _$_StatisticsModel.fromJson;
@@ -288,7 +288,7 @@ abstract class _StatisticsModel implements StatisticsModel {
   @override
   Paging get paging;
   @override
-  List<StatisticsModel> get response;
+  List<StatisticsResponse> get response;
   @override
   @JsonKey(ignore: true)
   _$$_StatisticsModelCopyWith<_$_StatisticsModel> get copyWith =>
@@ -301,7 +301,8 @@ StatisticsResponse _$StatisticsResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StatisticsResponse {
-  List<Statistics>? get sides => throw _privateConstructorUsedError;
+  Team? get team => throw _privateConstructorUsedError;
+  List<StatisticType?>? get statistics => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -315,7 +316,9 @@ abstract class $StatisticsResponseCopyWith<$Res> {
           StatisticsResponse value, $Res Function(StatisticsResponse) then) =
       _$StatisticsResponseCopyWithImpl<$Res, StatisticsResponse>;
   @useResult
-  $Res call({List<Statistics>? sides});
+  $Res call({Team? team, List<StatisticType?>? statistics});
+
+  $TeamCopyWith<$Res>? get team;
 }
 
 /// @nodoc
@@ -331,168 +334,18 @@ class _$StatisticsResponseCopyWithImpl<$Res, $Val extends StatisticsResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sides = freezed,
-  }) {
-    return _then(_value.copyWith(
-      sides: freezed == sides
-          ? _value.sides
-          : sides // ignore: cast_nullable_to_non_nullable
-              as List<Statistics>?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_StatisticsResponseCopyWith<$Res>
-    implements $StatisticsResponseCopyWith<$Res> {
-  factory _$$_StatisticsResponseCopyWith(_$_StatisticsResponse value,
-          $Res Function(_$_StatisticsResponse) then) =
-      __$$_StatisticsResponseCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({List<Statistics>? sides});
-}
-
-/// @nodoc
-class __$$_StatisticsResponseCopyWithImpl<$Res>
-    extends _$StatisticsResponseCopyWithImpl<$Res, _$_StatisticsResponse>
-    implements _$$_StatisticsResponseCopyWith<$Res> {
-  __$$_StatisticsResponseCopyWithImpl(
-      _$_StatisticsResponse _value, $Res Function(_$_StatisticsResponse) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? sides = freezed,
-  }) {
-    return _then(_$_StatisticsResponse(
-      sides: freezed == sides
-          ? _value._sides
-          : sides // ignore: cast_nullable_to_non_nullable
-              as List<Statistics>?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_StatisticsResponse implements _StatisticsResponse {
-  const _$_StatisticsResponse({required final List<Statistics>? sides})
-      : _sides = sides;
-
-  factory _$_StatisticsResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_StatisticsResponseFromJson(json);
-
-  final List<Statistics>? _sides;
-  @override
-  List<Statistics>? get sides {
-    final value = _sides;
-    if (value == null) return null;
-    if (_sides is EqualUnmodifiableListView) return _sides;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  String toString() {
-    return 'StatisticsResponse(sides: $sides)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_StatisticsResponse &&
-            const DeepCollectionEquality().equals(other._sides, _sides));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_sides));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_StatisticsResponseCopyWith<_$_StatisticsResponse> get copyWith =>
-      __$$_StatisticsResponseCopyWithImpl<_$_StatisticsResponse>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_StatisticsResponseToJson(
-      this,
-    );
-  }
-}
-
-abstract class _StatisticsResponse implements StatisticsResponse {
-  const factory _StatisticsResponse({required final List<Statistics>? sides}) =
-      _$_StatisticsResponse;
-
-  factory _StatisticsResponse.fromJson(Map<String, dynamic> json) =
-      _$_StatisticsResponse.fromJson;
-
-  @override
-  List<Statistics>? get sides;
-  @override
-  @JsonKey(ignore: true)
-  _$$_StatisticsResponseCopyWith<_$_StatisticsResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Statistics _$StatisticsFromJson(Map<String, dynamic> json) {
-  return _Statistics.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Statistics {
-  Team? get team => throw _privateConstructorUsedError;
-  List<StatisticType>? get stats => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $StatisticsCopyWith<Statistics> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $StatisticsCopyWith<$Res> {
-  factory $StatisticsCopyWith(
-          Statistics value, $Res Function(Statistics) then) =
-      _$StatisticsCopyWithImpl<$Res, Statistics>;
-  @useResult
-  $Res call({Team? team, List<StatisticType>? stats});
-
-  $TeamCopyWith<$Res>? get team;
-}
-
-/// @nodoc
-class _$StatisticsCopyWithImpl<$Res, $Val extends Statistics>
-    implements $StatisticsCopyWith<$Res> {
-  _$StatisticsCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
     Object? team = freezed,
-    Object? stats = freezed,
+    Object? statistics = freezed,
   }) {
     return _then(_value.copyWith(
       team: freezed == team
           ? _value.team
           : team // ignore: cast_nullable_to_non_nullable
               as Team?,
-      stats: freezed == stats
-          ? _value.stats
-          : stats // ignore: cast_nullable_to_non_nullable
-              as List<StatisticType>?,
+      statistics: freezed == statistics
+          ? _value.statistics
+          : statistics // ignore: cast_nullable_to_non_nullable
+              as List<StatisticType?>?,
     ) as $Val);
   }
 
@@ -510,116 +363,118 @@ class _$StatisticsCopyWithImpl<$Res, $Val extends Statistics>
 }
 
 /// @nodoc
-abstract class _$$_StatisticsCopyWith<$Res>
-    implements $StatisticsCopyWith<$Res> {
-  factory _$$_StatisticsCopyWith(
-          _$_Statistics value, $Res Function(_$_Statistics) then) =
-      __$$_StatisticsCopyWithImpl<$Res>;
+abstract class _$$_StatisticsResponseCopyWith<$Res>
+    implements $StatisticsResponseCopyWith<$Res> {
+  factory _$$_StatisticsResponseCopyWith(_$_StatisticsResponse value,
+          $Res Function(_$_StatisticsResponse) then) =
+      __$$_StatisticsResponseCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Team? team, List<StatisticType>? stats});
+  $Res call({Team? team, List<StatisticType?>? statistics});
 
   @override
   $TeamCopyWith<$Res>? get team;
 }
 
 /// @nodoc
-class __$$_StatisticsCopyWithImpl<$Res>
-    extends _$StatisticsCopyWithImpl<$Res, _$_Statistics>
-    implements _$$_StatisticsCopyWith<$Res> {
-  __$$_StatisticsCopyWithImpl(
-      _$_Statistics _value, $Res Function(_$_Statistics) _then)
+class __$$_StatisticsResponseCopyWithImpl<$Res>
+    extends _$StatisticsResponseCopyWithImpl<$Res, _$_StatisticsResponse>
+    implements _$$_StatisticsResponseCopyWith<$Res> {
+  __$$_StatisticsResponseCopyWithImpl(
+      _$_StatisticsResponse _value, $Res Function(_$_StatisticsResponse) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? team = freezed,
-    Object? stats = freezed,
+    Object? statistics = freezed,
   }) {
-    return _then(_$_Statistics(
+    return _then(_$_StatisticsResponse(
       team: freezed == team
           ? _value.team
           : team // ignore: cast_nullable_to_non_nullable
               as Team?,
-      stats: freezed == stats
-          ? _value._stats
-          : stats // ignore: cast_nullable_to_non_nullable
-              as List<StatisticType>?,
+      statistics: freezed == statistics
+          ? _value._statistics
+          : statistics // ignore: cast_nullable_to_non_nullable
+              as List<StatisticType?>?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$_Statistics implements _Statistics {
-  const _$_Statistics(
-      {required this.team, required final List<StatisticType>? stats})
-      : _stats = stats;
+class _$_StatisticsResponse implements _StatisticsResponse {
+  const _$_StatisticsResponse(
+      {required this.team, required final List<StatisticType?>? statistics})
+      : _statistics = statistics;
 
-  factory _$_Statistics.fromJson(Map<String, dynamic> json) =>
-      _$$_StatisticsFromJson(json);
+  factory _$_StatisticsResponse.fromJson(Map<String, dynamic> json) =>
+      _$$_StatisticsResponseFromJson(json);
 
   @override
   final Team? team;
-  final List<StatisticType>? _stats;
+  final List<StatisticType?>? _statistics;
   @override
-  List<StatisticType>? get stats {
-    final value = _stats;
+  List<StatisticType?>? get statistics {
+    final value = _statistics;
     if (value == null) return null;
-    if (_stats is EqualUnmodifiableListView) return _stats;
+    if (_statistics is EqualUnmodifiableListView) return _statistics;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(value);
   }
 
   @override
   String toString() {
-    return 'Statistics(team: $team, stats: $stats)';
+    return 'StatisticsResponse(team: $team, statistics: $statistics)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Statistics &&
+            other is _$_StatisticsResponse &&
             (identical(other.team, team) || other.team == team) &&
-            const DeepCollectionEquality().equals(other._stats, _stats));
+            const DeepCollectionEquality()
+                .equals(other._statistics, _statistics));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, team, const DeepCollectionEquality().hash(_stats));
+      runtimeType, team, const DeepCollectionEquality().hash(_statistics));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_StatisticsCopyWith<_$_Statistics> get copyWith =>
-      __$$_StatisticsCopyWithImpl<_$_Statistics>(this, _$identity);
+  _$$_StatisticsResponseCopyWith<_$_StatisticsResponse> get copyWith =>
+      __$$_StatisticsResponseCopyWithImpl<_$_StatisticsResponse>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StatisticsToJson(
+    return _$$_StatisticsResponseToJson(
       this,
     );
   }
 }
 
-abstract class _Statistics implements Statistics {
-  const factory _Statistics(
+abstract class _StatisticsResponse implements StatisticsResponse {
+  const factory _StatisticsResponse(
       {required final Team? team,
-      required final List<StatisticType>? stats}) = _$_Statistics;
+      required final List<StatisticType?>? statistics}) = _$_StatisticsResponse;
 
-  factory _Statistics.fromJson(Map<String, dynamic> json) =
-      _$_Statistics.fromJson;
+  factory _StatisticsResponse.fromJson(Map<String, dynamic> json) =
+      _$_StatisticsResponse.fromJson;
 
   @override
   Team? get team;
   @override
-  List<StatisticType>? get stats;
+  List<StatisticType?>? get statistics;
   @override
   @JsonKey(ignore: true)
-  _$$_StatisticsCopyWith<_$_Statistics> get copyWith =>
+  _$$_StatisticsResponseCopyWith<_$_StatisticsResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -629,8 +484,8 @@ StatisticType _$StatisticTypeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StatisticType {
-  String? get type => throw _privateConstructorUsedError;
-  int? get value => throw _privateConstructorUsedError;
+  dynamic get type => throw _privateConstructorUsedError;
+  dynamic get value => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -644,7 +499,7 @@ abstract class $StatisticTypeCopyWith<$Res> {
           StatisticType value, $Res Function(StatisticType) then) =
       _$StatisticTypeCopyWithImpl<$Res, StatisticType>;
   @useResult
-  $Res call({String? type, int? value});
+  $Res call({dynamic type, dynamic value});
 }
 
 /// @nodoc
@@ -667,11 +522,11 @@ class _$StatisticTypeCopyWithImpl<$Res, $Val extends StatisticType>
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
     ) as $Val);
   }
 }
@@ -684,7 +539,7 @@ abstract class _$$_StatisticTypeCopyWith<$Res>
       __$$_StatisticTypeCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? type, int? value});
+  $Res call({dynamic type, dynamic value});
 }
 
 /// @nodoc
@@ -705,11 +560,11 @@ class __$$_StatisticTypeCopyWithImpl<$Res>
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic,
     ));
   }
 }
@@ -723,9 +578,9 @@ class _$_StatisticType implements _StatisticType {
       _$$_StatisticTypeFromJson(json);
 
   @override
-  final String? type;
+  final dynamic type;
   @override
-  final int? value;
+  final dynamic value;
 
   @override
   String toString() {
@@ -737,13 +592,16 @@ class _$_StatisticType implements _StatisticType {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StatisticType &&
-            (identical(other.type, type) || other.type == type) &&
-            (identical(other.value, value) || other.value == value));
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.value, value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, type, value);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(value));
 
   @JsonKey(ignore: true)
   @override
@@ -761,16 +619,16 @@ class _$_StatisticType implements _StatisticType {
 
 abstract class _StatisticType implements StatisticType {
   const factory _StatisticType(
-      {required final String? type,
-      required final int? value}) = _$_StatisticType;
+      {required final dynamic type,
+      required final dynamic value}) = _$_StatisticType;
 
   factory _StatisticType.fromJson(Map<String, dynamic> json) =
       _$_StatisticType.fromJson;
 
   @override
-  String? get type;
+  dynamic get type;
   @override
-  int? get value;
+  dynamic get value;
   @override
   @JsonKey(ignore: true)
   _$$_StatisticTypeCopyWith<_$_StatisticType> get copyWith =>
