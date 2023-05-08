@@ -6,7 +6,7 @@ import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
-import 'package:goat_app/features/feed/presentation/home_screen.dart';
+import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/models/user.dart';
 
 class SignIn extends StatefulWidget {

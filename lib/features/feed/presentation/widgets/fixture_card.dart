@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
-import 'package:goat_app/features/feed/presentation/screens/statistics.dart';
+import 'package:goat_app/features/feed/presentation/screens/statistics_screen.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:intl/intl.dart';
 
@@ -17,81 +17,72 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      child:GestureDetector(onTap:() => Navigator.of(context).push(
-          MaterialPageRoute(
-              builder: (context) =>
-               Statistics(
-                 homeTeamName: fixture?.response[index].teams.home.name ?? '',
-                 awayTeamName: fixture?.response[index].teams.away.name ?? '',
-                 homeTeamLogo: fixture?.response[index].teams.home.logo ?? '',
-                 awayTeamLogo: fixture?.response[index].teams.away.logo ?? '',
-                 venueName: fixture?.response[index].fixture.venue.name ?? '',
-                 date: date,
-                 time: time,
-                 homeScore: homeScore,
-                 awayScore: awayScore,
-               ))) ,child:
-      Card(
-        child: Padding(
-          padding: EdgeInsets.all(25),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: [
-                  SizedBox(
-                    width: getWidth(context) / 6.5,
-                    child: Image.network(
-                        fixture?.response[index].teams.home.logo ?? ''),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Text(
-                      fixture?.response[index].teams.home.name ?? '',
-                      style: textTheme.labelMedium,
-                    ),
-                  ),
-                  Text(homeScore.toString()), // Display home score
-                ],
-              ),
-              SizedBox(
-                child: Column(
+      child: GestureDetector(
+        onTap: () => Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => Statistics(
+                  fixture: fixture,
+                  index: index,
+                ))),
+        child: Card(
+          child: Padding(
+            padding: EdgeInsets.all(25),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
                   children: [
-                    Text(fixture?.response[index].fixture.venue.name ?? ''),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(date),
+                    SizedBox(
+                      width: getWidth(context) / 6.5,
+                      child: Image.network(
+                          fixture?.response[index].teams.home.logo ?? ''),
                     ),
-                    Text(time),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Text(
+                        fixture?.response[index].teams.home.name ?? '',
+                        style: textTheme.labelMedium,
+                      ),
+                    ),
+                    Text(homeScore.toString()), // Display home score
                   ],
                 ),
-              ),
-              Column(
-                children: [
-                  SizedBox(
-                    width: getWidth(context) / 6.5,
-                    child: Image.network(
-                        fixture?.response[index].teams.away.logo ?? ''),
+                SizedBox(
+                  child: Column(
+                    children: [
+                      Text(fixture?.response[index].fixture.venue.name ?? ''),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(date),
+                      ),
+                      Text(time),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 15),
-                    child: Text(
-                      fixture?.response[index].teams.away.name ?? '',
-                      style: textTheme.labelMedium,
+                ),
+                Column(
+                  children: [
+                    SizedBox(
+                      width: getWidth(context) / 6.5,
+                      child: Image.network(
+                          fixture?.response[index].teams.away.logo ?? ''),
                     ),
-                  ),
-                  Text(awayScore.toString()), // Display away score
-                ],
-              ),
-            ],
+                    Padding(
+                      padding: const EdgeInsets.only(top: 15),
+                      child: Text(
+                        fixture?.response[index].teams.away.name ?? '',
+                        style: textTheme.labelMedium,
+                      ),
+                    ),
+                    Text(awayScore.toString()), // Display away score
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
-      ),
       ),
     );
   } catch (e) {
     print(e);
   }
 }
-

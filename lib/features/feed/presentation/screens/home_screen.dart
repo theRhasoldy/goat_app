@@ -23,7 +23,6 @@ class _HomeState extends State<Home> {
   int _selectedDay = 0;
   int _pressedIndex = -1;
 
-
   Future<void> _getFixtureData(String date) async {
     final ApiService apiService = ApiService();
     final FixtureModel? fixtureModel = await apiService.getMatches(date: date);
@@ -41,13 +40,13 @@ class _HomeState extends State<Home> {
       final DateTime now = DateTime.now();
       final List<String> dates = [];
       for (int i = 0; i < 7; i++) {
-        final String date = DateFormat('yyyy-MM-dd').format(now.add(Duration(days: i - now.weekday)));
+        final String date = DateFormat('yyyy-MM-dd')
+            .format(now.add(Duration(days: i - now.weekday)));
         dates.add(date);
       }
       _getFixtureData(dates[index]);
     });
   }
-
 
   @override
   void initState() {
@@ -79,7 +78,6 @@ class _HomeState extends State<Home> {
           )
         ]),
         body: Column(
-
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -90,36 +88,42 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.all(getWidth(context) / 400),
                       child: _pressedIndex == i
                           ? ElevatedButton(
-                        onPressed: () => _onButtonPressed(i),
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                          primary: Colors.green,
-                        ),
-                        child: Text(
-                          DateFormat('EEE').format(DateTime.now().add(Duration(days: i - DateTime.now().weekday))),
-                          style: TextStyle(
-                            color: Color(0xFF6750A4),
-                            fontSize: 15,
-                          ),
-                        ),
-                      )
+                              onPressed: () => _onButtonPressed(i),
+                              style: ElevatedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                                primary: Colors.green,
+                              ),
+                              child: Text(
+                                DateFormat('EEE').format(DateTime.now().add(
+                                    Duration(
+                                        days: i - DateTime.now().weekday))),
+                                style: TextStyle(
+                                  color: Color(0xFF6750A4),
+                                  fontSize: 15,
+                                ),
+                              ),
+                            )
                           : TextButton(
-                        onPressed: () => _onButtonPressed(i),
-                        style: TextButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        child: Text(
-                          DateFormat('EEE').format(DateTime.now().add(Duration(days: i - DateTime.now().weekday))),
-                          style: TextStyle(
-                            color: _selectedDay == i ? Colors.green : lightColorScheme.primary,
-                            fontSize: 16,
-                          ),
-                        ),
-                      ),
+                              onPressed: () => _onButtonPressed(i),
+                              style: TextButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              child: Text(
+                                DateFormat('EEE').format(DateTime.now().add(
+                                    Duration(
+                                        days: i - DateTime.now().weekday))),
+                                style: TextStyle(
+                                  color: _selectedDay == i
+                                      ? Colors.green
+                                      : lightColorScheme.primary,
+                                  fontSize: 16,
+                                ),
+                              ),
+                            ),
                     ),
                   ),
               ],
@@ -146,6 +150,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
 }
-

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/firebase_options.dart';
-import 'package:goat_app/features/feed/presentation/home_screen.dart';
+import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
