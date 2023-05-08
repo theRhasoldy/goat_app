@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:goat_app/models/fixture.dart';
-import 'package:goat_app/models/statistics.dart';
+import 'package:goat_app/models/statistics_model.dart';
 import '../models/freezed_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();
+  final apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
 
   Future<TeamModel> getTeamDetails({String id = "33"}) async {
-    const apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
     try {
       final response = await _dio.get(
         'https://v3.football.api-sports.io/teams?id=$id',
@@ -25,9 +25,7 @@ class ApiService {
     String league = "39",
     String season = "2022",
     String date = "2023-04-21",
-
   }) async {
-    const apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
     final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
     try {
       final response = await dio.get(
@@ -36,7 +34,6 @@ class ApiService {
           'league': league,
           'season': season,
           'date': date,
-          
         },
       );
       final json = response.data as Map<String, dynamic>;
@@ -46,5 +43,21 @@ class ApiService {
     }
   }
 
-
+  Future<StatisticsModel> getStatistics({
+    // Default values
+    int? fixture = 215662,
+  }) async {
+    final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
+    try {
+      final response = await dio.get(
+        'https://v3.football.api-sports.io/fixtures/statistics',
+        queryParameters: {"fixture": "215662"},
+      );
+      final json = response.data as Map<String, dynamic>;
+      print(response);
+      return StatisticsModel.fromJson(json);
+    } catch (error) {
+      throw error;
+    }
+  }
 }

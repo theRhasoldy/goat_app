@@ -1,16 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:goat_app/API/freezed_api.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
 import 'package:goat_app/models/fixture.dart';
+import 'package:goat_app/models/statistics_model.dart';
 
-class Statistics extends StatelessWidget {
+class FixtureDetailsTabs extends StatefulWidget {
   final FixtureModel? fixture;
   final int index;
 
-  Statistics({
+  FixtureDetailsTabs({
     required this.fixture,
     required this.index,
   });
+
+  @override
+  State<FixtureDetailsTabs> createState() => _FixtureDetailsTabsState();
+}
+
+class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
+  StatisticsModel? _statisticsModel;
+
+  Future<void> _getStatisticsData(int id) async {
+    final ApiService apiService = ApiService();
+    final StatisticsModel? statisticsModel = await apiService.getStatistics();
+    print(statisticsModel);
+    setState(() {
+      _statisticsModel = statisticsModel;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    int _id = widget.fixture?.response[widget.index].fixture.id ?? 0;
+    _getStatisticsData(_id);
+  }
 
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,7 +61,8 @@ class Statistics extends StatelessWidget {
               // Lineup tab
               Icon(Icons.directions_transit),
               // Stats tab
-              FixtureCard(fixture, context, index) ?? Text("Null"),
+              FixtureCard(widget.fixture, context, widget.index) ??
+                  Text("Null"),
               // H2H tab
               Icon(Icons.directions_bike),
             ],

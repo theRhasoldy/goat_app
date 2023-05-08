@@ -19,7 +19,7 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       child: GestureDetector(
         onTap: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => Statistics(
+            builder: (context) => FixtureDetailsTabs(
                   fixture: fixture,
                   index: index,
                 ))),
