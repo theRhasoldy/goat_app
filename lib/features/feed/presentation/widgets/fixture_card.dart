@@ -15,69 +15,66 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
     int homeScore = fixture?.response[index].goals.home ?? 0;
     int awayScore = fixture?.response[index].goals.away ?? 0;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      child: GestureDetector(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(
-            builder: (context) => FixtureDetailsTabs(
-                  fixture: fixture,
-                  index: index,
-                ))),
-        child: Card(
-          child: Padding(
-            padding: EdgeInsets.all(25),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      width: getWidth(context) / 6.5,
-                      child: Image.network(
-                          fixture?.response[index].teams.home.logo ?? ''),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Text(
-                        fixture?.response[index].teams.home.name ?? '',
-                        style: textTheme.labelMedium,
-                      ),
-                    ),
-                    Text(homeScore.toString()), // Display home score
-                  ],
-                ),
-                SizedBox(
-                  child: Column(
-                    children: [
-                      Text(fixture?.response[index].fixture.venue.name ?? ''),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(date),
-                      ),
-                      Text(time),
-                    ],
+    return GestureDetector(
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => FixtureDetailsTabs(
+                fixture: fixture,
+                index: index,
+              ))),
+      child: Card(
+        child: Padding(
+          padding: EdgeInsets.all(25),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                children: [
+                  SizedBox(
+                    width: getWidth(context) / 6.5,
+                    child: Image.network(
+                        fixture?.response[index].teams.home.logo ?? ''),
                   ),
-                ),
-                Column(
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Text(
+                      fixture?.response[index].teams.home.name ?? '',
+                      style: textTheme.labelMedium,
+                    ),
+                  ),
+                  Text(homeScore.toString()), // Display home score
+                ],
+              ),
+              SizedBox(
+                child: Column(
                   children: [
-                    SizedBox(
-                      width: getWidth(context) / 6.5,
-                      child: Image.network(
-                          fixture?.response[index].teams.away.logo ?? ''),
-                    ),
+                    Text(fixture?.response[index].fixture.venue.name ?? ''),
                     Padding(
-                      padding: const EdgeInsets.only(top: 15),
-                      child: Text(
-                        fixture?.response[index].teams.away.name ?? '',
-                        style: textTheme.labelMedium,
-                      ),
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(date),
                     ),
-                    Text(awayScore.toString()), // Display away score
+                    Text(time),
                   ],
                 ),
-              ],
-            ),
+              ),
+              Column(
+                children: [
+                  SizedBox(
+                    width: getWidth(context) / 6.5,
+                    child: Image.network(
+                        fixture?.response[index].teams.away.logo ?? ''),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15),
+                    child: Text(
+                      fixture?.response[index].teams.away.name ?? '',
+                      style: textTheme.labelMedium,
+                    ),
+                  ),
+                  Text(awayScore.toString()), // Display away score
+                ],
+              ),
+            ],
           ),
         ),
       ),

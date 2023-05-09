@@ -77,6 +77,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                         child: ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
+                            physics: BouncingScrollPhysics(),
                             itemCount: _statisticsModel
                                 ?.response[0].statistics?.length,
                             itemBuilder:

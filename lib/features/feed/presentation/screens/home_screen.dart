@@ -130,6 +130,9 @@ class _HomeState extends State<Home> {
             ),
             Expanded(
               child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: BouncingScrollPhysics(),
                   itemCount: _fixtureModel?.results,
                   itemBuilder: (BuildContext context, int index) {
                     return isLoading
