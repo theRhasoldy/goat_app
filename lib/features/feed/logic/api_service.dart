@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:goat_app/models/fixture.dart';
+import 'package:goat_app/models/freezed_model.dart';
 import 'package:goat_app/models/statistics_model.dart';
-import '../models/freezed_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();

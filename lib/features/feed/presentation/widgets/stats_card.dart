@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:goat_app/API/freezed_api.dart';
 import 'package:goat_app/common/utils/math_utils.dart';
 import 'package:goat_app/models/statistics_model.dart';
 
