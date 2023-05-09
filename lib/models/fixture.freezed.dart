@@ -304,7 +304,7 @@ mixin _$FixtureResponse {
   Fixture get fixture => throw _privateConstructorUsedError;
   League get league => throw _privateConstructorUsedError;
   Teams get teams => throw _privateConstructorUsedError;
-  Map<String, int?> get goals => throw _privateConstructorUsedError;
+  Goals get goals => throw _privateConstructorUsedError;
   Score get score => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -320,15 +320,12 @@ abstract class $FixtureResponseCopyWith<$Res> {
       _$FixtureResponseCopyWithImpl<$Res, FixtureResponse>;
   @useResult
   $Res call(
-      {Fixture fixture,
-      League league,
-      Teams teams,
-      Map<String, int?> goals,
-      Score score});
+      {Fixture fixture, League league, Teams teams, Goals goals, Score score});
 
   $FixtureCopyWith<$Res> get fixture;
   $LeagueCopyWith<$Res> get league;
   $TeamsCopyWith<$Res> get teams;
+  $GoalsCopyWith<$Res> get goals;
   $ScoreCopyWith<$Res> get score;
 }
 
@@ -367,7 +364,7 @@ class _$FixtureResponseCopyWithImpl<$Res, $Val extends FixtureResponse>
       goals: null == goals
           ? _value.goals
           : goals // ignore: cast_nullable_to_non_nullable
-              as Map<String, int?>,
+              as Goals,
       score: null == score
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
@@ -401,6 +398,14 @@ class _$FixtureResponseCopyWithImpl<$Res, $Val extends FixtureResponse>
 
   @override
   @pragma('vm:prefer-inline')
+  $GoalsCopyWith<$Res> get goals {
+    return $GoalsCopyWith<$Res>(_value.goals, (value) {
+      return _then(_value.copyWith(goals: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
   $ScoreCopyWith<$Res> get score {
     return $ScoreCopyWith<$Res>(_value.score, (value) {
       return _then(_value.copyWith(score: value) as $Val);
@@ -417,11 +422,7 @@ abstract class _$$_FixtureResponseCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Fixture fixture,
-      League league,
-      Teams teams,
-      Map<String, int?> goals,
-      Score score});
+      {Fixture fixture, League league, Teams teams, Goals goals, Score score});
 
   @override
   $FixtureCopyWith<$Res> get fixture;
@@ -429,6 +430,8 @@ abstract class _$$_FixtureResponseCopyWith<$Res>
   $LeagueCopyWith<$Res> get league;
   @override
   $TeamsCopyWith<$Res> get teams;
+  @override
+  $GoalsCopyWith<$Res> get goals;
   @override
   $ScoreCopyWith<$Res> get score;
 }
@@ -464,9 +467,9 @@ class __$$_FixtureResponseCopyWithImpl<$Res>
           : teams // ignore: cast_nullable_to_non_nullable
               as Teams,
       goals: null == goals
-          ? _value._goals
+          ? _value.goals
           : goals // ignore: cast_nullable_to_non_nullable
-              as Map<String, int?>,
+              as Goals,
       score: null == score
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
@@ -482,9 +485,8 @@ class _$_FixtureResponse implements _FixtureResponse {
       {required this.fixture,
       required this.league,
       required this.teams,
-      required final Map<String, int?> goals,
-      required this.score})
-      : _goals = goals;
+      required this.goals,
+      required this.score});
 
   factory _$_FixtureResponse.fromJson(Map<String, dynamic> json) =>
       _$$_FixtureResponseFromJson(json);
@@ -495,14 +497,8 @@ class _$_FixtureResponse implements _FixtureResponse {
   final League league;
   @override
   final Teams teams;
-  final Map<String, int?> _goals;
   @override
-  Map<String, int?> get goals {
-    if (_goals is EqualUnmodifiableMapView) return _goals;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_goals);
-  }
-
+  final Goals goals;
   @override
   final Score score;
 
@@ -519,14 +515,14 @@ class _$_FixtureResponse implements _FixtureResponse {
             (identical(other.fixture, fixture) || other.fixture == fixture) &&
             (identical(other.league, league) || other.league == league) &&
             (identical(other.teams, teams) || other.teams == teams) &&
-            const DeepCollectionEquality().equals(other._goals, _goals) &&
+            (identical(other.goals, goals) || other.goals == goals) &&
             (identical(other.score, score) || other.score == score));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, fixture, league, teams,
-      const DeepCollectionEquality().hash(_goals), score);
+  int get hashCode =>
+      Object.hash(runtimeType, fixture, league, teams, goals, score);
 
   @JsonKey(ignore: true)
   @override
@@ -547,7 +543,7 @@ abstract class _FixtureResponse implements FixtureResponse {
       {required final Fixture fixture,
       required final League league,
       required final Teams teams,
-      required final Map<String, int?> goals,
+      required final Goals goals,
       required final Score score}) = _$_FixtureResponse;
 
   factory _FixtureResponse.fromJson(Map<String, dynamic> json) =
@@ -560,7 +556,7 @@ abstract class _FixtureResponse implements FixtureResponse {
   @override
   Teams get teams;
   @override
-  Map<String, int?> get goals;
+  Goals get goals;
   @override
   Score get score;
   @override
@@ -1618,6 +1614,152 @@ abstract class _League implements League {
   @override
   @JsonKey(ignore: true)
   _$$_LeagueCopyWith<_$_League> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Goals _$GoalsFromJson(Map<String, dynamic> json) {
+  return _Goals.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Goals {
+  int? get home => throw _privateConstructorUsedError;
+  int? get away => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $GoalsCopyWith<Goals> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GoalsCopyWith<$Res> {
+  factory $GoalsCopyWith(Goals value, $Res Function(Goals) then) =
+      _$GoalsCopyWithImpl<$Res, Goals>;
+  @useResult
+  $Res call({int? home, int? away});
+}
+
+/// @nodoc
+class _$GoalsCopyWithImpl<$Res, $Val extends Goals>
+    implements $GoalsCopyWith<$Res> {
+  _$GoalsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? home = freezed,
+    Object? away = freezed,
+  }) {
+    return _then(_value.copyWith(
+      home: freezed == home
+          ? _value.home
+          : home // ignore: cast_nullable_to_non_nullable
+              as int?,
+      away: freezed == away
+          ? _value.away
+          : away // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_GoalsCopyWith<$Res> implements $GoalsCopyWith<$Res> {
+  factory _$$_GoalsCopyWith(_$_Goals value, $Res Function(_$_Goals) then) =
+      __$$_GoalsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? home, int? away});
+}
+
+/// @nodoc
+class __$$_GoalsCopyWithImpl<$Res> extends _$GoalsCopyWithImpl<$Res, _$_Goals>
+    implements _$$_GoalsCopyWith<$Res> {
+  __$$_GoalsCopyWithImpl(_$_Goals _value, $Res Function(_$_Goals) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? home = freezed,
+    Object? away = freezed,
+  }) {
+    return _then(_$_Goals(
+      home: freezed == home
+          ? _value.home
+          : home // ignore: cast_nullable_to_non_nullable
+              as int?,
+      away: freezed == away
+          ? _value.away
+          : away // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Goals implements _Goals {
+  const _$_Goals({required this.home, required this.away});
+
+  factory _$_Goals.fromJson(Map<String, dynamic> json) =>
+      _$$_GoalsFromJson(json);
+
+  @override
+  final int? home;
+  @override
+  final int? away;
+
+  @override
+  String toString() {
+    return 'Goals(home: $home, away: $away)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Goals &&
+            (identical(other.home, home) || other.home == home) &&
+            (identical(other.away, away) || other.away == away));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, home, away);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GoalsCopyWith<_$_Goals> get copyWith =>
+      __$$_GoalsCopyWithImpl<_$_Goals>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_GoalsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Goals implements Goals {
+  const factory _Goals({required final int? home, required final int? away}) =
+      _$_Goals;
+
+  factory _Goals.fromJson(Map<String, dynamic> json) = _$_Goals.fromJson;
+
+  @override
+  int? get home;
+  @override
+  int? get away;
+  @override
+  @JsonKey(ignore: true)
+  _$$_GoalsCopyWith<_$_Goals> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

@@ -25,7 +25,7 @@ class FixtureResponse with _$FixtureResponse {
     required Fixture fixture,
     required League league,
     required Teams teams,
-    required Map<String, int?> goals,
+    required Goals goals,
     required Score score,
   }) = _FixtureResponse;
 
@@ -97,6 +97,15 @@ class League with _$League {
   factory League.fromJson(Map<String, dynamic> json) => _$LeagueFromJson(json);
 }
 
+@freezed
+class Goals with _$Goals {
+  const factory Goals({
+    required int? home,
+    required int? away,
+  }) = _Goals;
+
+  factory Goals.fromJson(Map<String, dynamic> json) => _$GoalsFromJson(json);
+}
 
 @freezed
 class Score with _$Score {

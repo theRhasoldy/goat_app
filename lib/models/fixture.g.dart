@@ -33,7 +33,7 @@ _$_FixtureResponse _$$_FixtureResponseFromJson(Map<String, dynamic> json) =>
       fixture: Fixture.fromJson(json['fixture'] as Map<String, dynamic>),
       league: League.fromJson(json['league'] as Map<String, dynamic>),
       teams: Teams.fromJson(json['teams'] as Map<String, dynamic>),
-      goals: Map<String, int?>.from(json['goals'] as Map),
+      goals: Goals.fromJson(json['goals'] as Map<String, dynamic>),
       score: Score.fromJson(json['score'] as Map<String, dynamic>),
     );
 
@@ -120,6 +120,16 @@ Map<String, dynamic> _$$_LeagueToJson(_$_League instance) => <String, dynamic>{
       'flag': instance.flag,
       'season': instance.season,
       'round': instance.round,
+    };
+
+_$_Goals _$$_GoalsFromJson(Map<String, dynamic> json) => _$_Goals(
+      home: json['home'] as int?,
+      away: json['away'] as int?,
+    );
+
+Map<String, dynamic> _$$_GoalsToJson(_$_Goals instance) => <String, dynamic>{
+      'home': instance.home,
+      'away': instance.away,
     };
 
 _$_Score _$$_ScoreFromJson(Map<String, dynamic> json) => _$_Score(
