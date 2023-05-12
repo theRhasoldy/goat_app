@@ -28,7 +28,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   Future<void> _getStatisticsData(String fixtureId) async {
     final ApiService apiService = ApiService();
     final StatisticsModel? statisticsModel =
-        await apiService.getStatistics(fixture: fixtureId);
+    await apiService.getStatistics(fixture: fixtureId);
     print(statisticsModel);
     setState(() {
       isLoading = false;
@@ -68,7 +68,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                 Scaffold(
                   floatingActionButton:FloatingActionButton( //Floating action button on Scaffold
                     onPressed: (){
-                    //  Navigator.of(context).push(
+                      //  Navigator.of(context).push(
                       //    MaterialPageRoute(builder: (context) => ChatScreen()));
                     },
                     child: Icon(Icons.chat), //icon inside button
@@ -83,31 +83,37 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                     FixtureCard(widget.fixture, context, widget.index) ??
                         Text("Null"),
                     Expanded(
-                      child: Card(
+                      child: _statisticsModel == null ||
+                          _statisticsModel?.response?.isEmpty == true ||
+                          _statisticsModel?.response[0].statistics?.isEmpty == true
+                          ? Center(
+                        child: Text("No statistics found"),
+                      )
+                          : Card(
                         child: ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
-                            itemCount: _statisticsModel
-                                ?.response[0].statistics?.length,
-                            itemBuilder:
-                                (BuildContext context, int _statIndex) {
+                            itemCount:
+                            _statisticsModel?.response[0].statistics?.length,
+                            itemBuilder: (BuildContext context, int _statIndex) {
                               return isLoading
                                   ? Center(
-                                      child: CardLoading(
-                                        height: 50,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10)),
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 10, vertical: 20),
-                                      ),
-                                    )
+                                child: CardLoading(
+                                  height: 50,
+                                  borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 20),
+                                ),
+                              )
                                   : ListTile(
-                                      title: StatisticRow(_statisticsModel,
-                                              context, _statIndex) ??
-                                          Text("Null"),
-                                    );
+                                title: StatisticRow(
+                                    _statisticsModel, context, _statIndex) ??
+                                    Text("Null"),
+                              );
                             }),
                       ),
+
                     )
                   ],
                 ),
@@ -121,3 +127,4 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
     );
   }
 }
+
