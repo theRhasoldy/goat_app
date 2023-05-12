@@ -144,21 +144,25 @@ class _SignInState extends State<SignIn> {
       ),
     );
   }
-  signInWithGoogle() async {
-    // Trigger the authentication flow
+  Future<UserCredential> signInWithGoogle() async {
+    // Initialize GoogleSignIn
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-    await googleUser?.authentication;
+    // Get GoogleSignInAuthentication
+    final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
 
-    // Create a new credential
+    // Get Firebase credential from Google
     final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
     );
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+
+    // Sign in to Firebase with the credential
+    final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+
+    return userCredential;
   }
+
   signInWithFacebook() async {
     // Trigger the sign-in flow
     final LoginResult loginResult = await FacebookAuth.instance.login();
