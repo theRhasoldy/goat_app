@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
+import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:goat_app/firebase_options.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 
@@ -19,7 +20,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: SignUp(),
       theme: mainTheme,
     );
   }
