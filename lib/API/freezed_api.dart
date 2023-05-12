@@ -54,7 +54,6 @@ class ApiService {
         queryParameters: {"fixture": fixture},
       );
       final json = response.data as Map<String, dynamic>;
-      print(json);
       return StatisticsModel.fromJson(json);
     } catch (error) {
       throw error;

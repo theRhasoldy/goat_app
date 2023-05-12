@@ -28,7 +28,6 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
     final ApiService apiService = ApiService();
     final StatisticsModel? statisticsModel =
         await apiService.getStatistics(fixture: fixtureId);
-    print(statisticsModel);
     setState(() {
       isLoading = false;
       _statisticsModel = statisticsModel;
