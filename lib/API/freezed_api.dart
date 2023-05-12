@@ -5,7 +5,7 @@ import '../models/freezed_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();
-  final apiKey = '9ecb2fe8a4b079058e1d62fc7cb90dfa';
+  final apiKey = 'd43385ff17e6ed9fe52554dacc463a6f';
 
   Future<TeamModel> getTeamDetails({String id = "33"}) async {
     try {
