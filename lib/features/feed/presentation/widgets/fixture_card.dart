@@ -5,7 +5,8 @@ import 'package:goat_app/features/feed/presentation/screens/statistics_screen.da
 import 'package:goat_app/models/fixture.dart';
 import 'package:intl/intl.dart';
 
-Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
+Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index,
+    {bool isStatistics = false}) {
   try {
     List<String>? format = fixture?.response[index].fixture.date?.split("T");
     String date = format?[0] ?? "TBD";
@@ -16,11 +17,13 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index) {
     int awayScore = fixture?.response[index].goals.away ?? 0;
 
     return GestureDetector(
-      onTap: () => Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => FixtureDetailsTabs(
-                fixture: fixture,
-                index: index,
-              ))),
+      onTap: () => isStatistics
+          ? null
+          : Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => FixtureDetailsTabs(
+                    fixture: fixture,
+                    index: index,
+                  ))),
       child: Card(
         child: Padding(
           padding: EdgeInsets.all(25),

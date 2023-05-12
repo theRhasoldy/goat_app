@@ -70,35 +70,48 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                 // Stats tab
                 Column(
                   children: [
-                    FixtureCard(widget.fixture, context, widget.index) ??
+                    FixtureCard(widget.fixture, context, widget.index,
+                            isStatistics: true) ??
                         Text("Null"),
                     Expanded(
-                      child: Card(
-                        child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            physics: BouncingScrollPhysics(),
-                            itemCount: _statisticsModel
-                                ?.response[0].statistics?.length,
-                            itemBuilder:
-                                (BuildContext context, int _statIndex) {
-                              return isLoading
-                                  ? Center(
-                                      child: CardLoading(
-                                        height: 50,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10)),
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 10, vertical: 20),
-                                      ),
-                                    )
-                                  : ListTile(
-                                      title: StatisticRow(_statisticsModel,
-                                              context, _statIndex) ??
-                                          Text("Null"),
-                                    );
-                            }),
-                      ),
+                      child: _statisticsModel == null ||
+                              _statisticsModel?.response.isEmpty == true ||
+                              _statisticsModel
+                                      ?.response[0].statistics?.isEmpty ==
+                                  true
+                          ? Center(
+                              child: Text("Match hasn't begun yet"),
+                            )
+                          : Card(
+                              child: ListView.builder(
+                                  scrollDirection: Axis.vertical,
+                                  shrinkWrap: true,
+                                  physics: BouncingScrollPhysics(),
+                                  itemCount: _statisticsModel
+                                      ?.response[0].statistics?.length,
+                                  itemBuilder:
+                                      (BuildContext context, int _statIndex) {
+                                    return isLoading
+                                        ? Center(
+                                            child: CardLoading(
+                                              height: 50,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(10)),
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 10,
+                                                      vertical: 20),
+                                            ),
+                                          )
+                                        : ListTile(
+                                            title: StatisticRow(
+                                                    _statisticsModel,
+                                                    context,
+                                                    _statIndex) ??
+                                                Text("Null"),
+                                          );
+                                  }),
+                            ),
                     )
                   ],
                 ),
