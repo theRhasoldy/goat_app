@@ -29,8 +29,8 @@ Widget? StatisticRow(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(nullToZero(homeStatValue.toString())),
-            Text(statistic?.response[0].statistics?[index]?.type ??
-                "Unknown Stat"),
+            Text(statistic?.response[0].statistics?[index]?.type =="expected_goals"? "Expected Goals":statistic?.response[0].statistics?[index]?.type
+                ),
             Text(nullToZero(awayStatValue.toString())),
           ],
         ),

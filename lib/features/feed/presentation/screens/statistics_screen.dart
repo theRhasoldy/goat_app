@@ -2,6 +2,7 @@ import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/API/freezed_api.dart';
 import 'package:goat_app/common/config/theme.dart';
+import 'package:goat_app/features/authentication/presentation/screens/chat_screen.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/stats_card.dart';
 import 'package:goat_app/models/fixture.dart';
@@ -64,7 +65,16 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
             child: TabBarView(
               children: [
                 // Predict tab
-                Icon(Icons.directions_car),
+                Scaffold(
+                  floatingActionButton:FloatingActionButton( //Floating action button on Scaffold
+                    onPressed: (){
+                    //  Navigator.of(context).push(
+                      //    MaterialPageRoute(builder: (context) => ChatScreen()));
+                    },
+                    child: Icon(Icons.chat), //icon inside button
+                  ),
+                ),
+
                 // Lineup tab
                 Icon(Icons.directions_transit),
                 // Stats tab
