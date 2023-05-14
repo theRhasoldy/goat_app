@@ -146,7 +146,8 @@ class _HomeState extends State<Home> {
                             ),
                           )
                         : ListTile(
-                            title: FixtureCard(_fixtureModel, context, index));
+                            title: FixtureCard(
+                                _fixtureModel!.response, context, index));
                   }),
             ),
           ],

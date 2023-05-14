@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/freezed_model.dart';
+import 'package:goat_app/models/headtohead_model.dart';
 import 'package:goat_app/models/statistics_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();
-  final apiKey = 'fa005116c6f26b7e930ce7c28ddcf3bf';
+  final apiKey = '02cd03c9aabdf0334bb9a07dfc9842ba';
 
   Future<TeamModel> getTeamDetails({String id = "33"}) async {
     try {
@@ -54,8 +55,26 @@ class ApiService {
         queryParameters: {"fixture": fixture},
       );
       final json = response.data as Map<String, dynamic>;
-      print(json);
       return StatisticsModel.fromJson(json);
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  Future<HeadToHeadModel> getHeadToHead(
+      {
+      // Default values
+      String? home = "33",
+      String? away = "34",
+      int? last = 5}) async {
+    final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
+    try {
+      final response = await dio.get(
+        'https://v3.football.api-sports.io/fixtures/headtohead',
+        queryParameters: {"h2h": "$home-$away", "last": last},
+      );
+      final json = response.data as Map<String, dynamic>;
+      return HeadToHeadModel.fromJson(json);
     } catch (error) {
       throw error;
     }

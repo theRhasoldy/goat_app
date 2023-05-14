@@ -5,23 +5,24 @@ import 'package:goat_app/features/feed/presentation/screens/statistics_screen.da
 import 'package:goat_app/models/fixture.dart';
 import 'package:intl/intl.dart';
 
-Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index,
+Widget? FixtureCard(
+    List<FixtureResponse> response, BuildContext context, int index,
     {bool isStatistics = false}) {
   try {
-    List<String>? format = fixture?.response[index].fixture.date?.split("T");
+    List<String>? format = response[index].fixture.date?.split("T");
     String date = format?[0] ?? "TBD";
     String time =
         format?[1].split("+")[0].split(":").sublist(0, 2).join(":") ?? "TBD";
 
-    int homeScore = fixture?.response[index].goals.home ?? 0;
-    int awayScore = fixture?.response[index].goals.away ?? 0;
+    int homeScore = response[index].goals.home ?? 0;
+    int awayScore = response[index].goals.away ?? 0;
 
     return GestureDetector(
       onTap: () => isStatistics
           ? null
           : Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => FixtureDetailsTabs(
-                    fixture: fixture,
+                    response: response,
                     index: index,
                   ))),
       child: Card(
@@ -35,13 +36,12 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index,
                 children: [
                   SizedBox(
                     width: getWidth(context) / 6.5,
-                    child: Image.network(
-                        fixture?.response[index].teams.home.logo ?? ''),
+                    child: Image.network(response[index].teams.home.logo ?? ''),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Text(
-                      fixture?.response[index].teams.home.name ?? '',
+                      response[index].teams.home.name ?? '',
                       style: textTheme.labelMedium,
                     ),
                   ),
@@ -51,7 +51,7 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index,
               SizedBox(
                 child: Column(
                   children: [
-                    Text(fixture?.response[index].fixture.venue.name ?? ''),
+                    Text(response[index].fixture.venue.name ?? ''),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Text(date),
@@ -64,13 +64,12 @@ Widget? FixtureCard(FixtureModel? fixture, BuildContext context, int index,
                 children: [
                   SizedBox(
                     width: getWidth(context) / 6.5,
-                    child: Image.network(
-                        fixture?.response[index].teams.away.logo ?? ''),
+                    child: Image.network(response[index].teams.away.logo ?? ''),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 15),
                     child: Text(
-                      fixture?.response[index].teams.away.name ?? '',
+                      response[index].teams.away.name ?? '',
                       style: textTheme.labelMedium,
                     ),
                   ),
