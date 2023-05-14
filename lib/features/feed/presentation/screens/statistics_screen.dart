@@ -77,6 +77,14 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
             ),
             title: const Text('Tabs Demo'),
           ),
+          floatingActionButton: FloatingActionButton(
+            //Floating action button on Scaffold
+            onPressed: () {
+              //  Navigator.of(context).push(
+              //    MaterialPageRoute(builder: (context) => ChatScreen()));
+            },
+            child: Icon(Icons.chat), //icon inside button
+          ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             child: TabBarView(
@@ -98,7 +106,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                                       ?.response[0].statistics?.isEmpty ==
                                   true
                           ? Center(
-                              child: Text("Match hasn't begun yet"),
+                              child: Text("No statistics found"),
                             )
                           : Card(
                               child: ListView.builder(
