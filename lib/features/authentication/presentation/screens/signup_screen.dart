@@ -82,7 +82,7 @@ class _SignUpState extends State<SignUp> {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const SignUp()))
+                                                  const SignIn()))
                                     },
                                 child: const Text("SIGN IN")),
                             const Sep(),

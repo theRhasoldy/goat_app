@@ -24,15 +24,15 @@ class _SignInState extends State<SignIn> {
   bool _isObscure3 = true;
   bool visible = false;
   final _formkey = GlobalKey<FormState>();
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController emailController =  TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   final _auth = FirebaseAuth.instance;
 
   String _email = "";
   String _password = "";
 
-  get validator => null;
+
 
 
   @override
@@ -57,6 +57,7 @@ class _SignInState extends State<SignIn> {
                     'assets/images/signin-cover.png',
                   ),
                 ),
+
                 Padding(
                   padding: EdgeInsets.symmetric(
                     vertical: double.minPositive,
@@ -81,10 +82,28 @@ class _SignInState extends State<SignIn> {
                             decoration: const InputDecoration(
                               prefixIcon: Icon(Icons.mail_outline),
                               labelText: 'Email',
+
                             ),
+                            validator: (value) {
+                              if (value!.length == 0) {
+                                return "Email cannot be empty";
+                              }
+                              if (!RegExp(
+                                  "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                                  .hasMatch(value)) {
+                                return ("Please enter a valid email");
+                              } else {
+                                return null;
+                              }
+                            },
+                            onSaved: (value) {
+                              emailController.text = value!;
+                            },
+                            keyboardType: TextInputType.emailAddress,
+                          ),
                           ),
 
-                        ),
+
 
                         Padding(
                           padding: const EdgeInsets.only(bottom: 6),
@@ -95,8 +114,24 @@ class _SignInState extends State<SignIn> {
                               prefixIcon: Icon(Icons.key_outlined),
                               labelText: 'Password',
                             ),
+                            validator: (value) {
+                              RegExp regex = new RegExp(r'^.{6,}$');
+                              if (value!.isEmpty) {
+                                return "Password cannot be empty";
+                              }
+                              if (!regex.hasMatch(value)) {
+                                return ("please enter valid password min. 6 character");
+                              } else {
+                                return null;
+                              }
+                            },
+                            onSaved: (value) {
+                              passwordController.text = value!;
+                            },
+                            keyboardType: TextInputType.emailAddress,
                           ),
-                        ),
+                          ),
+
                         ElevatedButton(
                           style: const ButtonStyle(),
                           onPressed: () async {
@@ -107,8 +142,18 @@ class _SignInState extends State<SignIn> {
                             _authService.signInWithEmail();
                             Navigator.of(context).push(MaterialPageRoute(
                                 builder: (context) => Home()));
+                            onPressed: () async {
+                              signIn(emailController.text, passwordController.text);
+
+                              setState(() {
+                                visible = true;
+                              });
+                              signIn(
+                                  emailController.text, passwordController.text);
+                            };
                           },
                           child: const Text('SIGN IN'),
+
                         ),
                         TextButton(
                           onPressed: () {},
@@ -139,9 +184,13 @@ class _SignInState extends State<SignIn> {
                               iconSize: 32,
                               color: lightColorScheme.primary,
                             )
+
                           ],
+
                         ),
+
                         const Sep(),
+
                         OutlinedButton(
                             onPressed: () =>
                             {
@@ -149,6 +198,7 @@ class _SignInState extends State<SignIn> {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (context) => Home()))
                             },
+
                             child: const Text("SIGN UP"))
 
 
@@ -162,42 +212,7 @@ class _SignInState extends State<SignIn> {
       ),
     );
   }
-
-  Future<UserCredential> signInWithGoogle() async {
-    // Initialize GoogleSignIn
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Get GoogleSignInAuthentication
-    final GoogleSignInAuthentication googleAuth = await googleUser!
-        .authentication;
-
-    // Get Firebase credential from Google
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-
-    // Sign in to Firebase with the credential
-    final UserCredential userCredential = await FirebaseAuth.instance
-        .signInWithCredential(credential);
-
-    return userCredential;
-  }
-
-  signInWithFacebook() async {
-    // Trigger the sign-in flow
-    final LoginResult loginResult = await FacebookAuth.instance.login();
-
-    // Create a credential from the access token
-    final OAuthCredential facebookAuthCredential =
-    FacebookAuthProvider.credential(loginResult.accessToken!.token);
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(
-        facebookAuthCredential);
-  }
-
-  void signIn(String email, String password) async {
+  void signIn (String email, String password) async {
     if (_formkey.currentState!.validate()) {
       try {
         UserCredential userCredential =
@@ -220,7 +235,41 @@ class _SignInState extends State<SignIn> {
         } else if (e.code == 'wrong-password') {
           print('Wrong password provided for that user.');
         }
+
       }
     }
   }
+  signInWithGoogle() async {
+    // Initialize GoogleSignIn
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Get GoogleSignInAuthentication
+    final GoogleSignInAuthentication googleAuth = await googleUser!
+        .authentication;
+
+    // Get Firebase credential from Google
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+
+    // Sign in to Firebase with the credential
+    final UserCredential userCredential = await FirebaseAuth.instance
+        .signInWithCredential(credential);
+
+    return userCredential;
+  }
+  signInWithFacebook() async {
+    // Trigger the sign-in flow
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+
+    // Create a credential from the access token
+    final OAuthCredential facebookAuthCredential =
+    FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(
+        facebookAuthCredential);
+  }
+
 }
