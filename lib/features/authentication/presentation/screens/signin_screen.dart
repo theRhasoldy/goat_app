@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -7,6 +8,7 @@ import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
+import 'package:goat_app/features/feed/presentation/screens/chat_screen.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/models/user.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -19,12 +21,19 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  // final _auth = AuthService();
+  bool _isObscure3 = true;
+  bool visible = false;
+  final _formkey = GlobalKey<FormState>();
+  final TextEditingController emailController = new TextEditingController();
+  final TextEditingController passwordController = new TextEditingController();
+
+  final _auth = FirebaseAuth.instance;
 
   String _email = "";
   String _password = "";
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  get validator => null;
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +83,9 @@ class _SignInState extends State<SignIn> {
                               labelText: 'Email',
                             ),
                           ),
+
                         ),
+
                         Padding(
                           padding: const EdgeInsets.only(bottom: 6),
                           child: TextFormField(
@@ -107,7 +118,8 @@ class _SignInState extends State<SignIn> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             IconButton(
-                              onPressed: () => {
+                              onPressed: () =>
+                              {
                                 signInWithFacebook()
                               },
                               icon: const Icon(FontAwesomeIcons.facebookF,
@@ -115,13 +127,15 @@ class _SignInState extends State<SignIn> {
                               iconSize: 32,
                               color: lightColorScheme.primary,
                             ),
+
                             SizedBox(width: getWidth(context) / 12),
                             IconButton(
-                              onPressed: () => {
+                              onPressed: () =>
+                              {
                                 signInWithGoogle()
                               },
                               icon:
-                                  const Icon(FontAwesomeIcons.google, size: 30),
+                              const Icon(FontAwesomeIcons.google, size: 30),
                               iconSize: 32,
                               color: lightColorScheme.primary,
                             )
@@ -129,27 +143,33 @@ class _SignInState extends State<SignIn> {
                         ),
                         const Sep(),
                         OutlinedButton(
-                            onPressed: () => {
-                                  // Navigate to Sign in Page
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => Home()))
-                                },
+                            onPressed: () =>
+                            {
+                              // Navigate to Sign in Page
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => Home()))
+                            },
                             child: const Text("SIGN UP"))
-                      ],
+
+
+              ],
                     ),
                   ),
+
                 )
               ],
             )),
       ),
     );
   }
+
   Future<UserCredential> signInWithGoogle() async {
     // Initialize GoogleSignIn
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     // Get GoogleSignInAuthentication
-    final GoogleSignInAuthentication googleAuth = await googleUser!.authentication;
+    final GoogleSignInAuthentication googleAuth = await googleUser!
+        .authentication;
 
     // Get Firebase credential from Google
     final credential = GoogleAuthProvider.credential(
@@ -158,7 +178,8 @@ class _SignInState extends State<SignIn> {
     );
 
     // Sign in to Firebase with the credential
-    final UserCredential userCredential = await FirebaseAuth.instance.signInWithCredential(credential);
+    final UserCredential userCredential = await FirebaseAuth.instance
+        .signInWithCredential(credential);
 
     return userCredential;
   }
@@ -172,6 +193,34 @@ class _SignInState extends State<SignIn> {
     FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
     // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+    return await FirebaseAuth.instance.signInWithCredential(
+        facebookAuthCredential);
+  }
+
+  void signIn(String email, String password) async {
+    if (_formkey.currentState!.validate()) {
+      try {
+        UserCredential userCredential =
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>
+                chatpage(
+                  email: email,
+                ),
+          ),
+        );
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          print('No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          print('Wrong password provided for that user.');
+        }
+      }
+    }
   }
 }

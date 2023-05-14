@@ -7,11 +7,17 @@ import 'package:goat_app/features/authentication/presentation/screens/signup_scr
 import 'package:goat_app/firebase_options.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 
-Future<void> main() async {
+
+main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+     //options: FirebaseOptions(
+        //apiKey: "AIzaSyDPQF8KhUVEmUpw_Z40J0oJc8xSt_Bm0uo",
+        //appId: "1:939312490837:web:d01b205a8783fb219b27dc",
+        //messagingSenderId: "939312490837",
+        //projectId: "goatapp-b4e08",
+      );//);
+
   runApp(ProviderScope(child: App()));
 }
 

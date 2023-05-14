@@ -2,6 +2,8 @@ import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/API/freezed_api.dart';
 import 'package:goat_app/common/config/theme.dart';
+import 'package:goat_app/common/utils/math_utils.dart';
+import 'package:goat_app/features/feed/presentation/screens/chat_screen.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/stats_card.dart';
 import 'package:goat_app/models/fixture.dart';
@@ -61,8 +63,8 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
           floatingActionButton: FloatingActionButton(
             //Floating action button on Scaffold
             onPressed: () {
-              //  Navigator.of(context).push(
-              //    MaterialPageRoute(builder: (context) => ChatScreen()));
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => chatpage(email: AutofillHints.email)));
             },
             child: Icon(Icons.chat), //icon inside button
           ),

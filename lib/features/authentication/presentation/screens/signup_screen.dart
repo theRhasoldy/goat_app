@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
+import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/models/user.dart';
 
 class SignUp extends StatefulWidget {
@@ -17,6 +19,27 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
+  final auth = FirebaseAuth.instance;
+  CollectionReference ref = FirebaseFirestore.instance.collection('user');
+
+  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController confirmpassController =
+  new TextEditingController();
+  final TextEditingController emailController = new TextEditingController();
+
+  var error = null;
+  register(String email, String password) async {
+    if (error == null) {
+      await auth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .whenComplete(() {
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => Home()));
+      });
+    } else {
+      print(error);
+    }
+  }
   final _formKey = GlobalKey<FormState>();
 
   String _fullname = "";
@@ -59,7 +82,7 @@ class _SignUpState extends State<SignUp> {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const SignIn()))
+                                                  const SignUp()))
                                     },
                                 child: const Text("SIGN IN")),
                             const Sep(),

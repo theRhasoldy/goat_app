@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "939312490837",
+    "firebase_url": "https://goatapp-b4e08-default-rtdb.firebaseio.com",
+    "project_id": "goatapp-b4e08",
+    "storage_bucket": "goatapp-b4e08.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:939312490837:android:3e028b53a5abd86e9b27dc",
+        "android_client_info": {
+          "package_name": "com.example.goat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "939312490837-3jk1tbi594stk09oohutlfg9utpe6kak.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.goat_app",
+            "certificate_hash": "8ddb553ddab6e49940837b23503e94a8e9e886ff"
+          }
+        },
+        {
+          "client_id": "939312490837-l0lnf6j0qib81n660f8gnnkguut4dchu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQHowjyZQ8V-_pEoz7CrA050nRbcfHCqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "939312490837-l0lnf6j0qib81n660f8gnnkguut4dchu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "939312490837-vp1cqa4r7tneosjd4akri8aa23vdnotp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.goatApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
