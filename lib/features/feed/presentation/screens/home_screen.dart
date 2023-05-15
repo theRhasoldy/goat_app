@@ -6,6 +6,7 @@ import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
+import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:intl/intl.dart';
 
@@ -25,7 +26,7 @@ class _HomeState extends State<Home> {
 
   Future<void> _getFixtureData(String date) async {
     final ApiService apiService = ApiService();
-    final FixtureModel? fixtureModel = await apiService.getMatches(date: date);
+    final FixtureModel? fixtureModel = await apiService.getMatches(live: "all");
     setState(() {
       isLoading = false;
       _fixtureModel = fixtureModel;
@@ -137,13 +138,7 @@ class _HomeState extends State<Home> {
                   itemBuilder: (BuildContext context, int index) {
                     return isLoading
                         ? Center(
-                            child: CardLoading(
-                              height: 150,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10)),
-                              margin: const EdgeInsets.symmetric(
-                                  horizontal: 10, vertical: 20),
-                            ),
+                            child: LoadingCard(height: 150),
                           )
                         : ListTile(
                             title: FixtureCard(

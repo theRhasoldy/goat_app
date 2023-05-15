@@ -17,6 +17,10 @@ Widget? FixtureCard(
     int homeScore = response[index].goals.home ?? 0;
     int awayScore = response[index].goals.away ?? 0;
 
+    if (response[index].fixture.status.short != "NS") {
+      time = response[index].fixture.status.elapsed.toString();
+    }
+
     return GestureDetector(
       onTap: () => isStatistics
           ? null

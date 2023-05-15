@@ -6,7 +6,7 @@ import 'package:goat_app/models/statistics_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();
-  final apiKey = '02cd03c9aabdf0334bb9a07dfc9842ba';
+  final apiKey = '7f8b47f7c6e9210e1cb53172ead272b04';
 
   Future<TeamModel> getTeamDetails({String id = "33"}) async {
     try {
@@ -23,18 +23,20 @@ class ApiService {
 
   Future<FixtureModel> getMatches({
     // Default values
-    String league = "39",
-    String season = "2022",
-    String date = "2023-04-21",
+    // String league = "39",
+    // String season = "2022",
+    // String date = "2023-04-21",
+    String live = "all",
   }) async {
     final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
     try {
       final response = await dio.get(
         'https://v3.football.api-sports.io/fixtures',
         queryParameters: {
-          'league': league,
-          'season': season,
-          'date': date,
+          // 'league': league,
+          // 'season': season,
+          // 'date': date,
+          "live": live,
         },
       );
       final json = response.data as Map<String, dynamic>;
@@ -61,12 +63,12 @@ class ApiService {
     }
   }
 
-  Future<HeadToHeadModel> getHeadToHead(
-      {
-      // Default values
-      String? home = "33",
-      String? away = "34",
-      int? last = 5}) async {
+  Future<HeadToHeadModel> getHeadToHead({
+    // Default values
+    String? home = "33",
+    String? away = "34",
+    int? last = 5,
+  }) async {
     final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
     try {
       final response = await dio.get(

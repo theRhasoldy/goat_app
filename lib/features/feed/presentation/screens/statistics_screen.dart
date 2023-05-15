@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
+import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/stats_card.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/headtohead_model.dart';
@@ -28,6 +29,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
 
   bool isLoading = true;
 
+  // Get stats data
   Future<void> _getStatisticsData(String fixtureId) async {
     final StatisticsModel? statisticsModel =
         await apiService.getStatistics(fixture: fixtureId);
@@ -38,6 +40,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
     });
   }
 
+  // Get head to head data
   Future<void> _getHeadToHeadData(String home, String away) async {
     final HeadToHeadModel? headToHeadModel =
         await apiService.getHeadToHead(home: home, away: away);
@@ -53,6 +56,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
     super.initState();
     int _id = widget.response[widget.index].fixture.id ?? 0;
 
+    // Get home and away ids from fixture response object with index that we got from the original home screen
     String _home = widget.response[widget.index].teams.home.id.toString();
     String _away = widget.response[widget.index].teams.away.id.toString();
 
@@ -111,15 +115,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                                       (BuildContext context, int _statIndex) {
                                     return isLoading
                                         ? Center(
-                                            child: CardLoading(
-                                              height: 50,
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(10)),
-                                              margin:
-                                                  const EdgeInsets.symmetric(
-                                                      horizontal: 10,
-                                                      vertical: 20),
-                                            ),
+                                            child: LoadingCard(height: 150),
                                           )
                                         : ListTile(
                                             title: StatisticRow(
@@ -143,13 +139,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                       itemBuilder: (BuildContext context, int index) {
                         return isLoading
                             ? Center(
-                                child: CardLoading(
-                                  height: 150,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(10)),
-                                  margin: const EdgeInsets.symmetric(
-                                      horizontal: 10, vertical: 20),
-                                ),
+                                child: LoadingCard(height: 150),
                               )
                             : ListTile(
                                 title: FixtureCard(_headToHeadModel!.response,
