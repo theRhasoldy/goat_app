@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
+import 'package:goat_app/features/feed/presentation/widgets/predict_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/stats_card.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/headtohead_model.dart';
@@ -90,7 +91,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
             child: TabBarView(
               children: [
                 // Predict tab
-                Icon(Icons.directions_car),
+                PredictScreen(),
                 // Lineup tab
                 Icon(Icons.directions_transit),
                 // Stats tab
