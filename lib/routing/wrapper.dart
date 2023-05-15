@@ -5,7 +5,8 @@ import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/screens/greeter_screen.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
-import 'package:goat_app/features/feed/presentation/home_screen.dart';
+import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
+
 import 'package:goat_app/models/user.dart';
 
 class Wrapper extends ConsumerWidget {

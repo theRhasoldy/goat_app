@@ -4,6 +4,7 @@ import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
+import 'package:goat_app/features/feed/presentation/widgets/predict_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/stats_card.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/headtohead_model.dart';
@@ -81,12 +82,20 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
             ),
             title: const Text('Tabs Demo'),
           ),
+          floatingActionButton: FloatingActionButton(
+            //Floating action button on Scaffold
+            onPressed: () {
+              //  Navigator.of(context).push(
+              //    MaterialPageRoute(builder: (context) => ChatScreen()));
+            },
+            child: Icon(Icons.chat), //icon inside button
+          ),
           body: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
             child: TabBarView(
               children: [
                 // Predict tab
-                Icon(Icons.directions_car),
+                PredictScreen(),
                 // Lineup tab
                 Icon(Icons.directions_transit),
                 // Stats tab
@@ -102,7 +111,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                                       ?.response[0].statistics?.isEmpty ==
                                   true
                           ? Center(
-                              child: Text("Match hasn't begun yet"),
+                              child: Text("No statistics found"),
                             )
                           : Card(
                               child: ListView.builder(
