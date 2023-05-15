@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
@@ -8,6 +9,8 @@ import 'package:goat_app/features/authentication/presentation/widgets/greeter_ap
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/models/user.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -105,7 +108,9 @@ class _SignInState extends State<SignIn> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             IconButton(
-                              onPressed: () => {},
+                              onPressed: () async {
+                                signInWithFacebook();
+                              },
                               icon: const Icon(FontAwesomeIcons.facebookF,
                                   size: 30),
                               iconSize: 32,
@@ -113,9 +118,11 @@ class _SignInState extends State<SignIn> {
                             ),
                             SizedBox(width: getWidth(context) / 12),
                             IconButton(
-                              onPressed: () => {},
+                              onPressed: () async {
+                                signInWithGoogle();
+                              },
                               icon:
-                                  const Icon(FontAwesomeIcons.google, size: 30),
+                              const Icon(FontAwesomeIcons.google, size: 30),
                               iconSize: 32,
                               color: lightColorScheme.primary,
                             )
@@ -123,11 +130,12 @@ class _SignInState extends State<SignIn> {
                         ),
                         const Sep(),
                         OutlinedButton(
-                            onPressed: () => {
-                                  // Navigate to Sign in Page
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => Home()))
-                                },
+                            onPressed: () =>
+                            {
+                              // Navigate to Sign in Page
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => Home()))
+                            },
                             child: const Text("SIGN UP"))
                       ],
                     ),
@@ -137,5 +145,34 @@ class _SignInState extends State<SignIn> {
             )),
       ),
     );
+  }
+
+  Future<UserCredential> signInWithFacebook() async {
+    // Trigger the sign-in flow
+    final LoginResult loginResult = await FacebookAuth.instance.login();
+
+    // Create a credential from the access token
+    final OAuthCredential facebookAuthCredential =
+    FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+    // Once signed in, return the UserCredential
+    return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+  }
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+    await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }

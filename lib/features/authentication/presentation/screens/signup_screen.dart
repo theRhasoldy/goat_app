@@ -4,10 +4,12 @@ import 'package:flutter/services.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/logic/auth.dart';
+import 'package:goat_app/features/authentication/logic/auth_screen.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
 import 'package:goat_app/models/user.dart';
+
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -167,4 +169,5 @@ class _SignUpState extends State<SignUp> {
                   ])))),
     );
   }
+
 }
