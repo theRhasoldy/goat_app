@@ -8,6 +8,7 @@ import 'package:goat_app/features/authentication/logic/auth_screen.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
+import 'package:goat_app/intro%20screen/screen.dart';
 import 'package:goat_app/models/user.dart';
 
 
@@ -80,6 +81,10 @@ class _SignUpState extends State<SignUp> {
                                     ),
                                   );
                                   _authService.registerWithEmail();
+                                  Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                          const screen()));
                                 },
                                 child: const Text('CREATE ACCOUNT'),
                               ),
