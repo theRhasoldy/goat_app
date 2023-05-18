@@ -56,7 +56,7 @@ class _screenState extends State<screen> {
                               const Home()));
                       },
 
-                    child:Text('done')
+                    child:Text('Done')
                 )
 
                     : GestureDetector(
