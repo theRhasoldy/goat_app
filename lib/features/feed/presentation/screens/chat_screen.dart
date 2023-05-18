@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, camel_case_types, no_logic_in_create_state, library_private_types_in_public_api, unnecessary_new, prefer_const_constructors, body_might_complete_normally_nullable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +9,7 @@ import 'package:goat_app/features/feed/presentation/screens/message.dart';
 
 class chatpage extends StatefulWidget {
   String email;
+  // ignore: use_key_in_widget_constructors
   chatpage({required this.email});
   @override
   _chatpageState createState() => _chatpageState(email: email);

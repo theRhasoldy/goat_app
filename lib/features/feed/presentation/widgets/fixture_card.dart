@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, unused_import
+
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
@@ -5,6 +7,7 @@ import 'package:goat_app/features/feed/presentation/screens/statistics_screen.da
 import 'package:goat_app/models/fixture.dart';
 import 'package:intl/intl.dart';
 
+// ignore: body_might_complete_normally_nullable
 Widget? FixtureCard(
     List<FixtureResponse> response, BuildContext context, int index,
     {bool isStatistics = false}) {

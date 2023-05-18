@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_new, unused_field, unused_import
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -171,7 +173,8 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ]),
                         ))
-                  ])))),
+                  ])))
+                  ),
     );
   }
 

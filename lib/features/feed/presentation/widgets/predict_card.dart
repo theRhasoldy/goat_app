@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable, prefer_const_constructors, prefer_final_fields, library_private_types_in_public_api, use_key_in_widget_constructors
+
 import 'package:flutter/material.dart';
 class PredictScreen extends StatefulWidget {
   @override

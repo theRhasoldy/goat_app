@@ -60,7 +60,6 @@ dependencies:
   card_loading: ^0.3.0
 
 dev_dependencies:
-  build_runner: ^2.2.0
   json_serializable: ^6.3.1
   flutter_test:
     sdk: flutter

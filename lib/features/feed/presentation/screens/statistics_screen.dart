@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';

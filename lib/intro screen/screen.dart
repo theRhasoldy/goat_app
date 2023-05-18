@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, camel_case_types, prefer_final_fields
+
 import 'package:flutter/material.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/intro%20screen/page1.dart';
@@ -41,7 +43,7 @@ class _screenState extends State<screen> {
                   onTap:(){
                     _controller.jumpToPage(2);
                   },
-                  child:Text('skip'),
+                  child:Text('Skip'),
                 ),
                 SmoothPageIndicator(controller: _controller,count: 3),
                 onLastPage
@@ -66,7 +68,7 @@ class _screenState extends State<screen> {
                         duration: Duration(milliseconds: 500), curve: Curves.easeIn);
                   },
 
-                  child:Text('next'),
+                  child:Text('Next'),
                 ),
 
 
