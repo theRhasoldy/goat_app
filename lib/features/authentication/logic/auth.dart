@@ -30,17 +30,38 @@ class AuthService {
   }
 
   //Sign in with email
-  Future signInWithEmail() async {
+  Future<bool> signInWithEmail() async {
     try {
-      UserCredential credential = await auth.signInWithEmailAndPassword(
-          email: user.email, password: user.password);
-      User? cred = credential.user;
-      print("Signed in");
+      final existingUser = await auth.signInWithEmailAndPassword(
+        email: user.email,
+        password: user.password,
+      );
+
+      if (existingUser.user != null) {
+        // Successful sign-in, user exists
+        // Proceed to the home page or perform any necessary actions
+        print('User signed in successfully');
+        return true;
+      } else {
+        // User doesn't exist
+        print('User not found. Please enter valid credentials.');
+        return false;
+      }
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('User not found. Please enter valid credentials.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided. Please enter correct password.');
+      } else {
+        print('Error signing in: $e');
+      }
+      return false;
     } catch (e) {
-      print(e.toString());
-      return null;
+      print('Error signing in: $e');
+      return false;
     }
   }
+}
 
   Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow
@@ -71,4 +92,4 @@ class AuthService {
     // Once signed in, return the UserCredential
     return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
   }
-}
+

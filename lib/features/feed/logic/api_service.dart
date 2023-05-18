@@ -6,7 +6,7 @@ import 'package:goat_app/models/statistics_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();
-  final apiKey = '9667d917b0960f51e19c931055cf4736';
+  final apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
 
   Future<TeamModel> getTeamDetails({String id = "33"}) async {
     try {

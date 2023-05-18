@@ -90,19 +90,31 @@ class _SignInState extends State<SignIn> {
                         ElevatedButton(
                           style: const ButtonStyle(),
                           onPressed: () async {
-                            AuthService _authService = new AuthService(
-                                auth: _auth,
-                                user: CustomUser(
-                                    email: _email, password: _password));
-                            _authService.signInWithEmail();
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => Home()));
+                            AuthService _authService = AuthService(
+                              auth: _auth,
+                              user: CustomUser(
+                                email: _email,
+                                password: _password,
+                              ),
+                            );
+                            if (_email.isEmpty || _password.isEmpty) {
+                              print('Please enter both email and password.');
+                              return;
+                            }
+                            try {
+                              final signInSuccessful = await _authService.signInWithEmail();
+                              if (signInSuccessful) {
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => Home()));
+                              } else {
+                                print(
+                                    'Incorrect email or password. Please try again.');
+                              }
+                            } catch (e) {
+                              print('Error signing in: $e');
+                            }
                           },
                           child: const Text('SIGN IN'),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text("Forgot Password?"),
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
