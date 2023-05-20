@@ -12,6 +12,7 @@ import 'package:goat_app/features/feed/presentation/widgets/predict_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/stats_card.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/headtohead_model.dart';
+import 'package:goat_app/models/lineup_model.dart';
 import 'package:goat_app/models/statistics_model.dart';
 
 class FixtureDetailsTabs extends StatefulWidget {
@@ -31,6 +32,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   final ApiService apiService = ApiService();
   StatisticsModel? _statisticsModel;
   HeadToHeadModel? _headToHeadModel;
+  LineupModel? _lineupModel;
 
   bool isLoading = true;
 
@@ -38,7 +40,6 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   Future<void> _getStatisticsData(String fixtureId) async {
     final StatisticsModel? statisticsModel =
         await apiService.getStatistics(fixture: fixtureId);
-
     setState(() {
       isLoading = false;
       _statisticsModel = statisticsModel;
@@ -49,10 +50,20 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   Future<void> _getHeadToHeadData(String home, String away) async {
     final HeadToHeadModel? headToHeadModel =
         await apiService.getHeadToHead(home: home, away: away);
-    print(headToHeadModel);
     setState(() {
       isLoading = false;
       _headToHeadModel = headToHeadModel;
+    });
+  }
+
+  // Get head to head data
+  Future<void> _getLineupData(String fixtureId) async {
+    final LineupModel? lineupModel =
+        await apiService.getLineup(fixture: fixtureId);
+    print(lineupModel);
+    setState(() {
+      isLoading = false;
+      _lineupModel = lineupModel;
     });
   }
 
@@ -67,6 +78,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
 
     _getStatisticsData(_id.toString());
     _getHeadToHeadData(_home, _away);
+    _getLineupData(_id.toString());
   }
 
   Widget build(BuildContext context) {

@@ -14,7 +14,7 @@ class LineupModel with _$LineupModel {
     required List<dynamic> errors,
     required int? results,
     required Paging paging,
-    required List<LineupResponse> response,
+    required List<Lineup>? response,
   }) = _LineupModel;
 
   factory LineupModel.fromJson(Map<String, dynamic> json) =>
@@ -22,24 +22,13 @@ class LineupModel with _$LineupModel {
 }
 
 @freezed
-class LineupResponse with _$LineupResponse {
-  const factory LineupResponse({
-    required Lineup? homeLineup,
-    required Lineup? awayLineup,
-  }) = _LineupResponse;
-
-  factory LineupResponse.fromJson(Map<String, dynamic> json) =>
-      _$LineupResponseFromJson(json);
-}
-
-@freezed
 class Lineup with _$Lineup {
   const factory Lineup({
     required Team? team,
     required String? formation,
-    required List<Player> startXI,
-    required List<Player> substitutes,
-    required List<Player> coach,
+    required List<Player>? startXI,
+    required List<Player>? substitutes,
+    required Map<String, dynamic> coach,
   }) = _Lineup;
 
   factory Lineup.fromJson(Map<String, dynamic> json) => _$LineupFromJson(json);

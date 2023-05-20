@@ -494,6 +494,7 @@ mixin _$Player {
   String? get image => throw _privateConstructorUsedError;
   int? get number => throw _privateConstructorUsedError;
   String? get pos => throw _privateConstructorUsedError;
+  String? get grid => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -516,7 +517,8 @@ abstract class $PlayerCopyWith<$Res> {
       bool? injured,
       String? image,
       int? number,
-      String? pos});
+      String? pos,
+      String? grid});
 
   $TeamCopyWith<$Res>? get team;
 }
@@ -545,6 +547,7 @@ class _$PlayerCopyWithImpl<$Res, $Val extends Player>
     Object? image = freezed,
     Object? number = freezed,
     Object? pos = freezed,
+    Object? grid = freezed,
   }) {
     return _then(_value.copyWith(
       team: freezed == team
@@ -591,6 +594,10 @@ class _$PlayerCopyWithImpl<$Res, $Val extends Player>
           ? _value.pos
           : pos // ignore: cast_nullable_to_non_nullable
               as String?,
+      grid: freezed == grid
+          ? _value.grid
+          : grid // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 
@@ -624,7 +631,8 @@ abstract class _$$_PlayerCopyWith<$Res> implements $PlayerCopyWith<$Res> {
       bool? injured,
       String? image,
       int? number,
-      String? pos});
+      String? pos,
+      String? grid});
 
   @override
   $TeamCopyWith<$Res>? get team;
@@ -651,6 +659,7 @@ class __$$_PlayerCopyWithImpl<$Res>
     Object? image = freezed,
     Object? number = freezed,
     Object? pos = freezed,
+    Object? grid = freezed,
   }) {
     return _then(_$_Player(
       team: freezed == team
@@ -697,6 +706,10 @@ class __$$_PlayerCopyWithImpl<$Res>
           ? _value.pos
           : pos // ignore: cast_nullable_to_non_nullable
               as String?,
+      grid: freezed == grid
+          ? _value.grid
+          : grid // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -715,7 +728,8 @@ class _$_Player implements _Player {
       required this.injured,
       required this.image,
       required this.number,
-      required this.pos});
+      required this.pos,
+      required this.grid});
 
   factory _$_Player.fromJson(Map<String, dynamic> json) =>
       _$$_PlayerFromJson(json);
@@ -742,10 +756,12 @@ class _$_Player implements _Player {
   final int? number;
   @override
   final String? pos;
+  @override
+  final String? grid;
 
   @override
   String toString() {
-    return 'Player(team: $team, id: $id, name: $name, firstName: $firstName, lastName: $lastName, age: $age, nationality: $nationality, injured: $injured, image: $image, number: $number, pos: $pos)';
+    return 'Player(team: $team, id: $id, name: $name, firstName: $firstName, lastName: $lastName, age: $age, nationality: $nationality, injured: $injured, image: $image, number: $number, pos: $pos, grid: $grid)';
   }
 
   @override
@@ -766,13 +782,14 @@ class _$_Player implements _Player {
             (identical(other.injured, injured) || other.injured == injured) &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.number, number) || other.number == number) &&
-            (identical(other.pos, pos) || other.pos == pos));
+            (identical(other.pos, pos) || other.pos == pos) &&
+            (identical(other.grid, grid) || other.grid == grid));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, team, id, name, firstName,
-      lastName, age, nationality, injured, image, number, pos);
+      lastName, age, nationality, injured, image, number, pos, grid);
 
   @JsonKey(ignore: true)
   @override
@@ -800,7 +817,8 @@ abstract class _Player implements Player {
       required final bool? injured,
       required final String? image,
       required final int? number,
-      required final String? pos}) = _$_Player;
+      required final String? pos,
+      required final String? grid}) = _$_Player;
 
   factory _Player.fromJson(Map<String, dynamic> json) = _$_Player.fromJson;
 
@@ -826,6 +844,8 @@ abstract class _Player implements Player {
   int? get number;
   @override
   String? get pos;
+  @override
+  String? get grid;
   @override
   @JsonKey(ignore: true)
   _$$_PlayerCopyWith<_$_Player> get copyWith =>

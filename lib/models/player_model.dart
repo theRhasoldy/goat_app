@@ -46,6 +46,7 @@ class Player with _$Player {
     required String? image,
     required int? number,
     required String? pos,
+    required String? grid,
   }) = _Player;
 
   factory Player.fromJson(Map<String, dynamic> json) => _$PlayerFromJson(json);

@@ -25,7 +25,7 @@ mixin _$LineupModel {
   List<dynamic> get errors => throw _privateConstructorUsedError;
   int? get results => throw _privateConstructorUsedError;
   Paging get paging => throw _privateConstructorUsedError;
-  List<LineupResponse> get response => throw _privateConstructorUsedError;
+  List<Lineup>? get response => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +45,7 @@ abstract class $LineupModelCopyWith<$Res> {
       List<dynamic> errors,
       int? results,
       Paging paging,
-      List<LineupResponse> response});
+      List<Lineup>? response});
 
   $PagingCopyWith<$Res> get paging;
 }
@@ -68,7 +68,7 @@ class _$LineupModelCopyWithImpl<$Res, $Val extends LineupModel>
     Object? errors = null,
     Object? results = freezed,
     Object? paging = null,
-    Object? response = null,
+    Object? response = freezed,
   }) {
     return _then(_value.copyWith(
       get: freezed == get
@@ -91,10 +91,10 @@ class _$LineupModelCopyWithImpl<$Res, $Val extends LineupModel>
           ? _value.paging
           : paging // ignore: cast_nullable_to_non_nullable
               as Paging,
-      response: null == response
+      response: freezed == response
           ? _value.response
           : response // ignore: cast_nullable_to_non_nullable
-              as List<LineupResponse>,
+              as List<Lineup>?,
     ) as $Val);
   }
 
@@ -121,7 +121,7 @@ abstract class _$$_LineupModelCopyWith<$Res>
       List<dynamic> errors,
       int? results,
       Paging paging,
-      List<LineupResponse> response});
+      List<Lineup>? response});
 
   @override
   $PagingCopyWith<$Res> get paging;
@@ -143,7 +143,7 @@ class __$$_LineupModelCopyWithImpl<$Res>
     Object? errors = null,
     Object? results = freezed,
     Object? paging = null,
-    Object? response = null,
+    Object? response = freezed,
   }) {
     return _then(_$_LineupModel(
       get: freezed == get
@@ -166,10 +166,10 @@ class __$$_LineupModelCopyWithImpl<$Res>
           ? _value.paging
           : paging // ignore: cast_nullable_to_non_nullable
               as Paging,
-      response: null == response
+      response: freezed == response
           ? _value._response
           : response // ignore: cast_nullable_to_non_nullable
-              as List<LineupResponse>,
+              as List<Lineup>?,
     ));
   }
 }
@@ -183,7 +183,7 @@ class _$_LineupModel implements _LineupModel {
       required final List<dynamic> errors,
       required this.results,
       required this.paging,
-      required final List<LineupResponse> response})
+      required final List<Lineup>? response})
       : _parameters = parameters,
         _errors = errors,
         _response = response;
@@ -213,12 +213,14 @@ class _$_LineupModel implements _LineupModel {
   final int? results;
   @override
   final Paging paging;
-  final List<LineupResponse> _response;
+  final List<Lineup>? _response;
   @override
-  List<LineupResponse> get response {
+  List<Lineup>? get response {
+    final value = _response;
+    if (value == null) return null;
     if (_response is EqualUnmodifiableListView) return _response;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_response);
+    return EqualUnmodifiableListView(value);
   }
 
   @override
@@ -272,7 +274,7 @@ abstract class _LineupModel implements LineupModel {
       required final List<dynamic> errors,
       required final int? results,
       required final Paging paging,
-      required final List<LineupResponse> response}) = _$_LineupModel;
+      required final List<Lineup>? response}) = _$_LineupModel;
 
   factory _LineupModel.fromJson(Map<String, dynamic> json) =
       _$_LineupModel.fromJson;
@@ -288,198 +290,10 @@ abstract class _LineupModel implements LineupModel {
   @override
   Paging get paging;
   @override
-  List<LineupResponse> get response;
+  List<Lineup>? get response;
   @override
   @JsonKey(ignore: true)
   _$$_LineupModelCopyWith<_$_LineupModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-LineupResponse _$LineupResponseFromJson(Map<String, dynamic> json) {
-  return _LineupResponse.fromJson(json);
-}
-
-/// @nodoc
-mixin _$LineupResponse {
-  Lineup? get homeLineup => throw _privateConstructorUsedError;
-  Lineup? get awayLineup => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $LineupResponseCopyWith<LineupResponse> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $LineupResponseCopyWith<$Res> {
-  factory $LineupResponseCopyWith(
-          LineupResponse value, $Res Function(LineupResponse) then) =
-      _$LineupResponseCopyWithImpl<$Res, LineupResponse>;
-  @useResult
-  $Res call({Lineup? homeLineup, Lineup? awayLineup});
-
-  $LineupCopyWith<$Res>? get homeLineup;
-  $LineupCopyWith<$Res>? get awayLineup;
-}
-
-/// @nodoc
-class _$LineupResponseCopyWithImpl<$Res, $Val extends LineupResponse>
-    implements $LineupResponseCopyWith<$Res> {
-  _$LineupResponseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? homeLineup = freezed,
-    Object? awayLineup = freezed,
-  }) {
-    return _then(_value.copyWith(
-      homeLineup: freezed == homeLineup
-          ? _value.homeLineup
-          : homeLineup // ignore: cast_nullable_to_non_nullable
-              as Lineup?,
-      awayLineup: freezed == awayLineup
-          ? _value.awayLineup
-          : awayLineup // ignore: cast_nullable_to_non_nullable
-              as Lineup?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LineupCopyWith<$Res>? get homeLineup {
-    if (_value.homeLineup == null) {
-      return null;
-    }
-
-    return $LineupCopyWith<$Res>(_value.homeLineup!, (value) {
-      return _then(_value.copyWith(homeLineup: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LineupCopyWith<$Res>? get awayLineup {
-    if (_value.awayLineup == null) {
-      return null;
-    }
-
-    return $LineupCopyWith<$Res>(_value.awayLineup!, (value) {
-      return _then(_value.copyWith(awayLineup: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_LineupResponseCopyWith<$Res>
-    implements $LineupResponseCopyWith<$Res> {
-  factory _$$_LineupResponseCopyWith(
-          _$_LineupResponse value, $Res Function(_$_LineupResponse) then) =
-      __$$_LineupResponseCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Lineup? homeLineup, Lineup? awayLineup});
-
-  @override
-  $LineupCopyWith<$Res>? get homeLineup;
-  @override
-  $LineupCopyWith<$Res>? get awayLineup;
-}
-
-/// @nodoc
-class __$$_LineupResponseCopyWithImpl<$Res>
-    extends _$LineupResponseCopyWithImpl<$Res, _$_LineupResponse>
-    implements _$$_LineupResponseCopyWith<$Res> {
-  __$$_LineupResponseCopyWithImpl(
-      _$_LineupResponse _value, $Res Function(_$_LineupResponse) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? homeLineup = freezed,
-    Object? awayLineup = freezed,
-  }) {
-    return _then(_$_LineupResponse(
-      homeLineup: freezed == homeLineup
-          ? _value.homeLineup
-          : homeLineup // ignore: cast_nullable_to_non_nullable
-              as Lineup?,
-      awayLineup: freezed == awayLineup
-          ? _value.awayLineup
-          : awayLineup // ignore: cast_nullable_to_non_nullable
-              as Lineup?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_LineupResponse implements _LineupResponse {
-  const _$_LineupResponse({required this.homeLineup, required this.awayLineup});
-
-  factory _$_LineupResponse.fromJson(Map<String, dynamic> json) =>
-      _$$_LineupResponseFromJson(json);
-
-  @override
-  final Lineup? homeLineup;
-  @override
-  final Lineup? awayLineup;
-
-  @override
-  String toString() {
-    return 'LineupResponse(homeLineup: $homeLineup, awayLineup: $awayLineup)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_LineupResponse &&
-            (identical(other.homeLineup, homeLineup) ||
-                other.homeLineup == homeLineup) &&
-            (identical(other.awayLineup, awayLineup) ||
-                other.awayLineup == awayLineup));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, homeLineup, awayLineup);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_LineupResponseCopyWith<_$_LineupResponse> get copyWith =>
-      __$$_LineupResponseCopyWithImpl<_$_LineupResponse>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_LineupResponseToJson(
-      this,
-    );
-  }
-}
-
-abstract class _LineupResponse implements LineupResponse {
-  const factory _LineupResponse(
-      {required final Lineup? homeLineup,
-      required final Lineup? awayLineup}) = _$_LineupResponse;
-
-  factory _LineupResponse.fromJson(Map<String, dynamic> json) =
-      _$_LineupResponse.fromJson;
-
-  @override
-  Lineup? get homeLineup;
-  @override
-  Lineup? get awayLineup;
-  @override
-  @JsonKey(ignore: true)
-  _$$_LineupResponseCopyWith<_$_LineupResponse> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -491,9 +305,9 @@ Lineup _$LineupFromJson(Map<String, dynamic> json) {
 mixin _$Lineup {
   Team? get team => throw _privateConstructorUsedError;
   String? get formation => throw _privateConstructorUsedError;
-  List<Player> get startXI => throw _privateConstructorUsedError;
-  List<Player> get substitutes => throw _privateConstructorUsedError;
-  List<Player> get coach => throw _privateConstructorUsedError;
+  List<Player>? get startXI => throw _privateConstructorUsedError;
+  List<Player>? get substitutes => throw _privateConstructorUsedError;
+  Map<String, dynamic> get coach => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -508,9 +322,9 @@ abstract class $LineupCopyWith<$Res> {
   $Res call(
       {Team? team,
       String? formation,
-      List<Player> startXI,
-      List<Player> substitutes,
-      List<Player> coach});
+      List<Player>? startXI,
+      List<Player>? substitutes,
+      Map<String, dynamic> coach});
 
   $TeamCopyWith<$Res>? get team;
 }
@@ -530,8 +344,8 @@ class _$LineupCopyWithImpl<$Res, $Val extends Lineup>
   $Res call({
     Object? team = freezed,
     Object? formation = freezed,
-    Object? startXI = null,
-    Object? substitutes = null,
+    Object? startXI = freezed,
+    Object? substitutes = freezed,
     Object? coach = null,
   }) {
     return _then(_value.copyWith(
@@ -543,18 +357,18 @@ class _$LineupCopyWithImpl<$Res, $Val extends Lineup>
           ? _value.formation
           : formation // ignore: cast_nullable_to_non_nullable
               as String?,
-      startXI: null == startXI
+      startXI: freezed == startXI
           ? _value.startXI
           : startXI // ignore: cast_nullable_to_non_nullable
-              as List<Player>,
-      substitutes: null == substitutes
+              as List<Player>?,
+      substitutes: freezed == substitutes
           ? _value.substitutes
           : substitutes // ignore: cast_nullable_to_non_nullable
-              as List<Player>,
+              as List<Player>?,
       coach: null == coach
           ? _value.coach
           : coach // ignore: cast_nullable_to_non_nullable
-              as List<Player>,
+              as Map<String, dynamic>,
     ) as $Val);
   }
 
@@ -580,9 +394,9 @@ abstract class _$$_LineupCopyWith<$Res> implements $LineupCopyWith<$Res> {
   $Res call(
       {Team? team,
       String? formation,
-      List<Player> startXI,
-      List<Player> substitutes,
-      List<Player> coach});
+      List<Player>? startXI,
+      List<Player>? substitutes,
+      Map<String, dynamic> coach});
 
   @override
   $TeamCopyWith<$Res>? get team;
@@ -600,8 +414,8 @@ class __$$_LineupCopyWithImpl<$Res>
   $Res call({
     Object? team = freezed,
     Object? formation = freezed,
-    Object? startXI = null,
-    Object? substitutes = null,
+    Object? startXI = freezed,
+    Object? substitutes = freezed,
     Object? coach = null,
   }) {
     return _then(_$_Lineup(
@@ -613,18 +427,18 @@ class __$$_LineupCopyWithImpl<$Res>
           ? _value.formation
           : formation // ignore: cast_nullable_to_non_nullable
               as String?,
-      startXI: null == startXI
+      startXI: freezed == startXI
           ? _value._startXI
           : startXI // ignore: cast_nullable_to_non_nullable
-              as List<Player>,
-      substitutes: null == substitutes
+              as List<Player>?,
+      substitutes: freezed == substitutes
           ? _value._substitutes
           : substitutes // ignore: cast_nullable_to_non_nullable
-              as List<Player>,
+              as List<Player>?,
       coach: null == coach
           ? _value._coach
           : coach // ignore: cast_nullable_to_non_nullable
-              as List<Player>,
+              as Map<String, dynamic>,
     ));
   }
 }
@@ -635,9 +449,9 @@ class _$_Lineup implements _Lineup {
   const _$_Lineup(
       {required this.team,
       required this.formation,
-      required final List<Player> startXI,
-      required final List<Player> substitutes,
-      required final List<Player> coach})
+      required final List<Player>? startXI,
+      required final List<Player>? substitutes,
+      required final Map<String, dynamic> coach})
       : _startXI = startXI,
         _substitutes = substitutes,
         _coach = coach;
@@ -649,28 +463,32 @@ class _$_Lineup implements _Lineup {
   final Team? team;
   @override
   final String? formation;
-  final List<Player> _startXI;
+  final List<Player>? _startXI;
   @override
-  List<Player> get startXI {
+  List<Player>? get startXI {
+    final value = _startXI;
+    if (value == null) return null;
     if (_startXI is EqualUnmodifiableListView) return _startXI;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_startXI);
+    return EqualUnmodifiableListView(value);
   }
 
-  final List<Player> _substitutes;
+  final List<Player>? _substitutes;
   @override
-  List<Player> get substitutes {
+  List<Player>? get substitutes {
+    final value = _substitutes;
+    if (value == null) return null;
     if (_substitutes is EqualUnmodifiableListView) return _substitutes;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_substitutes);
+    return EqualUnmodifiableListView(value);
   }
 
-  final List<Player> _coach;
+  final Map<String, dynamic> _coach;
   @override
-  List<Player> get coach {
-    if (_coach is EqualUnmodifiableListView) return _coach;
+  Map<String, dynamic> get coach {
+    if (_coach is EqualUnmodifiableMapView) return _coach;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_coach);
+    return EqualUnmodifiableMapView(_coach);
   }
 
   @override
@@ -720,9 +538,9 @@ abstract class _Lineup implements Lineup {
   const factory _Lineup(
       {required final Team? team,
       required final String? formation,
-      required final List<Player> startXI,
-      required final List<Player> substitutes,
-      required final List<Player> coach}) = _$_Lineup;
+      required final List<Player>? startXI,
+      required final List<Player>? substitutes,
+      required final Map<String, dynamic> coach}) = _$_Lineup;
 
   factory _Lineup.fromJson(Map<String, dynamic> json) = _$_Lineup.fromJson;
 
@@ -731,11 +549,11 @@ abstract class _Lineup implements Lineup {
   @override
   String? get formation;
   @override
-  List<Player> get startXI;
+  List<Player>? get startXI;
   @override
-  List<Player> get substitutes;
+  List<Player>? get substitutes;
   @override
-  List<Player> get coach;
+  Map<String, dynamic> get coach;
   @override
   @JsonKey(ignore: true)
   _$$_LineupCopyWith<_$_Lineup> get copyWith =>

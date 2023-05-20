@@ -58,6 +58,7 @@ _$_Player _$$_PlayerFromJson(Map<String, dynamic> json) => _$_Player(
       image: json['image'] as String?,
       number: json['number'] as int?,
       pos: json['pos'] as String?,
+      grid: json['grid'] as String?,
     );
 
 Map<String, dynamic> _$$_PlayerToJson(_$_Player instance) => <String, dynamic>{
@@ -72,4 +73,5 @@ Map<String, dynamic> _$$_PlayerToJson(_$_Player instance) => <String, dynamic>{
       'image': instance.image,
       'number': instance.number,
       'pos': instance.pos,
+      'grid': instance.grid,
     };
