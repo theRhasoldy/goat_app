@@ -6,6 +6,7 @@ import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
 import 'package:goat_app/features/feed/presentation/screens/chat_screen.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
+import 'package:goat_app/features/feed/presentation/widgets/lineup_tab.dart';
 import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/predict_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/stats_card.dart';
@@ -88,8 +89,10 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
           floatingActionButton: FloatingActionButton(
             //Floating action button on Scaffold
             onPressed: () {
-                Navigator.of(context).push(
-                 MaterialPageRoute(builder: (context) => chatpage(email: AutofillHints.email,)));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => chatpage(
+                        email: AutofillHints.email,
+                      )));
             },
             child: Icon(Icons.chat), //icon inside button
           ),
@@ -100,7 +103,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                 // Predict tab
                 PredictScreen(),
                 // Lineup tab
-                Icon(Icons.directions_transit),
+                LineupTab(),
                 // Stats tab
                 Column(
                   children: [
