@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, prefer_typing_uninitialized_variables
+
 import 'package:ditredi/ditredi.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/models/lineup_model.dart';

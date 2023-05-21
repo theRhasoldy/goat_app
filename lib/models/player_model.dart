@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:goat_app/models/freezed_model.dart';
 import 'package:goat_app/models/fixture.dart';

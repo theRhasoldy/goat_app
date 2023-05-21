@@ -60,6 +60,7 @@ dependencies:
   card_loading: ^0.3.0
   vector_math: ^2.1.4
   ditredi: ^1.0.4
+  fluttertoast: ^8.2.1
 
 dev_dependencies:
   json_serializable: ^6.3.1

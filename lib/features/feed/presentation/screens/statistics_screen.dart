@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, annotate_overrides, prefer_const_constructors, no_leading_underscores_for_local_identifiers
 
 import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';

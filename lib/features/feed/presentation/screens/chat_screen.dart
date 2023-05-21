@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable, camel_case_types, no_logic_in_create_state, library_private_types_in_public_api, unnecessary_new, prefer_const_constructors, body_might_complete_normally_nullable
+// ignore_for_file: must_be_immutable, camel_case_types, no_logic_in_create_state, library_private_types_in_public_api, unnecessary_new, prefer_const_constructors, body_might_complete_normally_nullable, sized_box_for_whitespace
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';

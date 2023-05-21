@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, use_build_context_synchronously, avoid_print, no_leading_underscores_for_local_identifiers, prefer_const_constructors, deprecated_member_use, duplicate_ignore, unnecessary_nullable_for_final_variable_declarations
 
 import 'package:card_loading/card_loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -64,7 +64,7 @@ class _HomeState extends State<Home> {
       theme: mainTheme,
       home: Scaffold(
         appBar:
-            AppBar(title: const Text("Hello"), centerTitle: false, actions: [
+            AppBar(title: const Text("Fixtures"), centerTitle: false, actions: [
           IconButton(
             onPressed: () async {
               final auth = FirebaseAuth.instance;
@@ -102,6 +102,7 @@ class _HomeState extends State<Home> {
                                 DateFormat('EEE').format(DateTime.now().add(
                                     Duration(
                                         days: i - DateTime.now().weekday))),
+                                // ignore: prefer_const_constructors
                                 style: TextStyle(
                                   color: Color(0xFF6750A4),
                                   fontSize: 15,

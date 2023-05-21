@@ -1,3 +1,5 @@
+// ignore_for_file: body_might_complete_normally_nullable
+
 import 'package:dio/dio.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/freezed_model.dart';
@@ -18,7 +20,7 @@ class ApiService {
       final json = response.data as Map<String, dynamic>;
       return TeamModel.fromJson(json);
     } catch (error) {
-      throw error;
+      rethrow;
     }
   }
 
@@ -43,7 +45,7 @@ class ApiService {
       final json = response.data as Map<String, dynamic>;
       return FixtureModel.fromJson(json);
     } catch (error) {
-      throw error;
+      rethrow;
     }
   }
 
