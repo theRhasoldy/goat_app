@@ -115,7 +115,9 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                 // Predict tab
                 PredictScreen(),
                 // Lineup tab
-                LineupTab(),
+                LineupTab(
+                  lineupModel: _lineupModel!,
+                ),
                 // Stats tab
                 Column(
                   children: [

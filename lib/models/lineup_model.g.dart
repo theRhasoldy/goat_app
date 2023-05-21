@@ -34,10 +34,10 @@ _$_Lineup _$$_LineupFromJson(Map<String, dynamic> json) => _$_Lineup(
           : Team.fromJson(json['team'] as Map<String, dynamic>),
       formation: json['formation'] as String?,
       startXI: (json['startXI'] as List<dynamic>?)
-          ?.map((e) => Player.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Starter.fromJson(e as Map<String, dynamic>))
           .toList(),
       substitutes: (json['substitutes'] as List<dynamic>?)
-          ?.map((e) => Player.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => Starter.fromJson(e as Map<String, dynamic>))
           .toList(),
       coach: json['coach'] as Map<String, dynamic>,
     );
@@ -48,4 +48,15 @@ Map<String, dynamic> _$$_LineupToJson(_$_Lineup instance) => <String, dynamic>{
       'startXI': instance.startXI,
       'substitutes': instance.substitutes,
       'coach': instance.coach,
+    };
+
+_$_Starter _$$_StarterFromJson(Map<String, dynamic> json) => _$_Starter(
+      player: json['player'] == null
+          ? null
+          : Player.fromJson(json['player'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$_StarterToJson(_$_Starter instance) =>
+    <String, dynamic>{
+      'player': instance.player,
     };

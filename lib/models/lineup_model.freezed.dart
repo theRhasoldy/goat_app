@@ -305,8 +305,8 @@ Lineup _$LineupFromJson(Map<String, dynamic> json) {
 mixin _$Lineup {
   Team? get team => throw _privateConstructorUsedError;
   String? get formation => throw _privateConstructorUsedError;
-  List<Player>? get startXI => throw _privateConstructorUsedError;
-  List<Player>? get substitutes => throw _privateConstructorUsedError;
+  List<Starter>? get startXI => throw _privateConstructorUsedError;
+  List<Starter>? get substitutes => throw _privateConstructorUsedError;
   Map<String, dynamic> get coach => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -322,8 +322,8 @@ abstract class $LineupCopyWith<$Res> {
   $Res call(
       {Team? team,
       String? formation,
-      List<Player>? startXI,
-      List<Player>? substitutes,
+      List<Starter>? startXI,
+      List<Starter>? substitutes,
       Map<String, dynamic> coach});
 
   $TeamCopyWith<$Res>? get team;
@@ -360,11 +360,11 @@ class _$LineupCopyWithImpl<$Res, $Val extends Lineup>
       startXI: freezed == startXI
           ? _value.startXI
           : startXI // ignore: cast_nullable_to_non_nullable
-              as List<Player>?,
+              as List<Starter>?,
       substitutes: freezed == substitutes
           ? _value.substitutes
           : substitutes // ignore: cast_nullable_to_non_nullable
-              as List<Player>?,
+              as List<Starter>?,
       coach: null == coach
           ? _value.coach
           : coach // ignore: cast_nullable_to_non_nullable
@@ -394,8 +394,8 @@ abstract class _$$_LineupCopyWith<$Res> implements $LineupCopyWith<$Res> {
   $Res call(
       {Team? team,
       String? formation,
-      List<Player>? startXI,
-      List<Player>? substitutes,
+      List<Starter>? startXI,
+      List<Starter>? substitutes,
       Map<String, dynamic> coach});
 
   @override
@@ -430,11 +430,11 @@ class __$$_LineupCopyWithImpl<$Res>
       startXI: freezed == startXI
           ? _value._startXI
           : startXI // ignore: cast_nullable_to_non_nullable
-              as List<Player>?,
+              as List<Starter>?,
       substitutes: freezed == substitutes
           ? _value._substitutes
           : substitutes // ignore: cast_nullable_to_non_nullable
-              as List<Player>?,
+              as List<Starter>?,
       coach: null == coach
           ? _value._coach
           : coach // ignore: cast_nullable_to_non_nullable
@@ -449,8 +449,8 @@ class _$_Lineup implements _Lineup {
   const _$_Lineup(
       {required this.team,
       required this.formation,
-      required final List<Player>? startXI,
-      required final List<Player>? substitutes,
+      required final List<Starter>? startXI,
+      required final List<Starter>? substitutes,
       required final Map<String, dynamic> coach})
       : _startXI = startXI,
         _substitutes = substitutes,
@@ -463,9 +463,9 @@ class _$_Lineup implements _Lineup {
   final Team? team;
   @override
   final String? formation;
-  final List<Player>? _startXI;
+  final List<Starter>? _startXI;
   @override
-  List<Player>? get startXI {
+  List<Starter>? get startXI {
     final value = _startXI;
     if (value == null) return null;
     if (_startXI is EqualUnmodifiableListView) return _startXI;
@@ -473,9 +473,9 @@ class _$_Lineup implements _Lineup {
     return EqualUnmodifiableListView(value);
   }
 
-  final List<Player>? _substitutes;
+  final List<Starter>? _substitutes;
   @override
-  List<Player>? get substitutes {
+  List<Starter>? get substitutes {
     final value = _substitutes;
     if (value == null) return null;
     if (_substitutes is EqualUnmodifiableListView) return _substitutes;
@@ -538,8 +538,8 @@ abstract class _Lineup implements Lineup {
   const factory _Lineup(
       {required final Team? team,
       required final String? formation,
-      required final List<Player>? startXI,
-      required final List<Player>? substitutes,
+      required final List<Starter>? startXI,
+      required final List<Starter>? substitutes,
       required final Map<String, dynamic> coach}) = _$_Lineup;
 
   factory _Lineup.fromJson(Map<String, dynamic> json) = _$_Lineup.fromJson;
@@ -549,13 +549,161 @@ abstract class _Lineup implements Lineup {
   @override
   String? get formation;
   @override
-  List<Player>? get startXI;
+  List<Starter>? get startXI;
   @override
-  List<Player>? get substitutes;
+  List<Starter>? get substitutes;
   @override
   Map<String, dynamic> get coach;
   @override
   @JsonKey(ignore: true)
   _$$_LineupCopyWith<_$_Lineup> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Starter _$StarterFromJson(Map<String, dynamic> json) {
+  return _Starter.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Starter {
+  Player? get player => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $StarterCopyWith<Starter> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $StarterCopyWith<$Res> {
+  factory $StarterCopyWith(Starter value, $Res Function(Starter) then) =
+      _$StarterCopyWithImpl<$Res, Starter>;
+  @useResult
+  $Res call({Player? player});
+
+  $PlayerCopyWith<$Res>? get player;
+}
+
+/// @nodoc
+class _$StarterCopyWithImpl<$Res, $Val extends Starter>
+    implements $StarterCopyWith<$Res> {
+  _$StarterCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? player = freezed,
+  }) {
+    return _then(_value.copyWith(
+      player: freezed == player
+          ? _value.player
+          : player // ignore: cast_nullable_to_non_nullable
+              as Player?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PlayerCopyWith<$Res>? get player {
+    if (_value.player == null) {
+      return null;
+    }
+
+    return $PlayerCopyWith<$Res>(_value.player!, (value) {
+      return _then(_value.copyWith(player: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_StarterCopyWith<$Res> implements $StarterCopyWith<$Res> {
+  factory _$$_StarterCopyWith(
+          _$_Starter value, $Res Function(_$_Starter) then) =
+      __$$_StarterCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({Player? player});
+
+  @override
+  $PlayerCopyWith<$Res>? get player;
+}
+
+/// @nodoc
+class __$$_StarterCopyWithImpl<$Res>
+    extends _$StarterCopyWithImpl<$Res, _$_Starter>
+    implements _$$_StarterCopyWith<$Res> {
+  __$$_StarterCopyWithImpl(_$_Starter _value, $Res Function(_$_Starter) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? player = freezed,
+  }) {
+    return _then(_$_Starter(
+      player: freezed == player
+          ? _value.player
+          : player // ignore: cast_nullable_to_non_nullable
+              as Player?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Starter implements _Starter {
+  const _$_Starter({required this.player});
+
+  factory _$_Starter.fromJson(Map<String, dynamic> json) =>
+      _$$_StarterFromJson(json);
+
+  @override
+  final Player? player;
+
+  @override
+  String toString() {
+    return 'Starter(player: $player)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Starter &&
+            (identical(other.player, player) || other.player == player));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, player);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_StarterCopyWith<_$_Starter> get copyWith =>
+      __$$_StarterCopyWithImpl<_$_Starter>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_StarterToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Starter implements Starter {
+  const factory _Starter({required final Player? player}) = _$_Starter;
+
+  factory _Starter.fromJson(Map<String, dynamic> json) = _$_Starter.fromJson;
+
+  @override
+  Player? get player;
+  @override
+  @JsonKey(ignore: true)
+  _$$_StarterCopyWith<_$_Starter> get copyWith =>
       throw _privateConstructorUsedError;
 }
