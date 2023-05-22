@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors, avoid_print, no_leading_underscores_for_local_identifiers, prefer_final_fields
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
@@ -5,6 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/logic/auth.dart';
+import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
@@ -146,7 +149,7 @@ class _SignInState extends State<SignIn> {
                             {
                               // Navigate to Sign in Page
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => Home()))
+                                  builder: (context) => SignUp()))
                             },
                             child: const Text("SIGN UP"))
                       ],

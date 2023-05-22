@@ -29,11 +29,12 @@ class _HomeState extends State<Home> {
   Future<void> _getFixtureData(String date) async {
     final ApiService apiService = ApiService();
     final FixtureModel? fixtureModel = await apiService.getMatches(live: "all");
+    if (mounted) {
     setState(() {
       isLoading = false;
       _fixtureModel = fixtureModel;
     });
-  }
+  }}
 
   void _onButtonPressed(int index) {
     setState(() {

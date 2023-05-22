@@ -1,11 +1,15 @@
-// ignore_for_file: must_be_immutable, camel_case_types, no_logic_in_create_state, library_private_types_in_public_api, unnecessary_new, prefer_const_constructors, body_might_complete_normally_nullable, sized_box_for_whitespace
+// ignore_for_file: must_be_immutable, camel_case_types, no_logic_in_create_state, library_private_types_in_public_api, unnecessary_new, prefer_const_constructors, body_might_complete_normally_nullable, sized_box_for_whitespace, unused_import, unused_field, unused_local_variable, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/features/feed/presentation/screens/message.dart';
-
+import 'package:goat_app/features/feed/presentation/screens/statistics_screen.dart';
+import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
+import 'package:goat_app/features/feed/presentation/widgets/predict_card.dart';
+import 'package:goat_app/models/user.dart';
+import '../widgets/fixture_card.dart';
 
 class chatpage extends StatefulWidget {
   String email;
@@ -17,11 +21,39 @@ class chatpage extends StatefulWidget {
 
 class _chatpageState extends State<chatpage> {
   String email;
+  late Future<UserModel> _currentUserFuture; // Add this line
   _chatpageState({required this.email});
-
   final fs = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
   final TextEditingController message = new TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _currentUserFuture =
+        getCurrentUser(); // Call the method to fetch the user data
+  }
+
+  Future<UserModel> getCurrentUser() async {
+    User? firebaseUser = _auth.currentUser;
+    if (firebaseUser != null) {
+      String uid = firebaseUser.uid;
+      QuerySnapshot userSnapshot =
+          await fs.collection('Users').where('email', isEqualTo: email).get();
+      print('Query Results: ${userSnapshot.docs.length} documents found');
+      if (userSnapshot.docs.isNotEmpty) {
+        DocumentSnapshot document = userSnapshot.docs.first;
+        UserModel loggedInUser = UserModel.fromMan(document.data());
+        return loggedInUser;
+      } else {
+        // Handle the case when the user document is not found
+        throw Exception('User not found in Firestore');
+      }
+    }else {
+    // Handle the case when the user is not authenticated
+    throw Exception('User not authenticated');
+  }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +85,22 @@ class _chatpageState extends State<chatpage> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.79,
-              child: messages(
-                email: email,
-              ),
+            FutureBuilder<UserModel>(
+              future: _currentUserFuture,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Container(
+                    height: MediaQuery.of(context).size.height * 0.79,
+                    child: messages(
+                      currentUser: snapshot.data!, // Use the snapshot data
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  return Home(); // Placeholder widget while fetching user data
+                }
+              },
             ),
             Row(
               children: [
@@ -108,4 +151,3 @@ class _chatpageState extends State<chatpage> {
     );
   }
 }
-

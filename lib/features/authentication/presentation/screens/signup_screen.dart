@@ -198,11 +198,10 @@ class _SignUpState extends State<SignUp> {
 
   postDetailsToFirestore() async {
     //calling the firestore
-    //calling our user model
-    //calling these values
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    //calling our user model
     User? user = _auth.currentUser;
-
+    //calling these values
     UserModel userModel = UserModel(email: '', password: '');
 
     //writing all values
