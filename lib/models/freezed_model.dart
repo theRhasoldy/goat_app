@@ -42,7 +42,7 @@ class Response with _$Response {
 @freezed
 class Team with _$Team {
   const factory Team({
-    required int? id,
+    required dynamic? id,
     required String? name,
     required String? code,
     required String? country,

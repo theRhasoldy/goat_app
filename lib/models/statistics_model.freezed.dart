@@ -484,8 +484,8 @@ StatisticType _$StatisticTypeFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StatisticType {
-  dynamic get type => throw _privateConstructorUsedError;
-  dynamic get value => throw _privateConstructorUsedError;
+  dynamic? get type => throw _privateConstructorUsedError;
+  dynamic? get value => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -499,7 +499,7 @@ abstract class $StatisticTypeCopyWith<$Res> {
           StatisticType value, $Res Function(StatisticType) then) =
       _$StatisticTypeCopyWithImpl<$Res, StatisticType>;
   @useResult
-  $Res call({dynamic type, dynamic value});
+  $Res call({dynamic? type, dynamic? value});
 }
 
 /// @nodoc
@@ -522,11 +522,11 @@ class _$StatisticTypeCopyWithImpl<$Res, $Val extends StatisticType>
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as dynamic?,
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as dynamic?,
     ) as $Val);
   }
 }
@@ -539,7 +539,7 @@ abstract class _$$_StatisticTypeCopyWith<$Res>
       __$$_StatisticTypeCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({dynamic type, dynamic value});
+  $Res call({dynamic? type, dynamic? value});
 }
 
 /// @nodoc
@@ -560,11 +560,11 @@ class __$$_StatisticTypeCopyWithImpl<$Res>
       type: freezed == type
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as dynamic?,
       value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as dynamic,
+              as dynamic?,
     ));
   }
 }
@@ -578,9 +578,9 @@ class _$_StatisticType implements _StatisticType {
       _$$_StatisticTypeFromJson(json);
 
   @override
-  final dynamic type;
+  final dynamic? type;
   @override
-  final dynamic value;
+  final dynamic? value;
 
   @override
   String toString() {
@@ -619,16 +619,16 @@ class _$_StatisticType implements _StatisticType {
 
 abstract class _StatisticType implements StatisticType {
   const factory _StatisticType(
-      {required final dynamic type,
-      required final dynamic value}) = _$_StatisticType;
+      {required final dynamic? type,
+      required final dynamic? value}) = _$_StatisticType;
 
   factory _StatisticType.fromJson(Map<String, dynamic> json) =
       _$_StatisticType.fromJson;
 
   @override
-  dynamic get type;
+  dynamic? get type;
   @override
-  dynamic get value;
+  dynamic? get value;
   @override
   @JsonKey(ignore: true)
   _$$_StatisticTypeCopyWith<_$_StatisticType> get copyWith =>

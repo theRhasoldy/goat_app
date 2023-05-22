@@ -620,7 +620,7 @@ Team _$TeamFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Team {
-  int? get id => throw _privateConstructorUsedError;
+  dynamic? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get code => throw _privateConstructorUsedError;
   String? get country => throw _privateConstructorUsedError;
@@ -639,7 +639,7 @@ abstract class $TeamCopyWith<$Res> {
       _$TeamCopyWithImpl<$Res, Team>;
   @useResult
   $Res call(
-      {int? id,
+      {dynamic? id,
       String? name,
       String? code,
       String? country,
@@ -673,7 +673,7 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -709,7 +709,7 @@ abstract class _$$_TeamCopyWith<$Res> implements $TeamCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {int? id,
+      {dynamic? id,
       String? name,
       String? code,
       String? country,
@@ -739,7 +739,7 @@ class __$$_TeamCopyWithImpl<$Res> extends _$TeamCopyWithImpl<$Res, _$_Team>
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as dynamic?,
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -783,7 +783,7 @@ class _$_Team implements _Team {
   factory _$_Team.fromJson(Map<String, dynamic> json) => _$$_TeamFromJson(json);
 
   @override
-  final int? id;
+  final dynamic? id;
   @override
   final String? name;
   @override
@@ -807,7 +807,7 @@ class _$_Team implements _Team {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Team &&
-            (identical(other.id, id) || other.id == id) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.code, code) || other.code == code) &&
             (identical(other.country, country) || other.country == country) &&
@@ -820,7 +820,14 @@ class _$_Team implements _Team {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, id, name, code, country, founded, national, logo);
+      runtimeType,
+      const DeepCollectionEquality().hash(id),
+      name,
+      code,
+      country,
+      founded,
+      national,
+      logo);
 
   @JsonKey(ignore: true)
   @override
@@ -838,7 +845,7 @@ class _$_Team implements _Team {
 
 abstract class _Team implements Team {
   const factory _Team(
-      {required final int? id,
+      {required final dynamic? id,
       required final String? name,
       required final String? code,
       required final String? country,
@@ -849,7 +856,7 @@ abstract class _Team implements Team {
   factory _Team.fromJson(Map<String, dynamic> json) = _$_Team.fromJson;
 
   @override
-  int? get id;
+  dynamic? get id;
   @override
   String? get name;
   @override

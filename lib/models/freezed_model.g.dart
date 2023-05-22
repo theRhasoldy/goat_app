@@ -49,7 +49,7 @@ Map<String, dynamic> _$$_ResponseToJson(_$_Response instance) =>
     };
 
 _$_Team _$$_TeamFromJson(Map<String, dynamic> json) => _$_Team(
-      id: json['id'] as int?,
+      id: json['id'],
       name: json['name'] as String?,
       code: json['code'] as String?,
       country: json['country'] as String?,

@@ -30,7 +30,7 @@ class Lineup with _$Lineup {
     required String? formation,
     required List<Starter>? startXI,
     required List<Starter>? substitutes,
-    required Map<String, dynamic> coach,
+    required Coach? coach,
   }) = _Lineup;
 
   factory Lineup.fromJson(Map<String, dynamic> json) => _$LineupFromJson(json);
@@ -44,4 +44,15 @@ class Starter with _$Starter {
 
   factory Starter.fromJson(Map<String, dynamic> json) =>
       _$StarterFromJson(json);
+}
+
+@freezed
+class Coach with _$Coach {
+  const factory Coach({
+    required int? id,
+    required String? name,
+    required String? photo,
+  }) = _Coach;
+
+  factory Coach.fromJson(Map<String, dynamic> json) => _$CoachFromJson(json);
 }

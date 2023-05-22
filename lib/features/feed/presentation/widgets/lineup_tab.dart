@@ -171,9 +171,18 @@ class _LineupTabState extends State<LineupTab> {
                   style: Theme.of(context).textTheme.headlineSmall,
                 ),
               ),
-              Row(children: [
-                Text(widget.lineupModel.response?[1].coach.toString() ?? ""),
-              ]),
+              Card(
+                  child: ListTile(
+                title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(widget.lineupModel.response?[0].coach?.name ?? ""),
+                      Text(widget.lineupModel.response?[1].coach?.name ?? ""),
+                    ]),
+              )),
+              SizedBox(
+                height: 100,
+              )
             ]),
           ))
         ],

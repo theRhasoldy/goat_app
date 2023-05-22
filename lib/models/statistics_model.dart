@@ -33,8 +33,8 @@ class StatisticsResponse with _$StatisticsResponse {
 @freezed
 class StatisticType with _$StatisticType {
   const factory StatisticType({
-    required String? type,
-    required String? value,
+    required dynamic? type,
+    required dynamic? value,
   }) = _StatisticType;
 
   factory StatisticType.fromJson(Map<String, dynamic> json) =>
