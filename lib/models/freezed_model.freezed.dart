@@ -626,6 +626,7 @@ mixin _$Team {
   String? get country => throw _privateConstructorUsedError;
   int? get founded => throw _privateConstructorUsedError;
   bool? get national => throw _privateConstructorUsedError;
+  TeamColors? get colors => throw _privateConstructorUsedError;
   String? get logo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -645,7 +646,10 @@ abstract class $TeamCopyWith<$Res> {
       String? country,
       int? founded,
       bool? national,
+      TeamColors? colors,
       String? logo});
+
+  $TeamColorsCopyWith<$Res>? get colors;
 }
 
 /// @nodoc
@@ -667,6 +671,7 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
     Object? country = freezed,
     Object? founded = freezed,
     Object? national = freezed,
+    Object? colors = freezed,
     Object? logo = freezed,
   }) {
     return _then(_value.copyWith(
@@ -694,11 +699,27 @@ class _$TeamCopyWithImpl<$Res, $Val extends Team>
           ? _value.national
           : national // ignore: cast_nullable_to_non_nullable
               as bool?,
+      colors: freezed == colors
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as TeamColors?,
       logo: freezed == logo
           ? _value.logo
           : logo // ignore: cast_nullable_to_non_nullable
               as String?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $TeamColorsCopyWith<$Res>? get colors {
+    if (_value.colors == null) {
+      return null;
+    }
+
+    return $TeamColorsCopyWith<$Res>(_value.colors!, (value) {
+      return _then(_value.copyWith(colors: value) as $Val);
+    });
   }
 }
 
@@ -715,7 +736,11 @@ abstract class _$$_TeamCopyWith<$Res> implements $TeamCopyWith<$Res> {
       String? country,
       int? founded,
       bool? national,
+      TeamColors? colors,
       String? logo});
+
+  @override
+  $TeamColorsCopyWith<$Res>? get colors;
 }
 
 /// @nodoc
@@ -733,6 +758,7 @@ class __$$_TeamCopyWithImpl<$Res> extends _$TeamCopyWithImpl<$Res, _$_Team>
     Object? country = freezed,
     Object? founded = freezed,
     Object? national = freezed,
+    Object? colors = freezed,
     Object? logo = freezed,
   }) {
     return _then(_$_Team(
@@ -760,6 +786,10 @@ class __$$_TeamCopyWithImpl<$Res> extends _$TeamCopyWithImpl<$Res, _$_Team>
           ? _value.national
           : national // ignore: cast_nullable_to_non_nullable
               as bool?,
+      colors: freezed == colors
+          ? _value.colors
+          : colors // ignore: cast_nullable_to_non_nullable
+              as TeamColors?,
       logo: freezed == logo
           ? _value.logo
           : logo // ignore: cast_nullable_to_non_nullable
@@ -778,6 +808,7 @@ class _$_Team implements _Team {
       required this.country,
       required this.founded,
       required this.national,
+      required this.colors,
       required this.logo});
 
   factory _$_Team.fromJson(Map<String, dynamic> json) => _$$_TeamFromJson(json);
@@ -795,11 +826,13 @@ class _$_Team implements _Team {
   @override
   final bool? national;
   @override
+  final TeamColors? colors;
+  @override
   final String? logo;
 
   @override
   String toString() {
-    return 'Team(id: $id, name: $name, code: $code, country: $country, founded: $founded, national: $national, logo: $logo)';
+    return 'Team(id: $id, name: $name, code: $code, country: $country, founded: $founded, national: $national, colors: $colors, logo: $logo)';
   }
 
   @override
@@ -814,6 +847,7 @@ class _$_Team implements _Team {
             (identical(other.founded, founded) || other.founded == founded) &&
             (identical(other.national, national) ||
                 other.national == national) &&
+            (identical(other.colors, colors) || other.colors == colors) &&
             (identical(other.logo, logo) || other.logo == logo));
   }
 
@@ -827,6 +861,7 @@ class _$_Team implements _Team {
       country,
       founded,
       national,
+      colors,
       logo);
 
   @JsonKey(ignore: true)
@@ -851,6 +886,7 @@ abstract class _Team implements Team {
       required final String? country,
       required final int? founded,
       required final bool? national,
+      required final TeamColors? colors,
       required final String? logo}) = _$_Team;
 
   factory _Team.fromJson(Map<String, dynamic> json) = _$_Team.fromJson;
@@ -868,10 +904,371 @@ abstract class _Team implements Team {
   @override
   bool? get national;
   @override
+  TeamColors? get colors;
+  @override
   String? get logo;
   @override
   @JsonKey(ignore: true)
   _$$_TeamCopyWith<_$_Team> get copyWith => throw _privateConstructorUsedError;
+}
+
+TeamColors _$TeamColorsFromJson(Map<String, dynamic> json) {
+  return _TeamColors.fromJson(json);
+}
+
+/// @nodoc
+mixin _$TeamColors {
+  PlayersColors? get player => throw _privateConstructorUsedError;
+  PlayersColors? get goalkeeper => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $TeamColorsCopyWith<TeamColors> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $TeamColorsCopyWith<$Res> {
+  factory $TeamColorsCopyWith(
+          TeamColors value, $Res Function(TeamColors) then) =
+      _$TeamColorsCopyWithImpl<$Res, TeamColors>;
+  @useResult
+  $Res call({PlayersColors? player, PlayersColors? goalkeeper});
+
+  $PlayersColorsCopyWith<$Res>? get player;
+  $PlayersColorsCopyWith<$Res>? get goalkeeper;
+}
+
+/// @nodoc
+class _$TeamColorsCopyWithImpl<$Res, $Val extends TeamColors>
+    implements $TeamColorsCopyWith<$Res> {
+  _$TeamColorsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? player = freezed,
+    Object? goalkeeper = freezed,
+  }) {
+    return _then(_value.copyWith(
+      player: freezed == player
+          ? _value.player
+          : player // ignore: cast_nullable_to_non_nullable
+              as PlayersColors?,
+      goalkeeper: freezed == goalkeeper
+          ? _value.goalkeeper
+          : goalkeeper // ignore: cast_nullable_to_non_nullable
+              as PlayersColors?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PlayersColorsCopyWith<$Res>? get player {
+    if (_value.player == null) {
+      return null;
+    }
+
+    return $PlayersColorsCopyWith<$Res>(_value.player!, (value) {
+      return _then(_value.copyWith(player: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PlayersColorsCopyWith<$Res>? get goalkeeper {
+    if (_value.goalkeeper == null) {
+      return null;
+    }
+
+    return $PlayersColorsCopyWith<$Res>(_value.goalkeeper!, (value) {
+      return _then(_value.copyWith(goalkeeper: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_TeamColorsCopyWith<$Res>
+    implements $TeamColorsCopyWith<$Res> {
+  factory _$$_TeamColorsCopyWith(
+          _$_TeamColors value, $Res Function(_$_TeamColors) then) =
+      __$$_TeamColorsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({PlayersColors? player, PlayersColors? goalkeeper});
+
+  @override
+  $PlayersColorsCopyWith<$Res>? get player;
+  @override
+  $PlayersColorsCopyWith<$Res>? get goalkeeper;
+}
+
+/// @nodoc
+class __$$_TeamColorsCopyWithImpl<$Res>
+    extends _$TeamColorsCopyWithImpl<$Res, _$_TeamColors>
+    implements _$$_TeamColorsCopyWith<$Res> {
+  __$$_TeamColorsCopyWithImpl(
+      _$_TeamColors _value, $Res Function(_$_TeamColors) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? player = freezed,
+    Object? goalkeeper = freezed,
+  }) {
+    return _then(_$_TeamColors(
+      player: freezed == player
+          ? _value.player
+          : player // ignore: cast_nullable_to_non_nullable
+              as PlayersColors?,
+      goalkeeper: freezed == goalkeeper
+          ? _value.goalkeeper
+          : goalkeeper // ignore: cast_nullable_to_non_nullable
+              as PlayersColors?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_TeamColors implements _TeamColors {
+  const _$_TeamColors({required this.player, required this.goalkeeper});
+
+  factory _$_TeamColors.fromJson(Map<String, dynamic> json) =>
+      _$$_TeamColorsFromJson(json);
+
+  @override
+  final PlayersColors? player;
+  @override
+  final PlayersColors? goalkeeper;
+
+  @override
+  String toString() {
+    return 'TeamColors(player: $player, goalkeeper: $goalkeeper)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_TeamColors &&
+            (identical(other.player, player) || other.player == player) &&
+            (identical(other.goalkeeper, goalkeeper) ||
+                other.goalkeeper == goalkeeper));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, player, goalkeeper);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TeamColorsCopyWith<_$_TeamColors> get copyWith =>
+      __$$_TeamColorsCopyWithImpl<_$_TeamColors>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_TeamColorsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _TeamColors implements TeamColors {
+  const factory _TeamColors(
+      {required final PlayersColors? player,
+      required final PlayersColors? goalkeeper}) = _$_TeamColors;
+
+  factory _TeamColors.fromJson(Map<String, dynamic> json) =
+      _$_TeamColors.fromJson;
+
+  @override
+  PlayersColors? get player;
+  @override
+  PlayersColors? get goalkeeper;
+  @override
+  @JsonKey(ignore: true)
+  _$$_TeamColorsCopyWith<_$_TeamColors> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+PlayersColors _$PlayersColorsFromJson(Map<String, dynamic> json) {
+  return _PlayersColors.fromJson(json);
+}
+
+/// @nodoc
+mixin _$PlayersColors {
+  String? get primary => throw _privateConstructorUsedError;
+  String? get number => throw _privateConstructorUsedError;
+  String? get border => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $PlayersColorsCopyWith<PlayersColors> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PlayersColorsCopyWith<$Res> {
+  factory $PlayersColorsCopyWith(
+          PlayersColors value, $Res Function(PlayersColors) then) =
+      _$PlayersColorsCopyWithImpl<$Res, PlayersColors>;
+  @useResult
+  $Res call({String? primary, String? number, String? border});
+}
+
+/// @nodoc
+class _$PlayersColorsCopyWithImpl<$Res, $Val extends PlayersColors>
+    implements $PlayersColorsCopyWith<$Res> {
+  _$PlayersColorsCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? primary = freezed,
+    Object? number = freezed,
+    Object? border = freezed,
+  }) {
+    return _then(_value.copyWith(
+      primary: freezed == primary
+          ? _value.primary
+          : primary // ignore: cast_nullable_to_non_nullable
+              as String?,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      border: freezed == border
+          ? _value.border
+          : border // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_PlayersColorsCopyWith<$Res>
+    implements $PlayersColorsCopyWith<$Res> {
+  factory _$$_PlayersColorsCopyWith(
+          _$_PlayersColors value, $Res Function(_$_PlayersColors) then) =
+      __$$_PlayersColorsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String? primary, String? number, String? border});
+}
+
+/// @nodoc
+class __$$_PlayersColorsCopyWithImpl<$Res>
+    extends _$PlayersColorsCopyWithImpl<$Res, _$_PlayersColors>
+    implements _$$_PlayersColorsCopyWith<$Res> {
+  __$$_PlayersColorsCopyWithImpl(
+      _$_PlayersColors _value, $Res Function(_$_PlayersColors) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? primary = freezed,
+    Object? number = freezed,
+    Object? border = freezed,
+  }) {
+    return _then(_$_PlayersColors(
+      primary: freezed == primary
+          ? _value.primary
+          : primary // ignore: cast_nullable_to_non_nullable
+              as String?,
+      number: freezed == number
+          ? _value.number
+          : number // ignore: cast_nullable_to_non_nullable
+              as String?,
+      border: freezed == border
+          ? _value.border
+          : border // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_PlayersColors implements _PlayersColors {
+  const _$_PlayersColors(
+      {required this.primary, required this.number, required this.border});
+
+  factory _$_PlayersColors.fromJson(Map<String, dynamic> json) =>
+      _$$_PlayersColorsFromJson(json);
+
+  @override
+  final String? primary;
+  @override
+  final String? number;
+  @override
+  final String? border;
+
+  @override
+  String toString() {
+    return 'PlayersColors(primary: $primary, number: $number, border: $border)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PlayersColors &&
+            (identical(other.primary, primary) || other.primary == primary) &&
+            (identical(other.number, number) || other.number == number) &&
+            (identical(other.border, border) || other.border == border));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, primary, number, border);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PlayersColorsCopyWith<_$_PlayersColors> get copyWith =>
+      __$$_PlayersColorsCopyWithImpl<_$_PlayersColors>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_PlayersColorsToJson(
+      this,
+    );
+  }
+}
+
+abstract class _PlayersColors implements PlayersColors {
+  const factory _PlayersColors(
+      {required final String? primary,
+      required final String? number,
+      required final String? border}) = _$_PlayersColors;
+
+  factory _PlayersColors.fromJson(Map<String, dynamic> json) =
+      _$_PlayersColors.fromJson;
+
+  @override
+  String? get primary;
+  @override
+  String? get number;
+  @override
+  String? get border;
+  @override
+  @JsonKey(ignore: true)
+  _$$_PlayersColorsCopyWith<_$_PlayersColors> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Venue _$VenueFromJson(Map<String, dynamic> json) {

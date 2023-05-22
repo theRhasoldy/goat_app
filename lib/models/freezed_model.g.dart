@@ -55,6 +55,9 @@ _$_Team _$$_TeamFromJson(Map<String, dynamic> json) => _$_Team(
       country: json['country'] as String?,
       founded: json['founded'] as int?,
       national: json['national'] as bool?,
+      colors: json['colors'] == null
+          ? null
+          : TeamColors.fromJson(json['colors'] as Map<String, dynamic>),
       logo: json['logo'] as String?,
     );
 
@@ -65,7 +68,38 @@ Map<String, dynamic> _$$_TeamToJson(_$_Team instance) => <String, dynamic>{
       'country': instance.country,
       'founded': instance.founded,
       'national': instance.national,
+      'colors': instance.colors,
       'logo': instance.logo,
+    };
+
+_$_TeamColors _$$_TeamColorsFromJson(Map<String, dynamic> json) =>
+    _$_TeamColors(
+      player: json['player'] == null
+          ? null
+          : PlayersColors.fromJson(json['player'] as Map<String, dynamic>),
+      goalkeeper: json['goalkeeper'] == null
+          ? null
+          : PlayersColors.fromJson(json['goalkeeper'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$_TeamColorsToJson(_$_TeamColors instance) =>
+    <String, dynamic>{
+      'player': instance.player,
+      'goalkeeper': instance.goalkeeper,
+    };
+
+_$_PlayersColors _$$_PlayersColorsFromJson(Map<String, dynamic> json) =>
+    _$_PlayersColors(
+      primary: json['primary'] as String?,
+      number: json['number'] as String?,
+      border: json['border'] as String?,
+    );
+
+Map<String, dynamic> _$$_PlayersColorsToJson(_$_PlayersColors instance) =>
+    <String, dynamic>{
+      'primary': instance.primary,
+      'number': instance.number,
+      'border': instance.border,
     };
 
 _$_Venue _$$_VenueFromJson(Map<String, dynamic> json) => _$_Venue(

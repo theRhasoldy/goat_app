@@ -48,10 +48,34 @@ class Team with _$Team {
     required String? country,
     required int? founded,
     required bool? national,
+    required TeamColors? colors,
     required String? logo,
   }) = _Team;
 
   factory Team.fromJson(Map<String, dynamic> json) => _$TeamFromJson(json);
+}
+
+@freezed
+class TeamColors with _$TeamColors {
+  const factory TeamColors({
+    required PlayersColors? player,
+    required PlayersColors? goalkeeper,
+  }) = _TeamColors;
+
+  factory TeamColors.fromJson(Map<String, dynamic> json) =>
+      _$TeamColorsFromJson(json);
+}
+
+@freezed
+class PlayersColors with _$PlayersColors {
+  const factory PlayersColors({
+    required String? primary,
+    required String? number,
+    required String? border,
+  }) = _PlayersColors;
+
+  factory PlayersColors.fromJson(Map<String, dynamic> json) =>
+      _$PlayersColorsFromJson(json);
 }
 
 @freezed

@@ -2,6 +2,7 @@
 
 import 'package:ditredi/ditredi.dart';
 import 'package:flutter/material.dart';
+import 'package:goat_app/common/utils/math_utils.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
 import 'package:goat_app/models/lineup_model.dart';
@@ -37,6 +38,8 @@ class _LineupTabState extends State<LineupTab> {
     _playersHome = _generateCubes(widget.lineupModel, 0);
     _playersAway = _generateCubesOpposite(widget.lineupModel, 1);
     isLoading = false;
+    print("Color");
+    print(widget.lineupModel.response?[0].team?.colors?.player?.primary);
   }
 
   @override
@@ -193,18 +196,22 @@ class _LineupTabState extends State<LineupTab> {
 
 Iterable<Cube3D> _generateCubes(LineupModel lineupModel, int teamIndex) sync* {
   print(lineupModel.response?[teamIndex].formation);
+  Color color = stringToColor(
+      lineupModel.response?[0].team?.colors?.player?.primary ?? "ffffff");
   for (var i = 1; i < 11; i++) {
     List<String>? grid =
         lineupModel.response?[0].startXI?[i].player?.grid?.split(":");
 
     double x = (double.parse(grid![0]) * 2 + teamIndex * 10) - 35;
     double z = double.parse(grid[1]) * 2;
-    yield Cube3D(1, v.Vector3(x, 0, z));
+    yield Cube3D(1, v.Vector3(x, 0, z), color: color);
   }
 }
 
 Iterable<Cube3D> _generateCubesOpposite(
     LineupModel lineupModel, int teamIndex) sync* {
+  Color color = stringToColor(
+      lineupModel.response?[1].team?.colors?.player?.primary ?? "ffffff");
   print(lineupModel.response?[teamIndex].formation);
   for (var i = 1; i < 11; i++) {
     List<String>? grid =
@@ -212,6 +219,6 @@ Iterable<Cube3D> _generateCubesOpposite(
 
     double x = (double.parse(grid![0]) * 2 + teamIndex * 10) * -1;
     double z = double.parse(grid[1]) * 2;
-    yield Cube3D(1, v.Vector3(x, 0, z));
+    yield Cube3D(1, v.Vector3(x, 0, z), color: color);
   }
 }
