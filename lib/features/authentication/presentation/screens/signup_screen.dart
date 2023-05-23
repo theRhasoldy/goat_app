@@ -12,7 +12,7 @@ import 'package:goat_app/features/authentication/presentation/screens/signin_scr
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
-import 'package:goat_app/intro%20screen/screen.dart';
+import 'package:goat_app/intro%20screen/page1.dart';
 import 'package:goat_app/models/user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -216,6 +216,6 @@ class _SignUpState extends State<SignUp> {
     Fluttertoast.showToast(msg: "Account Created Successfully");
 
     Navigator.pushAndRemoveUntil((context),
-        MaterialPageRoute(builder: (context) => screen()), (route) => false);
+        MaterialPageRoute(builder: (context) => page1()), (route) => false);
   }
 }

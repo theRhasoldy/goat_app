@@ -9,7 +9,9 @@ import 'package:goat_app/features/authentication/presentation/screens/signup_scr
 import 'package:goat_app/firebase_options.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/intro%20screen/page1.dart';
-import 'package:goat_app/intro%20screen/screen.dart';
+import 'package:goat_app/intro%20screen/page2.dart';
+import 'package:goat_app/intro%20screen/page3.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,8 +26,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
       theme: mainTheme,
+      home: page1(),
     );
   }
 }

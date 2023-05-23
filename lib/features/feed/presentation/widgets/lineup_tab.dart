@@ -208,8 +208,7 @@ Iterable<Cube3D> _generateCubes(LineupModel lineupModel, int teamIndex) sync* {
   }
 }
 
-Iterable<Cube3D> _generateCubesOpposite(
-    LineupModel lineupModel, int teamIndex) sync* {
+Iterable<Cube3D> _generateCubesOpposite(LineupModel lineupModel, int teamIndex) sync* {
   Color color = stringToColor(
       lineupModel.response?[1].team?.colors?.player?.primary ?? "ffffff");
   print(lineupModel.response?[teamIndex].formation);
