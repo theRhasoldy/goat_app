@@ -1,12 +1,9 @@
-// ignore_for_file: unused_import, annotate_overrides, prefer_const_constructors, no_leading_underscores_for_local_identifiers
-
-import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
+import 'package:goat_app/features/chat/presentation/chat_screen.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
-import 'package:goat_app/features/feed/presentation/screens/chat_screen.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/lineup_tab.dart';
 import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
@@ -35,6 +32,8 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   StatisticsModel? _statisticsModel;
   HeadToHeadModel? _headToHeadModel;
   LineupModel? _lineupModel;
+
+  int _fixtureId = 0;
 
   bool isLoading = true;
 
@@ -72,15 +71,15 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   @override
   void initState() {
     super.initState();
-    int _id = widget.response[widget.index].fixture.id ?? 0;
+    _fixtureId = widget.response[widget.index].fixture.id ?? 0;
 
     // Get home and away ids from fixture response object with index that we got from the original home screen
     String _home = widget.response[widget.index].teams.home.id.toString();
     String _away = widget.response[widget.index].teams.away.id.toString();
 
-    _getStatisticsData(_id.toString());
+    _getStatisticsData(_fixtureId.toString());
     _getHeadToHeadData(_home, _away);
-    _getLineupData(_id.toString());
+    _getLineupData(_fixtureId.toString());
   }
 
   Widget build(BuildContext context) {
@@ -118,9 +117,11 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
           floatingActionButton: FloatingActionButton(
             //Floating action button on Scaffold
             onPressed: () {
+              int _id = widget.response[widget.index].fixture.id ?? 0;
               Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => chatpage(
+                  builder: (context) => ChatScreen(
                         email: AutofillHints.email,
+                        sessionId: _fixtureId.toString(),
                       )));
             },
             child: Icon(Icons.chat), //icon inside button

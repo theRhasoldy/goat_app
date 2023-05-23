@@ -58,7 +58,8 @@ class _messagesState extends State<messages> {
           return Center(
             child: CircularProgressIndicator(),
           );
-        return messages(currentUser: currentUser); // Pass the currentUser object
+          return messages(
+              currentUser: currentUser); // Pass the currentUser object
         }
 
         return ListView.builder(
@@ -123,7 +124,6 @@ class _messagesState extends State<messages> {
             );
           },
         );
-        
       },
     );
   }

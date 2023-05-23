@@ -3,44 +3,50 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:goat_app/features/chat/logic/session_creation.dart';
+import 'package:goat_app/features/chat/presentation/message.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
-import 'package:goat_app/features/feed/presentation/screens/message.dart';
 import 'package:goat_app/features/feed/presentation/screens/statistics_screen.dart';
 import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/predict_card.dart';
 import 'package:goat_app/models/user.dart';
-import '../widgets/fixture_card.dart';
 
-class chatpage extends StatefulWidget {
+class ChatScreen extends StatefulWidget {
   String email;
+  String sessionId;
   // ignore: use_key_in_widget_constructors
-  chatpage({required this.email});
+  ChatScreen({required this.email, required this.sessionId});
   @override
-  _chatpageState createState() => _chatpageState(email: email);
+  _ChatScreenState createState() => _ChatScreenState(email: email);
 }
 
-class _chatpageState extends State<chatpage> {
+class _ChatScreenState extends State<ChatScreen> {
   String email;
-  late Future<UserModel> _currentUserFuture; // Add this line
-  _chatpageState({required this.email});
-  final fs = FirebaseFirestore.instance;
-  final _auth = FirebaseAuth.instance;
+  _ChatScreenState({required this.email});
+  // late Future<UserModel> _currentUserFuture; // Add this line
+  // final _auth = FirebaseAuth.instance;
   final TextEditingController message = new TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _currentUserFuture =
-        getCurrentUser(); // Call the method to fetch the user data
+    ChatSession chatSession = ChatSession(fixtureId: widget.sessionId);
+    chatSession.createNewSession();
+    //Check if session exists if not create a new one
+    print("Chat Session");
+    print(widget.sessionId);
+
+    /* _currentUserFuture =
+        getCurrentUser(); // Call the method to fetch the user data */
   }
 
-  Future<UserModel> getCurrentUser() async {
+  /* Future<UserModel> getCurrentUser() async {
     User? firebaseUser = _auth.currentUser;
     if (firebaseUser != null) {
       String uid = firebaseUser.uid;
-      QuerySnapshot userSnapshot =
-          await fs.collection('Users').where('email', isEqualTo: email).get();
-      print('Query Results: ${userSnapshot.docs.length} documents found');
+      querysnapshot usersnapshot =
+          await fs.collection('users').where('email', isequalto: email).get();
+      print('query results: ${usersnapshot.docs.length} documents found');
       if (userSnapshot.docs.isNotEmpty) {
         DocumentSnapshot document = userSnapshot.docs.first;
         UserModel loggedInUser = UserModel.fromMan(document.data());
@@ -49,11 +55,11 @@ class _chatpageState extends State<chatpage> {
         // Handle the case when the user document is not found
         throw Exception('User not found in Firestore');
       }
-    }else {
-    // Handle the case when the user is not authenticated
-    throw Exception('User not authenticated');
-  }
-  }
+    } else {
+      // Handle the case when the user is not authenticated
+      throw Exception('User not authenticated');
+    }
+  } */
 
   @override
   Widget build(BuildContext context) {
@@ -65,14 +71,14 @@ class _chatpageState extends State<chatpage> {
         actions: [
           MaterialButton(
             onPressed: () {
-              _auth.signOut().whenComplete(() {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Home(),
-                  ),
-                );
-              });
+              // _auth.signOut().whenComplete(() {
+              //   Navigator.pushReplacement(
+              //     context,
+              //     MaterialPageRoute(
+              //       builder: (context) => Home(),
+              //     ),
+              //   );
+              // });
             },
             child: Text(
               "Back",
@@ -86,7 +92,7 @@ class _chatpageState extends State<chatpage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             FutureBuilder<UserModel>(
-              future: _currentUserFuture,
+              // future: _currentUserFuture,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return Container(
@@ -132,13 +138,13 @@ class _chatpageState extends State<chatpage> {
                 IconButton(
                   onPressed: () {
                     if (message.text.isNotEmpty) {
-                      fs.collection('Messages').doc().set({
-                        'message': message.text.trim(),
-                        'time': DateTime.now(),
-                        'email': email,
-                      });
-
-                      message.clear();
+                      // firebaseFirestore.collection('Messages').doc().set({
+                      //   'message': message.text.trim(),
+                      //   'time': DateTime.now(),
+                      //   'email': email,
+                      // });
+                      //
+                      // message.clear();
                     }
                   },
                   icon: Icon(Icons.send_sharp),
