@@ -1,18 +1,11 @@
-// ignore_for_file: unnecessary_new, unused_field, unused_import, no_leading_underscores_for_local_identifiers, body_might_complete_normally_catch_error, prefer_final_fields, unused_local_variable, avoid_print, prefer_const_constructors
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/logic/auth.dart';
-import 'package:goat_app/features/authentication/logic/auth_screen.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
-import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
-import 'package:goat_app/intro%20screen/screen.dart';
 import 'package:goat_app/models/user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -25,17 +18,19 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final _formKey = GlobalKey<FormState>();
-  final userNameEditingController = new TextEditingController();
-  final emailEditingController = new TextEditingController();
-  final passwordEditingController = new TextEditingController();
-  final confirmpasswordEditingController = new TextEditingController();
+  final fullnameEditingController = TextEditingController();
+  final userNameEditingController = TextEditingController();
+  final emailEditingController = TextEditingController();
+  final passwordEditingController = TextEditingController();
+  final confirmpasswordEditingController = TextEditingController();
+
   String _fullname = "";
   String _username = "";
   String _email = "";
   String _password = "";
   String _confirm = "";
 
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -78,20 +73,21 @@ class _SignUpState extends State<SignUp> {
                               child: ElevatedButton(
                                 style: const ButtonStyle(),
                                 onPressed: () async {
-                                  // AuthService _authService = new AuthService(
-                                  //   auth: _auth,
-                                  //   user: new CustomUser(
-                                  //     fullname: _fullname,
-                                  //     username: _username,
-                                  //     email: _email,
-                                  //     password: _password,
-                                  //   ),
-                                  // );
-                                  // _authService.registerWithEmail();
+                                  UserModel? newUser = UserModel(
+                                      email: emailEditingController.text,
+                                      password: passwordEditingController.text,
+                                      username: userNameEditingController.text,
+                                      fullname: fullnameEditingController.text);
+                                  AuthService authService = AuthService(
+                                    auth: _firebaseAuth,
+                                    userModel: newUser,
+                                  );
+                                  authService.registerWithEmail();
+                                  Fluttertoast.showToast(
+                                      msg: "Account Created Successfully");
+
                                   // Navigator.of(context).push(MaterialPageRoute(
                                   //     builder: (context) => const screen()));
-                                  singUpaccess(emailEditingController.text,
-                                      passwordEditingController.text);
                                 },
                                 child: const Text('CREATE ACCOUNT'),
                               ),
@@ -170,6 +166,7 @@ class _SignUpState extends State<SignUp> {
                             Padding(
                               padding: const EdgeInsets.only(top: 12.0),
                               child: TextFormField(
+                                controller: fullnameEditingController,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
                                 onChanged: (value) => _fullname = value,
@@ -183,39 +180,5 @@ class _SignUpState extends State<SignUp> {
                         ))
                   ])))),
     );
-  }
-
-  void singUpaccess(String email, String password) async {
-    if (_formKey.currentState!.validate()) {
-      await _auth
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) => {postDetailsToFirestore()})
-          .catchError((e) {
-        Fluttertoast.showToast(msg: e!.message);
-      });
-    }
-  }
-
-  postDetailsToFirestore() async {
-    //calling the firestore
-    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-    //calling our user model
-    User? user = _auth.currentUser;
-    //calling these values
-    UserModel userModel = UserModel(email: '', password: '');
-
-    //writing all values
-    userModel.email = user!.email!;
-    userModel.uid = user.uid;
-    userModel.username = userNameEditingController.text;
-
-    await firebaseFirestore
-        .collection("Users")
-        .doc(user.uid)
-        .set(userModel.toMap());
-    Fluttertoast.showToast(msg: "Account Created Successfully");
-
-    Navigator.pushAndRemoveUntil((context),
-        MaterialPageRoute(builder: (context) => screen()), (route) => false);
   }
 }

@@ -1,26 +1,26 @@
-// ignore_for_file: unused_local_variable
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-// ignore: unused_import
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:goat_app/models/user.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 
 class AuthService {
   FirebaseAuth auth;
-  CustomUser user;
+  UserModel userModel;
 
-  AuthService({required this.auth, required this.user});
+  AuthService({required this.auth, required this.userModel});
 
   //Create user object based on Firebase User
   Future registerWithEmail() async {
     try {
-      final credential =
+      UserCredential credential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: user.email,
-        password: user.password,
+        email: userModel.email,
+        password: userModel.password,
       );
+      postDetailsToFirestore(credential);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -32,12 +32,24 @@ class AuthService {
     }
   }
 
+  Future postDetailsToFirestore(UserCredential credential) async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    userModel.score = 0;
+    userModel.uid = credential.user?.uid;
+
+    await firebaseFirestore
+        .collection("Users")
+        .doc(credential.user?.uid)
+        .set(userModel.toMap());
+  }
+
   //Sign in with email
   Future<bool> signInWithEmail() async {
     try {
       final existingUser = await auth.signInWithEmailAndPassword(
-        email: user.email,
-        password: user.password,
+        email: userModel.email,
+        password: userModel.password,
       );
 
       if (existingUser.user != null) {
@@ -66,33 +78,32 @@ class AuthService {
   }
 }
 
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+Future<UserCredential> signInWithGoogle() async {
+  // Trigger the authentication flow
+  final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+  // Obtain the auth details from the request
+  final GoogleSignInAuthentication? googleAuth =
+      await googleUser?.authentication;
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+  // Create a new credential
+  final credential = GoogleAuthProvider.credential(
+    accessToken: googleAuth?.accessToken,
+    idToken: googleAuth?.idToken,
+  );
 
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
+  // Once signed in, return the UserCredential
+  return await FirebaseAuth.instance.signInWithCredential(credential);
+}
 
-  Future<UserCredential> signInWithFacebook() async {
-    // Trigger the sign-in flow
-    final LoginResult loginResult = await FacebookAuth.instance.login();
+Future<UserCredential> signInWithFacebook() async {
+  // Trigger the sign-in flow
+  final LoginResult loginResult = await FacebookAuth.instance.login();
 
-    // Create a credential from the access token
-    final OAuthCredential facebookAuthCredential =
-        FacebookAuthProvider.credential(loginResult.accessToken!.token);
+  // Create a credential from the access token
+  final OAuthCredential facebookAuthCredential =
+      FacebookAuthProvider.credential(loginResult.accessToken!.token);
 
-    // Once signed in, return the UserCredential
-    return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
-  }
-
+  // Once signed in, return the UserCredential
+  return FirebaseAuth.instance.signInWithCredential(facebookAuthCredential);
+}

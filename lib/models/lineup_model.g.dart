@@ -39,7 +39,9 @@ _$_Lineup _$$_LineupFromJson(Map<String, dynamic> json) => _$_Lineup(
       substitutes: (json['substitutes'] as List<dynamic>?)
           ?.map((e) => Starter.fromJson(e as Map<String, dynamic>))
           .toList(),
-      coach: json['coach'] as Map<String, dynamic>,
+      coach: json['coach'] == null
+          ? null
+          : Coach.fromJson(json['coach'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_LineupToJson(_$_Lineup instance) => <String, dynamic>{
@@ -59,4 +61,16 @@ _$_Starter _$$_StarterFromJson(Map<String, dynamic> json) => _$_Starter(
 Map<String, dynamic> _$$_StarterToJson(_$_Starter instance) =>
     <String, dynamic>{
       'player': instance.player,
+    };
+
+_$_Coach _$$_CoachFromJson(Map<String, dynamic> json) => _$_Coach(
+      id: json['id'] as int?,
+      name: json['name'] as String?,
+      photo: json['photo'] as String?,
+    );
+
+Map<String, dynamic> _$$_CoachToJson(_$_Coach instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'photo': instance.photo,
     };

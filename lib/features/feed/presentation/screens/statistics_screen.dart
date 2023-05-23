@@ -2,7 +2,9 @@
 
 import 'package:card_loading/card_loading.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:goat_app/common/config/theme.dart';
+import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
 import 'package:goat_app/features/feed/presentation/screens/chat_screen.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
@@ -88,15 +90,30 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
         length: 4,
         child: Scaffold(
           appBar: AppBar(
-            bottom: const TabBar(
-              tabs: [
-                Text('PREDICT', style: TextStyle(color: Colors.black)),
-                Text('LINEUP', style: TextStyle(color: Colors.black)),
-                Text('STATS', style: TextStyle(color: Colors.black)),
-                Text('H2H', style: TextStyle(color: Colors.black))
-              ],
+            systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: null),
+            bottom: PreferredSize(
+              preferredSize: Size.fromHeight(getHeight(context) / 5),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 20),
+                    child: FixtureCard(widget.response, context, widget.index,
+                            isStatistics: true) ??
+                        Text("Null"),
+                  ),
+                  const TabBar(
+                    tabs: [
+                      Text('PREDICT', style: TextStyle(color: Colors.black)),
+                      Text('LINEUP', style: TextStyle(color: Colors.black)),
+                      Text('STATS', style: TextStyle(color: Colors.black)),
+                      Text('H2H', style: TextStyle(color: Colors.black))
+                    ],
+                  ),
+                ],
+              ),
             ),
-            title: const Text('Tabs Demo'),
+            title: const Text('Match Statistics'),
           ),
           floatingActionButton: FloatingActionButton(
             //Floating action button on Scaffold
@@ -121,9 +138,6 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                 // Stats tab
                 Column(
                   children: [
-                    FixtureCard(widget.response, context, widget.index,
-                            isStatistics: true) ??
-                        Text("Null"),
                     Expanded(
                       child: _statisticsModel == null ||
                               _statisticsModel?.response.isEmpty == true ||

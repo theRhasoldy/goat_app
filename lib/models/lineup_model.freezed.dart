@@ -307,7 +307,7 @@ mixin _$Lineup {
   String? get formation => throw _privateConstructorUsedError;
   List<Starter>? get startXI => throw _privateConstructorUsedError;
   List<Starter>? get substitutes => throw _privateConstructorUsedError;
-  Map<String, dynamic> get coach => throw _privateConstructorUsedError;
+  Coach? get coach => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -324,9 +324,10 @@ abstract class $LineupCopyWith<$Res> {
       String? formation,
       List<Starter>? startXI,
       List<Starter>? substitutes,
-      Map<String, dynamic> coach});
+      Coach? coach});
 
   $TeamCopyWith<$Res>? get team;
+  $CoachCopyWith<$Res>? get coach;
 }
 
 /// @nodoc
@@ -346,7 +347,7 @@ class _$LineupCopyWithImpl<$Res, $Val extends Lineup>
     Object? formation = freezed,
     Object? startXI = freezed,
     Object? substitutes = freezed,
-    Object? coach = null,
+    Object? coach = freezed,
   }) {
     return _then(_value.copyWith(
       team: freezed == team
@@ -365,10 +366,10 @@ class _$LineupCopyWithImpl<$Res, $Val extends Lineup>
           ? _value.substitutes
           : substitutes // ignore: cast_nullable_to_non_nullable
               as List<Starter>?,
-      coach: null == coach
+      coach: freezed == coach
           ? _value.coach
           : coach // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as Coach?,
     ) as $Val);
   }
 
@@ -381,6 +382,18 @@ class _$LineupCopyWithImpl<$Res, $Val extends Lineup>
 
     return $TeamCopyWith<$Res>(_value.team!, (value) {
       return _then(_value.copyWith(team: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CoachCopyWith<$Res>? get coach {
+    if (_value.coach == null) {
+      return null;
+    }
+
+    return $CoachCopyWith<$Res>(_value.coach!, (value) {
+      return _then(_value.copyWith(coach: value) as $Val);
     });
   }
 }
@@ -396,10 +409,12 @@ abstract class _$$_LineupCopyWith<$Res> implements $LineupCopyWith<$Res> {
       String? formation,
       List<Starter>? startXI,
       List<Starter>? substitutes,
-      Map<String, dynamic> coach});
+      Coach? coach});
 
   @override
   $TeamCopyWith<$Res>? get team;
+  @override
+  $CoachCopyWith<$Res>? get coach;
 }
 
 /// @nodoc
@@ -416,7 +431,7 @@ class __$$_LineupCopyWithImpl<$Res>
     Object? formation = freezed,
     Object? startXI = freezed,
     Object? substitutes = freezed,
-    Object? coach = null,
+    Object? coach = freezed,
   }) {
     return _then(_$_Lineup(
       team: freezed == team
@@ -435,10 +450,10 @@ class __$$_LineupCopyWithImpl<$Res>
           ? _value._substitutes
           : substitutes // ignore: cast_nullable_to_non_nullable
               as List<Starter>?,
-      coach: null == coach
-          ? _value._coach
+      coach: freezed == coach
+          ? _value.coach
           : coach // ignore: cast_nullable_to_non_nullable
-              as Map<String, dynamic>,
+              as Coach?,
     ));
   }
 }
@@ -451,10 +466,9 @@ class _$_Lineup implements _Lineup {
       required this.formation,
       required final List<Starter>? startXI,
       required final List<Starter>? substitutes,
-      required final Map<String, dynamic> coach})
+      required this.coach})
       : _startXI = startXI,
-        _substitutes = substitutes,
-        _coach = coach;
+        _substitutes = substitutes;
 
   factory _$_Lineup.fromJson(Map<String, dynamic> json) =>
       _$$_LineupFromJson(json);
@@ -483,13 +497,8 @@ class _$_Lineup implements _Lineup {
     return EqualUnmodifiableListView(value);
   }
 
-  final Map<String, dynamic> _coach;
   @override
-  Map<String, dynamic> get coach {
-    if (_coach is EqualUnmodifiableMapView) return _coach;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_coach);
-  }
+  final Coach? coach;
 
   @override
   String toString() {
@@ -507,7 +516,7 @@ class _$_Lineup implements _Lineup {
             const DeepCollectionEquality().equals(other._startXI, _startXI) &&
             const DeepCollectionEquality()
                 .equals(other._substitutes, _substitutes) &&
-            const DeepCollectionEquality().equals(other._coach, _coach));
+            (identical(other.coach, coach) || other.coach == coach));
   }
 
   @JsonKey(ignore: true)
@@ -518,7 +527,7 @@ class _$_Lineup implements _Lineup {
       formation,
       const DeepCollectionEquality().hash(_startXI),
       const DeepCollectionEquality().hash(_substitutes),
-      const DeepCollectionEquality().hash(_coach));
+      coach);
 
   @JsonKey(ignore: true)
   @override
@@ -540,7 +549,7 @@ abstract class _Lineup implements Lineup {
       required final String? formation,
       required final List<Starter>? startXI,
       required final List<Starter>? substitutes,
-      required final Map<String, dynamic> coach}) = _$_Lineup;
+      required final Coach? coach}) = _$_Lineup;
 
   factory _Lineup.fromJson(Map<String, dynamic> json) = _$_Lineup.fromJson;
 
@@ -553,7 +562,7 @@ abstract class _Lineup implements Lineup {
   @override
   List<Starter>? get substitutes;
   @override
-  Map<String, dynamic> get coach;
+  Coach? get coach;
   @override
   @JsonKey(ignore: true)
   _$$_LineupCopyWith<_$_Lineup> get copyWith =>
@@ -705,5 +714,169 @@ abstract class _Starter implements Starter {
   @override
   @JsonKey(ignore: true)
   _$$_StarterCopyWith<_$_Starter> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Coach _$CoachFromJson(Map<String, dynamic> json) {
+  return _Coach.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Coach {
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get photo => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CoachCopyWith<Coach> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CoachCopyWith<$Res> {
+  factory $CoachCopyWith(Coach value, $Res Function(Coach) then) =
+      _$CoachCopyWithImpl<$Res, Coach>;
+  @useResult
+  $Res call({int? id, String? name, String? photo});
+}
+
+/// @nodoc
+class _$CoachCopyWithImpl<$Res, $Val extends Coach>
+    implements $CoachCopyWith<$Res> {
+  _$CoachCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? photo = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      photo: freezed == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_CoachCopyWith<$Res> implements $CoachCopyWith<$Res> {
+  factory _$$_CoachCopyWith(_$_Coach value, $Res Function(_$_Coach) then) =
+      __$$_CoachCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? id, String? name, String? photo});
+}
+
+/// @nodoc
+class __$$_CoachCopyWithImpl<$Res> extends _$CoachCopyWithImpl<$Res, _$_Coach>
+    implements _$$_CoachCopyWith<$Res> {
+  __$$_CoachCopyWithImpl(_$_Coach _value, $Res Function(_$_Coach) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? photo = freezed,
+  }) {
+    return _then(_$_Coach(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      photo: freezed == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Coach implements _Coach {
+  const _$_Coach({required this.id, required this.name, required this.photo});
+
+  factory _$_Coach.fromJson(Map<String, dynamic> json) =>
+      _$$_CoachFromJson(json);
+
+  @override
+  final int? id;
+  @override
+  final String? name;
+  @override
+  final String? photo;
+
+  @override
+  String toString() {
+    return 'Coach(id: $id, name: $name, photo: $photo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Coach &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.photo, photo) || other.photo == photo));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, photo);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_CoachCopyWith<_$_Coach> get copyWith =>
+      __$$_CoachCopyWithImpl<_$_Coach>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_CoachToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Coach implements Coach {
+  const factory _Coach(
+      {required final int? id,
+      required final String? name,
+      required final String? photo}) = _$_Coach;
+
+  factory _Coach.fromJson(Map<String, dynamic> json) = _$_Coach.fromJson;
+
+  @override
+  int? get id;
+  @override
+  String? get name;
+  @override
+  String? get photo;
+  @override
+  @JsonKey(ignore: true)
+  _$$_CoachCopyWith<_$_Coach> get copyWith =>
       throw _privateConstructorUsedError;
 }

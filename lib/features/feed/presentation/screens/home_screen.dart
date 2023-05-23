@@ -89,7 +89,7 @@ class _HomeState extends State<Home> {
                 for (int i = 0; i < 7; i++)
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.all(getWidth(context) / 400),
+                      padding: EdgeInsets.all(getWidth(context) / 800),
                       child: _pressedIndex == i
                           ? ElevatedButton(
                               onPressed: () => _onButtonPressed(i),

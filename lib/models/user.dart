@@ -1,22 +1,5 @@
-// ignore_for_file: must_be_immutable, empty_constructor_bodies
-
 import 'package:flutter/foundation.dart';
-
-@immutable
-class CustomUser {
-  String? fullname;
-  String? username;
-  String email;
-  String password;
-  List? teams;
-  CustomUser({
-    this.fullname,
-    this.username,
-    required this.email,
-    required this.password,
-    this.teams,
-  });
-}
+import 'package:goat_app/models/freezed_model.dart';
 
 @immutable
 class UserModel {
@@ -25,24 +8,40 @@ class UserModel {
   String? username;
   String email;
   String password;
+  List<Team>? favoriteTeams;
+  int? score;
 
-  UserModel({this.uid,this.fullname,this.username,required this.email,required this.password});
-    //receiving data from server
-    factory UserModel.fromMan(map){
-      return UserModel(
-        uid : map['uid'],
-        username: map['username'],
-        email: map['email'],
-         password: map['password']
-         );
-    }
+  UserModel({
+    required this.email,
+    required this.password,
+    this.uid,
+    this.username,
+    this.fullname,
+    this.favoriteTeams,
+    this.score,
+  });
+  //receiving data from server
+  factory UserModel.fromMan(map) {
+    return UserModel(
+      email: map['email'],
+      password: map['password'],
+      uid: map['uid'],
+      username: map['username'],
+      fullname: map['fullname'],
+      favoriteTeams: map['favoriteTeams'],
+      score: map['score'],
+    );
+  }
 //sendind data to our server
-Map<String, dynamic> toMap(){
-  return{
-     'uid': uid ,
-    'email': email ,
-    'username': username ,
-    'password': password ,
+  Map<String, dynamic> toMap() {
+    return {
+      'email': email,
+      'password': password,
+      'uid': uid,
+      'username': username,
+      'fullname': fullname,
+      'favoriteTeams': favoriteTeams,
+      'score': score,
     };
-}
+  }
 }
