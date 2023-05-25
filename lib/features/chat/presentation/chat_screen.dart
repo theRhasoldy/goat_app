@@ -41,6 +41,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   .collection("Sessions")
                   .doc(chatSession.fixtureId)
                   .collection("Messages")
+                  .orderBy("time", descending: true)
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasData) {
@@ -59,7 +60,10 @@ class _ChatScreenState extends State<ChatScreen> {
                                   body: snapshot.data!.docs[i].get("body"),
                                   userName:
                                       snapshot.data!.docs[i].get("userName"),
-                                  isCurrentUser: true);
+                                  time: snapshot.data!.docs[i].get("time"),
+                                  isCurrentUser:
+                                      snapshot.data!.docs[i].get("userName") ==
+                                          widget.currentUser?.username);
                             });
                   } else {
                     return Text("No chat yet");
@@ -83,10 +87,11 @@ class _ChatScreenState extends State<ChatScreen> {
                 IconButton(
                     onPressed: () {
                       Message message = Message(
-                        session: chatSession,
-                        body: messageController.text,
-                        user: widget.currentUser!,
-                      );
+                          session: chatSession,
+                          body: messageController.text,
+                          user: widget.currentUser!,
+                          time:
+                              "${DateTime.now().hour}:${DateTime.now().minute}");
                       message.postMessageToSession();
                     },
                     icon: Icon(Icons.send))

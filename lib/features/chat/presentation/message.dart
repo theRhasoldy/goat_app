@@ -6,11 +6,13 @@ import 'package:goat_app/models/user.dart';
 class MessageBubble extends StatefulWidget {
   String body;
   String userName;
+  String time;
   bool isCurrentUser;
   MessageBubble(
       {super.key,
       required this.body,
       required this.userName,
+      required this.time,
       required this.isCurrentUser});
 
   @override
@@ -21,11 +23,12 @@ class _MessageBubbleState extends State<MessageBubble> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: widget.isCurrentUser ? Colors.red : Colors.blue,
       child: Column(
         children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             Text(widget.userName),
-            Text("23:32"),
+            Text(widget.time),
           ]),
           Text(widget.body),
         ],
