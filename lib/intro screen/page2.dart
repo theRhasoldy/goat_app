@@ -3,9 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/intro%20screen/page3.dart';
+
 class page2 extends StatelessWidget {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,7 +14,7 @@ class page2 extends StatelessWidget {
             Container(
               width: 362,
               height: 500,
-              margin: EdgeInsets.only(top: 40,left: 20,right: 20,bottom: 50),
+              margin: EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 50),
               decoration: BoxDecoration(
                   image: DecorationImage(
                 fit: BoxFit.contain,
@@ -23,8 +22,10 @@ class page2 extends StatelessWidget {
               )),
             ),
             Container(
-              margin: EdgeInsets.only(bottom: 5,
-                left: 10,),
+              margin: EdgeInsets.only(
+                bottom: 5,
+                left: 10,
+              ),
               color: Colors.white,
               child: Center(
                 child: Text(
@@ -37,8 +38,8 @@ class page2 extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.deepPurpleAccent,
-                    fontWeight:FontWeight.bold,
-                    ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -52,25 +53,27 @@ class page2 extends StatelessWidget {
                     child: Container(
                         width: 128,
                         child: ElevatedButton(
-                            onPressed: (){
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => Home()));
-                            }, child: Text(
-                            "SKIP")
-                        )
-                    ),
+                            onPressed: () {
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) => Home()));
+                            },
+                            child: Text("SKIP"))),
                   ),
-                  SizedBox(width: 70,),
+                  SizedBox(
+                    width: 70,
+                  ),
                   Container(
                       width: 128,
                       child: ElevatedButton(
-                          onPressed: (){
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => page3()));
-                          }, child: Text(
-                          "NEXT")
-                      )
-                  )
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => page3()));
+                          },
+                          child: Text("NEXT")))
                 ],
               ),
             ),

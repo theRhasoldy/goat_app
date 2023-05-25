@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:goat_app/models/freezed_model.dart';
 
-@immutable
 class UserModel {
   String? uid;
   String? fullname;

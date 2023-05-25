@@ -6,6 +6,8 @@ import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/greeter_appbar.dart';
 import 'package:goat_app/features/authentication/presentation/widgets/seperator.dart';
+import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
+import 'package:goat_app/intro%20screen/page1.dart';
 import 'package:goat_app/models/user.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -87,7 +89,7 @@ class _SignUpState extends State<SignUp> {
                                       msg: "Account Created Successfully");
 
                                   // Navigator.of(context).push(MaterialPageRoute(
-                                  //     builder: (context) => const screen()));
+                                  //     builder: (context) => Home()));
                                 },
                                 child: const Text('CREATE ACCOUNT'),
                               ),

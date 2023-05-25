@@ -13,14 +13,18 @@ import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/headtohead_model.dart';
 import 'package:goat_app/models/lineup_model.dart';
 import 'package:goat_app/models/statistics_model.dart';
+import 'package:goat_app/models/user.dart';
 
 class FixtureDetailsTabs extends StatefulWidget {
   final List<FixtureResponse> response;
   final int index;
+  UserModel? currentUser;
 
   FixtureDetailsTabs({
+    super.key,
     required this.response,
     required this.index,
+    this.currentUser,
   });
 
   @override
@@ -98,6 +102,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 20),
                     child: FixtureCard(widget.response, context, widget.index,
+                            currentUser: widget.currentUser,
                             isStatistics: true) ??
                         Text("Null"),
                   ),
@@ -118,11 +123,20 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
             //Floating action button on Scaffold
             onPressed: () {
               int _id = widget.response[widget.index].fixture.id ?? 0;
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => ChatScreen(
-                        email: AutofillHints.email,
-                        sessionId: _fixtureId.toString(),
-                      )));
+              showModalBottomSheet(
+                elevation: 10,
+                isScrollControlled: true,
+                enableDrag: true,
+                showDragHandle: true,
+                useSafeArea: true,
+                isDismissible: true,
+                context: context,
+                builder: (BuildContext context) {
+                  return ChatScreen(
+                      currentUser: widget.currentUser,
+                      sessionId: _id.toString());
+                },
+              );
             },
             child: Icon(Icons.chat), //icon inside button
           ),

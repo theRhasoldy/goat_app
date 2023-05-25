@@ -1,22 +1,27 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
+import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
 import 'package:goat_app/models/fixture.dart';
+import 'package:goat_app/models/user.dart';
 import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  UserModel? currentUser;
+  Home({super.key, this.currentUser});
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+  FirebaseAuth _auth = FirebaseAuth.instance;
   FixtureModel? _fixtureModel;
   bool isLoading = true;
 
@@ -81,17 +86,18 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
+    print(widget.currentUser?.fullname);
     String _date = DateFormat('yyyy-MM-dd').format(DateTime.now());
     _getFixtureData(_date);
   }
 
   @override
   Widget build(BuildContext context) {
+    // Create current user UserModel
     return MaterialApp(
       theme: mainTheme,
       home: Scaffold(
-        appBar:
-            AppBar(title: const Text("Fixtures"), centerTitle: false, actions: [
+        appBar: AppBar(title: Text("Fixtures"), centerTitle: false, actions: [
           IconButton(
             onPressed: () async {
               final auth = FirebaseAuth.instance;
@@ -167,7 +173,8 @@ class _HomeState extends State<Home> {
                           )
                         : ListTile(
                             title: FixtureCard(
-                                _fixtureModel!.response, context, index));
+                                _fixtureModel!.response, context, index,
+                                currentUser: widget.currentUser));
                   }),
             ),
           ],

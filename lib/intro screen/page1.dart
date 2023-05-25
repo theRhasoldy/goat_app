@@ -14,7 +14,7 @@ class page1 extends StatelessWidget {
             Container(
               width: 362,
               height: 500,
-              margin: EdgeInsets.only(top: 40,left: 20,right: 20,bottom: 50),
+              margin: EdgeInsets.only(top: 40, left: 20, right: 20, bottom: 50),
               decoration: BoxDecoration(
                   image: DecorationImage(
                 fit: BoxFit.contain,
@@ -22,9 +22,7 @@ class page1 extends StatelessWidget {
               )),
             ),
             Container(
-              margin: EdgeInsets.only(
-                left: 10,
-                  bottom: 5),
+              margin: EdgeInsets.only(left: 10, bottom: 5),
               color: Colors.white,
               child: Center(
                 child: Text(
@@ -37,8 +35,8 @@ class page1 extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.deepPurpleAccent,
-                    fontWeight:FontWeight.bold,
-                    ),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
@@ -50,27 +48,27 @@ class page1 extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 35),
                     child: Container(
-                      width: 128,
+                        width: 128,
                         child: ElevatedButton(
-                            onPressed: (){
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: (context) => Home()));
-                            }, child: Text(
-                            "SKIP")
-                        )
-                    ),
+                            onPressed: () {
+                              /* Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) => Home(currentUser: ))); */
+                            },
+                            child: Text("SKIP"))),
                   ),
-                  SizedBox(width: 70,),
+                  SizedBox(
+                    width: 70,
+                  ),
                   Container(
                       width: 128,
                       child: ElevatedButton(
-                          onPressed: (){
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: (context) => page2()));
-                          }, child: Text(
-                          "NEXT")
-                      )
-                  )
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => page2()));
+                          },
+                          child: Text("NEXT")))
                 ],
               ),
             ),

@@ -103,8 +103,8 @@ class _SignInState extends State<SignIn> {
                               final signInSuccessful =
                                   await _authService.signInWithEmail();
                               if (signInSuccessful) {
-                                Navigator.of(context).push(MaterialPageRoute(
-                                    builder: (context) => Home()));
+                                // Navigator.of(context).push(MaterialPageRoute(
+                                //     builder: (context) => Home()));
                               } else {
                                 print(
                                     'Incorrect email or password. Please try again.');
@@ -120,7 +120,7 @@ class _SignInState extends State<SignIn> {
                           children: [
                             IconButton(
                               onPressed: () async {
-                                signInWithFacebook();
+                                // signInWithFacebook();
                               },
                               icon: const Icon(FontAwesomeIcons.facebookF,
                                   size: 30),
@@ -130,7 +130,7 @@ class _SignInState extends State<SignIn> {
                             SizedBox(width: getWidth(context) / 12),
                             IconButton(
                               onPressed: () async {
-                                signInWithGoogle();
+                                // signInWithGoogle();
                               },
                               icon:
                                   const Icon(FontAwesomeIcons.google, size: 30),
