@@ -1,6 +1,3 @@
-// ignore_for_file: unused_import, use_build_context_synchronously, avoid_print, no_leading_underscores_for_local_identifiers, prefer_const_constructors, deprecated_member_use, duplicate_ignore, unnecessary_nullable_for_final_variable_declarations
-
-import 'package:card_loading/card_loading.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
@@ -26,15 +23,34 @@ class _HomeState extends State<Home> {
   int _selectedDay = 0;
   int _pressedIndex = -1;
 
+  String getWeekdayAbbreviation(int index) {
+    final now = DateTime.now();
+    final today = now.weekday;
+    final difference = index;
+
+    if (difference == 0) {
+      return 'TOD'; // Today
+    } else if (difference == 1) {
+      return 'TMW'; // Tomorrow
+    } else {
+      final weekday = (today + difference);
+      final abbreviatedWeekday = DateFormat('EEE').format(
+        now.add(Duration(days: difference)),
+      );
+      return abbreviatedWeekday;
+    }
+  }
+
   Future<void> _getFixtureData(String date) async {
     final ApiService apiService = ApiService();
-    final FixtureModel? fixtureModel = await apiService.getMatches(live: "all");
+    final FixtureModel? fixtureModel = await apiService.getMatches();
     if (mounted) {
-    setState(() {
-      isLoading = false;
-      _fixtureModel = fixtureModel;
-    });
-  }}
+      setState(() {
+        isLoading = false;
+        _fixtureModel = fixtureModel;
+      });
+    }
+  }
 
   void _onButtonPressed(int index) {
     setState(() {
@@ -45,10 +61,20 @@ class _HomeState extends State<Home> {
       final List<String> dates = [];
       for (int i = 0; i < 7; i++) {
         final String date = DateFormat('yyyy-MM-dd')
-            .format(now.add(Duration(days: i - now.weekday)));
+            .format(now.add(Duration(days: _selectedDay)));
         dates.add(date);
       }
-      _getFixtureData(dates[index]);
+
+      String selectedDate;
+      if (index == 0) {
+        selectedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+      } else if (index == 1) {
+        selectedDate = DateFormat('yyyy-MM-dd')
+            .format(DateTime.now().add(Duration(days: 1)));
+      } else {
+        selectedDate = dates[index];
+      }
+      _getFixtureData(selectedDate);
     });
   }
 
@@ -100,10 +126,7 @@ class _HomeState extends State<Home> {
                                 primary: Colors.green,
                               ),
                               child: Text(
-                                DateFormat('EEE').format(DateTime.now().add(
-                                    Duration(
-                                        days: i - DateTime.now().weekday))),
-                                // ignore: prefer_const_constructors
+                                getWeekdayAbbreviation(i),
                                 style: TextStyle(
                                   color: Color(0xFF6750A4),
                                   fontSize: 15,
@@ -118,9 +141,7 @@ class _HomeState extends State<Home> {
                                 ),
                               ),
                               child: Text(
-                                DateFormat('EEE').format(DateTime.now().add(
-                                    Duration(
-                                        days: i - DateTime.now().weekday))),
+                                getWeekdayAbbreviation(i),
                                 style: TextStyle(
                                   color: _selectedDay == i
                                       ? Colors.green
