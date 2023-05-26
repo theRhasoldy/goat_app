@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
+import 'package:goat_app/common/widgets/bottom_navigation_bar.dart';
 import 'package:goat_app/features/authentication/logic/auth.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
@@ -14,7 +15,7 @@ import 'package:intl/intl.dart';
 
 class Home extends StatefulWidget {
   UserModel? currentUser;
-  Home({super.key, this.currentUser});
+  Home({Key? key, this.currentUser}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -93,26 +94,29 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // Create current user UserModel
     return MaterialApp(
       theme: mainTheme,
       home: Scaffold(
-        appBar: AppBar(title: Text("Fixtures"), centerTitle: false, actions: [
-          IconButton(
-            onPressed: () async {
-              final auth = FirebaseAuth.instance;
-              try {
-                await auth.signOut();
-              } catch (e) {
-                print(e.toString());
-                null;
-              }
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const SignIn()));
-            },
-            icon: const Icon(Icons.logout_outlined),
-          )
-        ]),
+        appBar: AppBar(
+          title: Text("Fixtures"),
+          centerTitle: false,
+          actions: [
+            IconButton(
+              onPressed: () async {
+                final auth = FirebaseAuth.instance;
+                try {
+                  await auth.signOut();
+                } catch (e) {
+                  print(e.toString());
+                }
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const SignIn()),
+                );
+              },
+              icon: const Icon(Icons.logout_outlined),
+            )
+          ],
+        ),
         body: Column(
           children: [
             Row(
@@ -124,62 +128,69 @@ class _HomeState extends State<Home> {
                       padding: EdgeInsets.all(getWidth(context) / 800),
                       child: _pressedIndex == i
                           ? ElevatedButton(
-                              onPressed: () => _onButtonPressed(i),
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                                primary: Colors.green,
-                              ),
-                              child: Text(
-                                getWeekdayAbbreviation(i),
-                                style: TextStyle(
-                                  color: Color(0xFF6750A4),
-                                  fontSize: 15,
-                                ),
-                              ),
-                            )
+                        onPressed: () => _onButtonPressed(i),
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                          primary: Colors.green,
+                        ),
+                        child: Text(
+                          getWeekdayAbbreviation(i),
+                          style: TextStyle(
+                            color: Color(0xFF6750A4),
+                            fontSize: 15,
+                          ),
+                        ),
+                      )
                           : TextButton(
-                              onPressed: () => _onButtonPressed(i),
-                              style: TextButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                              ),
-                              child: Text(
-                                getWeekdayAbbreviation(i),
-                                style: TextStyle(
-                                  color: _selectedDay == i
-                                      ? Colors.green
-                                      : lightColorScheme.primary,
-                                  fontSize: 16,
-                                ),
-                              ),
-                            ),
+                        onPressed: () => _onButtonPressed(i),
+                        style: TextButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        child: Text(
+                          getWeekdayAbbreviation(i),
+                          style: TextStyle(
+                            color: _selectedDay == i
+                                ? Colors.green
+                                : lightColorScheme.primary,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
               ],
             ),
             Expanded(
               child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  physics: BouncingScrollPhysics(),
-                  itemCount: _fixtureModel?.results,
-                  itemBuilder: (BuildContext context, int index) {
-                    return isLoading
-                        ? Center(
-                            child: LoadingCard(height: 150),
-                          )
-                        : ListTile(
-                            title: FixtureCard(
-                                _fixtureModel!.response, context, index,
-                                currentUser: widget.currentUser));
-                  }),
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                physics: BouncingScrollPhysics(),
+                itemCount: _fixtureModel?.results ?? 0,
+                itemBuilder: (BuildContext context, int index) {
+                  return isLoading
+                      ? Center(
+                    child: LoadingCard(height: 150),
+                  )
+                      : ListTile(
+                    title: FixtureCard(
+                      _fixtureModel!.response,
+                      context,
+                      index,
+                      currentUser: widget.currentUser,
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
+        bottomNavigationBar: BottomNavBar(),
       ),
     );
   }
 }
+
