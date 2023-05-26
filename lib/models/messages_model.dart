@@ -22,7 +22,7 @@ class Message {
         .collection("Sessions")
         .doc(this.session.fixtureId)
         .collection("Messages")
-        .doc(DateTime.now().second.toString())
+        .doc()
         .set({
       "body": body,
       "userUId": user.uid,
