@@ -36,9 +36,6 @@ Widget PredictScreen({
             String homeScore = _homeScoreController.text;
             String awayScore = _awayScoreController.text;
 
-            // Perform any desired actions with the predicted scores
-            // For example, you can display a success message or send the prediction to an API
-
             // Clear the input fields
             _homeScoreController.clear();
             _awayScoreController.clear();
@@ -46,9 +43,8 @@ Widget PredictScreen({
             showSavedDialog(context);
 
             // Simulating the fixture finish
-            Future.delayed(Duration(seconds:response[index].fixture.status.elapsed?? 0 ), () {
-              Object score = response[index].score.fulltime?? 0;
-
+            Future.delayed(Duration(seconds: response[index].fixture.status.elapsed ?? 0), () {
+              Object score = response[index].score.fulltime ?? 0;
 
               if (homeScore == score.toString() && awayScore == score.toString()) {
                 showResultDialog(context, "Congratulations, your prediction is correct!");

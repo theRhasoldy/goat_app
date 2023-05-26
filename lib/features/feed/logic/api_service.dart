@@ -29,7 +29,7 @@ class ApiService {
     String league = "39",
     String season = "2022",
      String date = "2023-04-21",
-    String live = "all",
+   // String live = "all",
   }) async {
     final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
     try {
