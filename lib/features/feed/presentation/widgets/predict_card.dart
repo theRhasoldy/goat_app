@@ -1,61 +1,105 @@
-// ignore_for_file: unused_local_variable, prefer_const_constructors, prefer_final_fields, library_private_types_in_public_api, use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
-class PredictScreen extends StatefulWidget {
-  @override
-  _PredictScreenState createState() => _PredictScreenState();
-}
+import 'package:goat_app/models/fixture.dart';
 
-class _PredictScreenState extends State<PredictScreen> {
+Widget PredictScreen({
+  bool isStatistics = false,
+  required List<FixtureResponse> response,
+  required BuildContext context,
+  required int index,
+}) {
+  int scoreUser = 0;
   TextEditingController _homeScoreController = TextEditingController();
   TextEditingController _awayScoreController = TextEditingController();
 
-  @override
-  void dispose() {
-    _homeScoreController.dispose();
-    _awayScoreController.dispose();
-    super.dispose();
-  }
+  return Padding(
+    padding: const EdgeInsets.all(16.0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        TextField(
+          controller: _homeScoreController,
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(
+            labelText: "Home Team Score",
+          ),
+        ),
+        TextField(
+          controller: _awayScoreController,
+          keyboardType: TextInputType.number,
+          decoration: InputDecoration(
+            labelText: "Away Team Score",
+          ),
+        ),
+        SizedBox(height: 16.0),
+        ElevatedButton(
+          onPressed: () {
+            String homeScore = _homeScoreController.text;
+            String awayScore = _awayScoreController.text;
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          TextField(
-            controller: _homeScoreController,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              labelText: "Home Team Score",
-            ),
-          ),
-          TextField(
-            controller: _awayScoreController,
-            keyboardType: TextInputType.number,
-            decoration: InputDecoration(
-              labelText: "Away Team Score",
-            ),
-          ),
-          SizedBox(height: 16.0),
-          ElevatedButton(
+            // Perform any desired actions with the predicted scores
+            // For example, you can display a success message or send the prediction to an API
+
+            // Clear the input fields
+            _homeScoreController.clear();
+            _awayScoreController.clear();
+
+            showSavedDialog(context);
+
+            // Simulating the fixture finish
+            Future.delayed(Duration(seconds:response[index].fixture.status.elapsed?? 0 ), () {
+              Object score = response[index].score.fulltime?? 0;
+
+
+              if (homeScore == score.toString() && awayScore == score.toString()) {
+                showResultDialog(context, "Congratulations, your prediction is correct!");
+              } else {
+                showResultDialog(context, "Sorry, your prediction is not correct.");
+              }
+            });
+          },
+          child: Text("Predict"),
+        ),
+      ],
+    ),
+  );
+}
+
+void showResultDialog(BuildContext context, String message) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Prediction Result"),
+        content: Text(message),
+        actions: [
+          TextButton(
             onPressed: () {
-              // Get the predicted scores
-              String homeScore = _homeScoreController.text;
-              String awayScore = _awayScoreController.text;
-
-              // Perform any desired actions with the predicted scores
-              // For example, you can display a success message or send the prediction to an API
-
-              // Clear the input fields
-              _homeScoreController.clear();
-              _awayScoreController.clear();
+              Navigator.of(context).pop();
             },
-            child: Text("Predict"),
+            child: Text("OK"),
           ),
         ],
-      ),
-    );
-  }
+      );
+    },
+  );
+}
+
+void showSavedDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text("Saved!"),
+        content: Text("Your prediction has been saved."),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text("OK"),
+          ),
+        ],
+      );
+    },
+  );
 }

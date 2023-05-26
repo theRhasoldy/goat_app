@@ -127,7 +127,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                 elevation: 10,
                 isScrollControlled: true,
                 enableDrag: true,
-                showDragHandle: true,
+                //showDragHandle: true,
                 useSafeArea: true,
                 isDismissible: true,
                 context: context,
@@ -145,7 +145,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
             child: TabBarView(
               children: [
                 // Predict tab
-                PredictScreen(),
+                //PredictScreen(),
                 // Lineup tab
                 LineupTab(
                   lineupModel: _lineupModel!,
