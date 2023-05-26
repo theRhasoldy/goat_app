@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
 
   Future<void> _getFixtureData(String date) async {
     final ApiService apiService = ApiService();
-    final FixtureModel? fixtureModel = await apiService.getMatches();
+    final FixtureModel? fixtureModel = await apiService.getMatches(date:date);
     if (mounted) {
       setState(() {
         isLoading = false;

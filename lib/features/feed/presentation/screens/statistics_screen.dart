@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
+import 'package:goat_app/common/widgets/bottom_navigation_bar.dart';
 import 'package:goat_app/features/chat/presentation/chat_screen.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
@@ -44,7 +45,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   // Get stats data
   Future<void> _getStatisticsData(String fixtureId) async {
     final StatisticsModel? statisticsModel =
-        await apiService.getStatistics(fixture: fixtureId);
+    await apiService.getStatistics(fixture: fixtureId);
     setState(() {
       isLoading = false;
       _statisticsModel = statisticsModel;
@@ -54,7 +55,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   // Get head to head data
   Future<void> _getHeadToHeadData(String home, String away) async {
     final HeadToHeadModel? headToHeadModel =
-        await apiService.getHeadToHead(home: home, away: away);
+    await apiService.getHeadToHead(home: home, away: away);
     setState(() {
       isLoading = false;
       _headToHeadModel = headToHeadModel;
@@ -64,7 +65,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   // Get head to head data
   Future<void> _getLineupData(String fixtureId) async {
     final LineupModel? lineupModel =
-        await apiService.getLineup(fixture: fixtureId);
+    await apiService.getLineup(fixture: fixtureId);
     print(lineupModel);
     setState(() {
       isLoading = false;
@@ -95,15 +96,15 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
           appBar: AppBar(
             systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: null),
             bottom: PreferredSize(
-              preferredSize: Size.fromHeight(getHeight(context) / 5),
+              preferredSize: Size.fromHeight(getHeight(context) / 4),
               child: Column(
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 10, vertical: 20),
                     child: FixtureCard(widget.response, context, widget.index,
-                            currentUser: widget.currentUser,
-                            isStatistics: true) ??
+                        currentUser: widget.currentUser,
+                        isStatistics: true) ??
                         Text("Null"),
                   ),
                   const TabBar(
@@ -145,7 +146,9 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
             child: TabBarView(
               children: [
                 // Predict tab
-                //PredictScreen(),
+                PredictScreen(response: widget.response,
+                  context: context,
+                  index: widget.index,),
                 // Lineup tab
                 LineupTab(
                   lineupModel: _lineupModel!,
@@ -155,35 +158,35 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                   children: [
                     Expanded(
                       child: _statisticsModel == null ||
-                              _statisticsModel?.response.isEmpty == true ||
-                              _statisticsModel
-                                      ?.response[0].statistics?.isEmpty ==
-                                  true
+                          _statisticsModel?.response.isEmpty == true ||
+                          _statisticsModel
+                              ?.response[0].statistics?.isEmpty ==
+                              true
                           ? Center(
-                              child: Text("No statistics found"),
-                            )
+                        child: Text("No statistics found"),
+                      )
                           : Card(
-                              child: ListView.builder(
-                                  scrollDirection: Axis.vertical,
-                                  shrinkWrap: true,
-                                  physics: BouncingScrollPhysics(),
-                                  itemCount: _statisticsModel
-                                      ?.response[0].statistics?.length,
-                                  itemBuilder:
-                                      (BuildContext context, int _statIndex) {
-                                    return isLoading
-                                        ? Center(
-                                            child: LoadingCard(height: 150),
-                                          )
-                                        : ListTile(
-                                            title: StatisticRow(
-                                                    _statisticsModel,
-                                                    context,
-                                                    _statIndex) ??
-                                                Text("Null"),
-                                          );
-                                  }),
-                            ),
+                        child: ListView.builder(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            physics: BouncingScrollPhysics(),
+                            itemCount: _statisticsModel
+                                ?.response[0].statistics?.length,
+                            itemBuilder:
+                                (BuildContext context, int _statIndex) {
+                              return isLoading
+                                  ? Center(
+                                child: LoadingCard(height: 150),
+                              )
+                                  : ListTile(
+                                title: StatisticRow(
+                                    _statisticsModel,
+                                    context,
+                                    _statIndex) ??
+                                    Text("Null"),
+                              );
+                            }),
+                      ),
                     )
                   ],
                 ),
@@ -197,17 +200,18 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                       itemBuilder: (BuildContext context, int index) {
                         return isLoading
                             ? Center(
-                                child: LoadingCard(height: 150),
-                              )
+                          child: LoadingCard(height: 150),
+                        )
                             : ListTile(
-                                title: FixtureCard(_headToHeadModel!.response,
-                                    context, index));
+                            title: FixtureCard(_headToHeadModel!.response,
+                                context, index));
                       }),
                 ),
               ],
             ),
           ),
-        ),
+       bottomNavigationBar: BottomNavBar(), ),
+
       ),
     );
   }
