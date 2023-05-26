@@ -43,13 +43,18 @@ Widget PredictScreen({
             showSavedDialog(context);
 
             // Simulating the fixture finish
-            Future.delayed(Duration(seconds: response[index].fixture.status.elapsed ?? 0), () {
-              Object score = response[index].score.fulltime ?? 0;
+            Future.delayed(
+                Duration(seconds: response[index].fixture.status.elapsed ?? 0),
+                () {
+              Object score = response[index].score.fulltime;
 
-              if (homeScore == score.toString() && awayScore == score.toString()) {
-                showResultDialog(context, "Congratulations, your prediction is correct!");
+              if (homeScore == score.toString() &&
+                  awayScore == score.toString()) {
+                showResultDialog(
+                    context, "Your prediction has been submitted!");
               } else {
-                showResultDialog(context, "Sorry, your prediction is not correct.");
+                showResultDialog(
+                    context, "Your prediction has been submitted!");
               }
             });
           },
