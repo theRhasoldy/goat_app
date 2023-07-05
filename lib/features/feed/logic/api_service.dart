@@ -1,5 +1,7 @@
 // ignore_for_file: body_might_complete_normally_nullable
 
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/freezed_model.dart';
@@ -11,25 +13,28 @@ class ApiService {
   final Dio _dio = Dio();
   final apiKey = 'cad2a28d9c7384611d1aaaf4643623a2';
 
-  Future<TeamModel> getTeamDetails({String id = "33"}) async {
+  Future<TeamModel> getTeamDetails({String name = "manche"}) async {
     try {
       final response = await _dio.get(
-        'https://v3.football.api-sports.io/teams?id=$id',
+        'https://v3.football.api-sports.io/teams?search=$name',
         options: Options(headers: {'x-apisports-key': apiKey}),
       );
       final json = response.data as Map<String, dynamic>;
+      print(json);
       return TeamModel.fromJson(json);
+
     } catch (error) {
       rethrow;
     }
+
   }
 
   Future<FixtureModel> getMatches({
     // Default values
     String league = "39",
     String season = "2022",
-     String date = "2023-04-21",
-   // String live = "all",
+     String date = "2023-05-28",
+    //  String live = "all",
   }) async {
     final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
     try {
@@ -39,7 +44,7 @@ class ApiService {
           'league': league,
           'season': season,
            'date': date,
-          // "live": live,
+           // "live": live,
         },
       );
       final json = response.data as Map<String, dynamic>;
@@ -103,3 +108,4 @@ class ApiService {
     }
   }
 }
+

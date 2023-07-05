@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:goat_app/common/config/theme.dart';
+import 'package:goat_app/common/widgets/bottom_navigation_bar.dart';
+import 'package:goat_app/features/feed/presentation/screens/favourite_team_page.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/firebase_options.dart';
 import 'package:goat_app/routing/wrapper.dart';
@@ -19,7 +21,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Wrapper(),
+      home: FavouriteTeam(),
       theme: mainTheme,
     );
   }

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:goat_app/common/widgets/bottom_navigation_bar.dart';
 import 'package:goat_app/features/authentication/presentation/screens/signup_screen.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/models/user.dart';
@@ -43,8 +44,8 @@ class Wrapper extends ConsumerWidget {
                     final data = doc.data()!;
                     UserModel currentUser = UserModel.fromMan(data);
                     if (user.uid == currentUser.uid) {
-                      return Home(
-                        currentUser: currentUser,
+                      return BottomNavBar(
+                       // currentUser: currentUser,
                       );
                     }
                   }

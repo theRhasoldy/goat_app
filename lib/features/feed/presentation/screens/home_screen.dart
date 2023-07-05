@@ -49,7 +49,7 @@ class _HomeState extends State<Home> {
 
   Future<void> _getFixtureData(String date) async {
     final ApiService apiService = ApiService();
-    final FixtureModel? fixtureModel = await apiService.getMatches(date:date);
+    final FixtureModel? fixtureModel = await apiService.getMatches();
     if (mounted) {
       setState(() {
         isLoading = false;
@@ -69,6 +69,9 @@ class _HomeState extends State<Home> {
         final String date = DateFormat('yyyy-MM-dd')
             .format(now.add(Duration(days: _selectedDay)));
         dates.add(date);
+
+
+
       }
 
       String selectedDate;
@@ -124,7 +127,10 @@ class _HomeState extends State<Home> {
               children: [
                 for (int i = 0; i < 7; i++)
                   Expanded(
-                    child: Padding(
+
+                    child:
+
+                    Padding(
                       padding: EdgeInsets.all(getWidth(context) / 800),
                       child: _pressedIndex == i
                           ? ElevatedButton(
@@ -188,7 +194,7 @@ class _HomeState extends State<Home> {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavBar(),
+
       ),
     );
   }
