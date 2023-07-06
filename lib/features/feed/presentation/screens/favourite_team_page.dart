@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
+import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
+import 'package:goat_app/features/feed/presentation/widgets/search_card.dart';
 import 'package:goat_app/models/freezed_model.dart';
 class FavouriteTeam extends StatefulWidget {
    FavouriteTeam({Key? key}) : super(key: key);
@@ -12,94 +14,77 @@ class FavouriteTeam extends StatefulWidget {
 }
 
 class _FavouriteTeamState extends State<FavouriteTeam> {
-  //Team? _team;
-  Future<void> getTeamDetails() async {
+
+  List<Widget?> widgets = [];
+  bool isLoading = true;
+  TeamModel? _teamsearch;
+  List<TeamModel> teamResponse = [];
+
+  Future<void> getTeamDetails(String value) async {
     final ApiService apiService = ApiService();
-    apiService.getTeamDetails();
-    final TeamModel? fixtureModel = await apiService.getTeamDetails();
-   // print('hello');
+    final TeamModel? teamsearch = await apiService.getTeamDetails(name: value);
+    // print('hello');
+
     if (mounted) {
       setState(() {
-       //isLoading = false;
-      // _team = fixtureModel as Team?;
+        isLoading = false;
+        _teamsearch = teamsearch;
+
+
+        _teamsearch!.response.forEach((element) {
+          widgets.add(SearchCard(_teamsearch!.response, context,widgets.length));
+        });
+
       });
     }
   }
-  _FavouriteTeamState(){
-    _filter.addListener(() {
-      if(_filter.text.isEmpty){
-        setState(() {
-          _searchText="";
-          filteredNames=names;
-        });
-      }
-      else{
-        setState(() {
-          _searchText=_filter.text;
-        });
-      }
-    });
-  }
-  final TextEditingController _filter=new TextEditingController();
-  String _searchText="";
-  List names=[];
-  List filteredNames=[];
-  Icon _searchIcon=new Icon(Icons.search);
-  Widget _appBarTitle=new Text('Favourite Team');
-  void _searchPressed(){
-    setState(() {
-      if(this._searchIcon.icon==Icons.search){
+  TextEditingController search = TextEditingController();
+  String textfieldValue = "";
 
-        this._searchIcon=new Icon(Icons.close);
-        this._appBarTitle=new TextField(
-          controller: _filter,
-          decoration: new InputDecoration(
-            prefixIcon: new Icon(Icons.search),hintText: 'Search...'
-          ),
-        );
-      }
-      else{
-        this._searchIcon=new Icon(Icons.search);
-        this._appBarTitle=new Text('Favourite Team');
-        filteredNames=names;
-        _filter.clear();
-      }
-    });
+  @override
+  void initState(){
+    super.initState();
+    search = TextEditingController();
   }
-  Widget? _bulidList() {
-    if (!(_searchText.isEmpty)) {
-      List tempList = [];
-      for (int i = 0; i < filteredNames.length; i++) {
-        if (filteredNames[i]['name'].toLowerCase().contains(
-            _searchText.toLowerCase())) {
-          tempList.add(filteredNames[i]);
-        }
-      }
-      filteredNames = tempList;
-    }
-    return ListView.builder(itemCount: names==null?0:filteredNames.length,
-      itemBuilder: (BuildContext context,int index){
-      return new ListTile(
-        title: Text(filteredNames[index]['name']),
-        onTap: () => print(filteredNames[index]['name']),
-      );
-      }
-    );
+
+  @override
+  void dispose()
+  {
+    search.clear();
+    widgets.clear();
   }
+
+
   Widget? _buildBar(BuildContext context) {
     return new AppBar(
       centerTitle: true,
-      title: _appBarTitle,
+      title: TextField(
+
+        decoration: InputDecoration(
+          labelText: 'Search'
+        ),
+        controller: search,
+        onChanged: (value){
+          setState(() {
+            textfieldValue = value;
+          });
+        },
+      ),
       leading: new IconButton(
-        icon: _searchIcon,
-        onPressed: _searchPressed,
+        icon: Icon(Icons.search),
+        onPressed: () {
+          this.dispose();
+          // getTeamDetails();
+        },
       ),
     );
   }
 
+
+
   @override
   Widget build(BuildContext context) {
-    getTeamDetails();
+
     return  MaterialApp(
       //theme: mainTheme,
       home: Scaffold(
@@ -107,12 +92,28 @@ class _FavouriteTeamState extends State<FavouriteTeam> {
           preferredSize: Size.fromHeight(56.0),
           child: _buildBar(context)!,
         ),
-        body: Container(
-          child: _bulidList(),
+        body:
+        Column(
+          children: [
+        Expanded(
+        child: ListView.builder(
+        itemCount: widgets.length,
+          itemBuilder: (context, index) {
+            return widgets[index];
+          },
         ),
-        resizeToAvoidBottomInset: false
-        ,
-       ),
+      ),
+    ElevatedButton(
+    child: Text('SEARCH'),
+    onPressed:(){
+
+      getTeamDetails(textfieldValue);
+
+    }
+    ),
+    ],
+        ),
+      )
       );
 
   }
