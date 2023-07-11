@@ -210,7 +210,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
               ],
             ),
           ),
-       bottomNavigationBar: BottomNavBar(), ),
+        ),
 
       ),
     );

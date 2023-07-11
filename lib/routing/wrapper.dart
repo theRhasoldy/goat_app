@@ -44,8 +44,8 @@ class Wrapper extends ConsumerWidget {
                     final data = doc.data()!;
                     UserModel currentUser = UserModel.fromMan(data);
                     if (user.uid == currentUser.uid) {
-                      return BottomNavBar(
-                       // currentUser: currentUser,
+                      return Home(
+                       currentUser: currentUser,
                       );
                     }
                   }
