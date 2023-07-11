@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/feed/presentation/screens/statistics_screen.dart';
+import 'package:goat_app/features/feed/presentation/widgets/predict_card.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/user.dart';
 
