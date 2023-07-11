@@ -97,6 +97,7 @@ class _SignUpState extends State<SignUp> {
                             Padding(
                               padding: const EdgeInsets.only(top: 12.0),
                               child: TextFormField(
+                                  obscureText: true,
                                 onChanged: (value) {
                                   // Check form validation
                                   if (_formKey.currentState!.validate()) {
@@ -121,8 +122,10 @@ class _SignUpState extends State<SignUp> {
                             Padding(
                               padding: const EdgeInsets.only(top: 12.0),
                               child: TextFormField(
+                                obscureText: true,
                                 controller: passwordEditingController,
                                 onChanged: (value) {
+
                                   // Check form validation
                                   _password = value;
                                 },

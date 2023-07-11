@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:goat_app/features/feed/presentation/screens/heart_page.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/features/feed/presentation/screens/profile_page.dart';
 import 'package:goat_app/features/feed/presentation/screens/trophy_page.dart';
+import 'package:goat_app/models/user.dart';
 
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({Key? key}) : super(key: key);
+  const BottomNavBar({Key? key, required Object currentUser}) : super(key: key);
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
@@ -29,6 +31,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
        child:_pages[_currentIndex],
      ) ,
         bottomNavigationBar: BottomNavigationBar(
+          backgroundColor: Colors.black45,
           currentIndex: _currentIndex,
           onTap: (index) {
             setState(() {
@@ -37,19 +40,19 @@ class _BottomNavBarState extends State<BottomNavBar> {
           },
           items: [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
+              icon: Icon(FontAwesomeIcons.home,),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.explore),
-              label: 'Explore',
+              icon: Icon(FontAwesomeIcons.trophy),
+              label: 'Trophy',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.notifications),
-              label: 'Notifications',
+              icon: Icon(FontAwesomeIcons.solidHeart),
+              label: 'Likes',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
+              icon: Icon(FontAwesomeIcons.solidUser),
               label: 'Profile',
             ),
           ],

@@ -103,8 +103,8 @@ class _SignInState extends State<SignIn> {
                               final signInSuccessful =
                                   await _authService.signInWithEmail();
                               if (signInSuccessful) {
-                                // Navigator.of(context).push(MaterialPageRoute(
-                                //     builder: (context) => Home()));
+                                Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) => Home()));
                               } else {
                                 print(
                                     'Incorrect email or password. Please try again.');

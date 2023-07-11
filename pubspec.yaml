@@ -61,6 +61,10 @@ dependencies:
   vector_math: ^2.1.4
   ditredi: ^1.0.4
   fluttertoast: ^8.2.1
+  flare_flutter: ^3.0.2
+  webview_flutter: ^2.0.13
+  firebase_messaging: ^14.3.0
+  firebase_analytics: ^10.1.6
 
 dev_dependencies:
   json_serializable: ^6.3.1

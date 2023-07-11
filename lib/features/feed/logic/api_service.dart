@@ -34,7 +34,7 @@ class ApiService {
     String league = "39",
     String season = "2022",
      String date = "2023-05-28",
-    //  String live = "all",
+     //String live = "all",
   }) async {
     final dio = Dio(BaseOptions(headers: {'x-apisports-key': apiKey}));
     try {
@@ -44,7 +44,7 @@ class ApiService {
           'league': league,
           'season': season,
            'date': date,
-           // "live": live,
+          // "live": live,
         },
       );
       final json = response.data as Map<String, dynamic>;
