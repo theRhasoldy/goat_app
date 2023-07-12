@@ -6,6 +6,7 @@ class Message {
   ChatSession session;
   UserModel user;
   String? time;
+  String? timestamp;
   String? body;
   bool? isCurrentUser;
 
@@ -13,6 +14,7 @@ class Message {
       {required this.session,
       required this.user,
       required this.time,
+      required this.timestamp,
       this.body});
 
   postMessageToSession() async {
@@ -27,7 +29,8 @@ class Message {
       "body": body,
       "userUId": user.uid,
       "userName": user.username,
-      "time": time
+      "time": time,
+      "timestamp": timestamp
     });
   }
 }
