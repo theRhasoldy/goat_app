@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/config/theme.dart';
@@ -12,6 +13,23 @@ import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
 import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/user.dart';
 import 'package:intl/intl.dart';
+
+  Future<String> getSentiment() async {
+		final Dio _dio = Dio();
+    try {
+      final response = await _dio.get(
+        'http://127.0.0.1:5000',
+      );
+		print(response);
+      final json = response.data as String;
+      print(json);
+      return json;
+
+    } catch (error) {
+      rethrow;
+    }
+
+  }
 
 class Home extends StatefulWidget {
   UserModel? currentUser;
@@ -97,6 +115,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+		getSentiment();
     return MaterialApp(
       theme: mainTheme,
       home: Scaffold(

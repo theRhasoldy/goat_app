@@ -6,8 +6,10 @@ import 'package:goat_app/features/feed/logic/api_service.dart';
 import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/search_card.dart';
 import 'package:goat_app/models/freezed_model.dart';
+import 'package:goat_app/models/user.dart';
 class FavouriteTeam extends StatefulWidget {
-   FavouriteTeam({Key? key}) : super(key: key);
+  UserModel? currentUser;
+   FavouriteTeam({Key? key, this.currentUser}) : super(key: key);
 
   @override
   State<FavouriteTeam> createState() => _FavouriteTeamState();
@@ -32,7 +34,7 @@ class _FavouriteTeamState extends State<FavouriteTeam> {
 
 
         _teamsearch!.response.forEach((element) {
-          widgets.add(SearchCard(_teamsearch!.response, context,widgets.length));
+          widgets.add(SearchCard(widget.currentUser, _teamsearch!.response, context,widgets.length));
         });
 
       });

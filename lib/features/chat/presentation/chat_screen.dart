@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
@@ -6,6 +7,22 @@ import 'package:goat_app/features/chat/presentation/message.dart';
 import 'package:goat_app/models/messages_model.dart';
 import 'package:goat_app/models/session_model.dart';
 import 'package:goat_app/models/user.dart';
+
+  Future<String> getSentiment() async {
+		final Dio _dio = Dio();
+    try {
+      final response = await _dio.get(
+        'http://127.0.0.1:5000',
+      );
+      final json = response.data as String;
+      print(json);
+      return json;
+
+    } catch (error) {
+      rethrow;
+    }
+
+  }
 
 class ChatScreen extends StatefulWidget {
   UserModel? currentUser;
@@ -31,6 +48,8 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     ChatSession chatSession = ChatSession(fixtureId: widget.sessionId);
     chatSession.createNewSession();
+
+		getSentiment();
 
     return SizedBox(
       height: getHeight(context) - 300,

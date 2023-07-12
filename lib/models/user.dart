@@ -6,7 +6,7 @@ class UserModel {
   String? username;
   String email;
   String password;
-  List<Team>? favoriteTeams;
+  String? favoriteTeams;
   int? score;
 
   UserModel({
