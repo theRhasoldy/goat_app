@@ -83,7 +83,7 @@ FutureBuilder<String?>(
                   .collection("Sessions")
                   .doc(chatSession.fixtureId)
                   .collection("Messages")
-                  .orderBy("time", descending: true)
+                  .orderBy("timestamp", descending: true)
                   .snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                 if (snapshot.hasData) {
@@ -133,6 +133,7 @@ FutureBuilder<String?>(
                           session: chatSession,
                           body: messageController.text,
                           user: widget.currentUser!,
+											timestamp: "${DateTime.now().microsecondsSinceEpoch}",
                           time:
                               "${DateTime.now().hour}:${DateTime.now().minute}");
                       message.postMessageToSession();
