@@ -14,23 +14,6 @@ import 'package:goat_app/models/fixture.dart';
 import 'package:goat_app/models/user.dart';
 import 'package:intl/intl.dart';
 
-  Future<String> getSentiment() async {
-		final Dio _dio = Dio();
-    try {
-      final response = await _dio.get(
-        'http://127.0.0.1:5000',
-      );
-		print(response);
-      final json = response.data as String;
-      print(json);
-      return json;
-
-    } catch (error) {
-      rethrow;
-    }
-
-  }
-
 class Home extends StatefulWidget {
   UserModel? currentUser;
   Home({Key? key, this.currentUser}) : super(key: key);
@@ -115,8 +98,8 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-		getSentiment();
     return MaterialApp(
+
       theme: mainTheme,
       home: Scaffold(
         appBar: AppBar(

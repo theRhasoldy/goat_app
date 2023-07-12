@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,21 +10,26 @@ import 'package:goat_app/models/messages_model.dart';
 import 'package:goat_app/models/session_model.dart';
 import 'package:goat_app/models/user.dart';
 
-  Future<String> getSentiment() async {
-		final Dio _dio = Dio();
-    try {
-      final response = await _dio.get(
-        'http://127.0.0.1:5000',
-      );
-      final json = response.data as String;
-      print(json);
-      return json;
+Future<String?> getSentiment() async {
+  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+  final docRef = firebaseFirestore.collection("Sessions").doc("867946");
 
-    } catch (error) {
-      rethrow;
-    }
+  Completer<String?> completer = Completer<String?>();
 
-  }
+  docRef.get().then(
+    (DocumentSnapshot doc) {
+      final data = doc.data() as Map<String, dynamic>;
+      print(data["sentiment"]);
+      completer.complete(data["sentiment"]);
+    },
+    onError: (e) {
+      print("Error getting document: $e");
+      completer.complete(null); // Complete with null in case of an error
+    },
+  );
+
+  return completer.future;
+}
 
 class ChatScreen extends StatefulWidget {
   UserModel? currentUser;
@@ -56,6 +63,19 @@ class _ChatScreenState extends State<ChatScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
+FutureBuilder<String?>(
+          future: getSentiment(),
+          builder: (BuildContext context, AsyncSnapshot<String?> snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return CircularProgressIndicator(); // Show a loading indicator
+            } else if (snapshot.hasError) {
+              return Text('Error: ${snapshot.error}'); // Show an error message
+            } else {
+              return Text('Data: ${snapshot.data}'); // Show the retrieved data
+            }
+					}
+	),
+	
           Expanded(
             child: Container(
                 child: StreamBuilder(

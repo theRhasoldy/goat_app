@@ -1,5 +1,3 @@
-// ignore_for_file: body_might_complete_normally_nullable
-
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -8,6 +6,7 @@ import 'package:goat_app/models/freezed_model.dart';
 import 'package:goat_app/models/headtohead_model.dart';
 import 'package:goat_app/models/lineup_model.dart';
 import 'package:goat_app/models/statistics_model.dart';
+import 'package:http/http.dart' as http;
 
 class ApiService {
   final Dio _dio = Dio();
