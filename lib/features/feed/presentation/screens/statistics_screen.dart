@@ -5,6 +5,7 @@ import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/common/widgets/bottom_navigation_bar.dart';
 import 'package:goat_app/features/chat/presentation/chat_screen.dart';
 import 'package:goat_app/features/feed/logic/api_service.dart';
+import 'package:goat_app/features/feed/presentation/screens/standing_screen.dart';
 import 'package:goat_app/features/feed/presentation/widgets/fixture_card.dart';
 import 'package:goat_app/features/feed/presentation/widgets/lineup_tab.dart';
 import 'package:goat_app/features/feed/presentation/widgets/loading_card.dart';
@@ -91,7 +92,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
     return MaterialApp(
       theme: mainTheme,
       home: DefaultTabController(
-        length: 4,
+        length: 5,
         child: Scaffold(
           appBar: AppBar(
             systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: null),
@@ -112,7 +113,8 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                       Text('PREDICT', style: TextStyle(color: Colors.black)),
                       Text('LINEUP', style: TextStyle(color: Colors.black)),
                       Text('STATS', style: TextStyle(color: Colors.black)),
-                      Text('H2H', style: TextStyle(color: Colors.black))
+                      Text('H2H', style: TextStyle(color: Colors.black)),
+                      Text('STANDING', style: TextStyle(color: Colors.black)),
                     ],
                   ),
                 ],
@@ -206,6 +208,8 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                             title: FixtureCard(_headToHeadModel!.response,
                                 context, index));
                       }),
+                ),
+                FootballStandingsScreen(
                 ),
               ],
             ),

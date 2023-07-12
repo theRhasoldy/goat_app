@@ -23,7 +23,10 @@ class _ChatScreenState extends State<ChatScreen> {
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
   final messageController = TextEditingController();
-
+  void dispose() {
+    messageController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     ChatSession chatSession = ChatSession(fixtureId: widget.sessionId);
@@ -84,6 +87,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: TextField(
                       controller: messageController,
                     )),
+
                 IconButton(
                     onPressed: () {
                       Message message = Message(
@@ -98,8 +102,10 @@ class _ChatScreenState extends State<ChatScreen> {
               ],
             ),
           )
+
         ],
       ),
     );
+
   }
 }

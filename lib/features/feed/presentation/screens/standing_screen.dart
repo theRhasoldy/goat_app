@@ -8,7 +8,7 @@ class FootballStandingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Football Standings'),
+        title: Text('Standing'),
       ),
       body: WebView(
         initialUrl: Uri.dataFromString(
@@ -19,6 +19,17 @@ class FootballStandingsScreen extends StatelessWidget {
           <head>
             <meta charset="UTF-8">
             <title>Football Standings Widget Example</title>
+              <style>
+            
+             *{
+             --primary-padding: 18px;
+             --header-font-size: 45px;
+            --primary-font-size:50px;
+            --teams-logo-size:118px;
+            }
+         
+           
+            </style>
           </head>
           
           <body>
@@ -27,7 +38,7 @@ class FootballStandingsScreen extends StatelessWidget {
               data-key="cad2a28d9c7384611d1aaaf4643623a2"
               data-league="39"
               data-team=""
-              data-season="2021"
+              data-season="2022"
               data-theme=""
               data-show-errors="false"
               data-show-logos="true"
@@ -36,6 +47,7 @@ class FootballStandingsScreen extends StatelessWidget {
           
             <script type="module" src="https://widgets.api-sports.io/2.0.3/widgets.js"></script>
           </body>
+          
           
           </html>
           ''',
