@@ -67,7 +67,6 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
   Future<void> _getLineupData(String fixtureId) async {
     final LineupModel? lineupModel =
     await apiService.getLineup(fixture: fixtureId);
-    print(lineupModel);
     setState(() {
       isLoading = false;
       _lineupModel = lineupModel;

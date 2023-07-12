@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:goat_app/common/utils/media_queries.dart';
 import 'package:goat_app/features/authentication/logic/auth.dart';
+import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 import 'package:goat_app/models/freezed_model.dart';
 import 'package:goat_app/models/user.dart';
 
@@ -26,8 +27,9 @@ return GestureDetector(
 		onTap: () {
 				  currentUser?.favoriteTeams = response[index].team.name;
 			currentUser?.favoriteTeams = response[index].team.name;
-			print(currentUser?.uid);
 			postDetailsToFirestore(currentUser, response);
+			Navigator.push(context,
+				MaterialPageRoute(builder: (context) => Home()));
 		},
 		child: Card(
     child: Padding(

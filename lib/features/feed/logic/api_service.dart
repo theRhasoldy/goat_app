@@ -17,7 +17,6 @@ class ApiService {
         options: Options(headers: {'x-apisports-key': apiKey}),
       );
       final json = response.data as Map<String, dynamic>;
-      print(json);
       return TeamModel.fromJson(json);
 
     } catch (error) {
@@ -98,10 +97,8 @@ class ApiService {
         queryParameters: {"fixture": fixture},
       );
       final json = response.data as Map<String, dynamic>;
-      print(json);
       return LineupModel.fromJson(json);
     } catch (error) {
-      print(error);
     }
   }
 }

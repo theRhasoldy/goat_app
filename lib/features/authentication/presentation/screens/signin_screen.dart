@@ -96,7 +96,6 @@ class _SignInState extends State<SignIn> {
                               ),
                             );
                             if (_email.isEmpty || _password.isEmpty) {
-                              print('Please enter both email and password.');
                               return;
                             }
                             try {
@@ -106,8 +105,6 @@ class _SignInState extends State<SignIn> {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => Home()));
                               } else {
-                                print(
-                                    'Incorrect email or password. Please try again.');
                               }
                             } catch (e) {
                               print('Error signing in: $e');

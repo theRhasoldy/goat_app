@@ -22,7 +22,6 @@ class ChatSession {
                   .set({"id": fixtureId})
             }
         });
-    print(sessionRef);
     if (sessionRef == null) {}
   }
 }

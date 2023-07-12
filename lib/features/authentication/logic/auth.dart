@@ -56,11 +56,9 @@ class AuthService {
       if (existingUser.user != null) {
         // Successful sign-in, user exists
         // Proceed to the home page or perform any necessary actions
-        print('User signed in successfully');
         return true;
       } else {
         // User doesn't exist
-        print('User not found. Please enter valid credentials.');
         return false;
       }
     } on FirebaseAuthException catch (e) {

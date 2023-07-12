@@ -20,9 +20,7 @@ import 'package:intl/intl.dart';
       final response = await _dio.get(
         'http://127.0.0.1:5000',
       );
-		print(response);
       final json = response.data as String;
-      print(json);
       return json;
 
     } catch (error) {
@@ -108,7 +106,6 @@ class _HomeState extends State<Home> {
   @override
   void initState() {
     super.initState();
-    print(widget.currentUser?.fullname);
     String _date = DateFormat('yyyy-MM-dd').format(DateTime.now());
     _getFixtureData(_date);
   }
@@ -130,7 +127,6 @@ class _HomeState extends State<Home> {
                 try {
                   await auth.signOut();
                 } catch (e) {
-                  print(e.toString());
                 }
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => const SignIn()),

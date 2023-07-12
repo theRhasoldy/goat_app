@@ -19,11 +19,9 @@ Future<String?> getSentiment() async {
   docRef.get().then(
     (DocumentSnapshot doc) {
       final data = doc.data() as Map<String, dynamic>;
-      print(data["sentiment"]);
       completer.complete(data["sentiment"]);
     },
     onError: (e) {
-      print("Error getting document: $e");
       completer.complete(null); // Complete with null in case of an error
     },
   );
