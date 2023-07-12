@@ -44,6 +44,7 @@ class _SignUpState extends State<SignUp> {
   Widget build(BuildContext context) {
     print(FirebaseAuth.instance.currentUser);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: mainTheme,
       home: SafeArea(
           child: Scaffold(

@@ -90,6 +90,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: mainTheme,
       home: DefaultTabController(
         length: 5,
@@ -109,12 +110,16 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                         Text("Null"),
                   ),
                   const TabBar(
+                    isScrollable: true, // Enable horizontal scrolling for tabs
+                    labelColor: Colors.black,
+                    unselectedLabelColor: Colors.black,
+                    labelStyle: TextStyle(fontSize: 13,fontWeight: FontWeight.bold),
                     tabs: [
-                      Text('PREDICT', style: TextStyle(color: Colors.black)),
-                      Text('LINEUP', style: TextStyle(color: Colors.black)),
-                      Text('STATS', style: TextStyle(color: Colors.black)),
-                      Text('H2H', style: TextStyle(color: Colors.black)),
-                      Text('STANDING', style: TextStyle(color: Colors.black)),
+                      Tab(text: 'PREDICT'),
+                      Tab(text: 'LINEUP'),
+                      Tab(text: 'STATS'),
+                      Tab(text: 'H2H'),
+                      Tab(text: 'STANDING'),
                     ],
                   ),
                 ],
@@ -153,7 +158,7 @@ class _FixtureDetailsTabsState extends State<FixtureDetailsTabs> {
                   index: widget.index,),
                 // Lineup tab
                 LineupTab(
-                  lineupModel: _lineupModel!,
+                  lineupModel: _lineupModel!
                 ),
                 // Stats tab
                 Column(

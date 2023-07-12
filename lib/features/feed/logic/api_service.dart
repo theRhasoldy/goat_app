@@ -1,6 +1,3 @@
-// ignore_for_file: body_might_complete_normally_nullable
-
-import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:goat_app/models/fixture.dart';

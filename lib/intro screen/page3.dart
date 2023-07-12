@@ -1,6 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, camel_case_types, avoid_unnecessary_containers, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:goat_app/features/authentication/presentation/screens/signin_screen.dart';
 import 'package:goat_app/features/feed/presentation/screens/home_screen.dart';
 
 class page3 extends StatelessWidget {
@@ -44,8 +45,8 @@ class page3 extends StatelessWidget {
                   width: 160,
                   child: ElevatedButton(
                       onPressed: () {
-                        // Navigator.push(context,
-                        //     MaterialPageRoute(builder: (context) => Home()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => SignIn()));
                       },
                       child: Text("TO HOME PAGE"))),
             ),

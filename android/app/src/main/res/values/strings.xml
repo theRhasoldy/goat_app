@@ -3,5 +3,6 @@
     <string name="app_name">goat_app</string>
     <string name="facebook_app_id">513729120940591</string>
     <string name="fb_login_protocol_scheme">fb37e8a7c42724a6c92c4eb352bc8b2d6c</string>
+    <string name="default_notification_channel_id" translatable="false">default_channel_id</string>
 
 </resources>

@@ -117,11 +117,12 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
 		getSentiment();
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: mainTheme,
       home: Scaffold(
         appBar: AppBar(
           title: Text("Fixtures"),
-          centerTitle: false,
+          centerTitle: true,
           actions: [
             IconButton(
               onPressed: () async {
@@ -164,7 +165,7 @@ class _HomeState extends State<Home> {
                           getWeekdayAbbreviation(i),
                           style: TextStyle(
                             color: Color(0xFF6750A4),
-                            fontSize: 15,
+                            fontSize: 10,
                           ),
                         ),
                       )
@@ -181,7 +182,7 @@ class _HomeState extends State<Home> {
                             color: _selectedDay == i
                                 ? Colors.green
                                 : lightColorScheme.primary,
-                            fontSize: 16,
+                            fontSize: 13,
                           ),
                         ),
                       ),
